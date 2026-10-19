@@ -15,46 +15,6 @@
 | `outputs/` | 两例已完成的运行产物（正常 / 高风险），工作台只读回看。 |
 | `examples/` | 两个输入样例（正常 Query / 高风险 Query）。 |
 
-## 新电脑部署（换机演示，约 3 分钟）
-
-零依赖：仅需 `git` 与 `python3`（macOS 自带 python3，全部标准库，无需 pip 安装）。
-
-**1. 确认前提**：终端执行 `git --version`、`python3 --version`，均有输出即可。
-
-**2. 下载工程**：
-
-```bash
-cd ~/Documents
-git clone https://github.com/LOTUS-he/interview-workbench.git
-cd interview-workbench && ls
-```
-
-应看到 `workbench`、`skill-source`、`mock`、`tools`、`outputs`、`tests`、`README.md`、`启动工作台.command`。
-
-**3. 启动工作台**（二选一）：
-
-- 方式 A：访达进入 `interview-workbench`，双击 `启动工作台.command`（首次弹权限提示时选允许）；
-- 方式 B：终端执行 `python3 workbench/server.py`。
-
-出现 `工作台：http://127.0.0.1:8877` 即启动成功；**保持该终端窗口开启**（关闭即停止服务）。
-
-**4. 打开验证**：浏览器访问 `http://127.0.0.1:8877`，左侧出现两例历史回看（康安维C咀嚼篇60片 / 康安维生素C咀嚼片怎么用一次多少），点进任意案例可查看八步轨迹与每步真实产物。
-
-**5. 常见问题**：
-
-| 现象 | 处理 |
-| --- | --- |
-| 端口 8877 已被占用 | 已有实例在运行，直接访问 8877；或换端口 `python3 workbench/server.py --port 8878` |
-| 双击 .command 无反应 | 右键 → 打开；或改用方式 B 终端命令 |
-| clone 网络失败 | 重试一次；确认可访问 github.com |
-| 页面空白 | 稍等后刷新；确认终端出现过 `工作台：http://127.0.0.1:8877` |
-
-**6.（可选）携带既有现场运行**：将本机 `.runtime/` 目录整体拷贝到新电脑任意位置，启动时指定：
-
-```bash
-python3 workbench/server.py --root <RUNTIME_DIR>
-```
-
 ## 快速开始
 
 ### 方式一：一键启动工作台
