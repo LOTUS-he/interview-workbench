@@ -1,0 +1,12 @@
+# 运行时与本地材料（不入库）
+.runtime/
+*.log
+
+# 环境与密钥
+.env
+*.pem
+*.p12
+credentials*
+
+# 系统
+.DS_Store
