@@ -6,7 +6,7 @@
 
 | 路径 | 说明 |
 | --- | --- |
-| `index.html` | 演示工作台单文件版（GitHub Pages 在线版）。内含两例真实业务脱敏运行回看：正常案例（康安维C咀嚼篇60片 → 25 候选 → 双通过 2 → 1 份确认供给，9 项待人工复核）与高风险案例（剂量咨询 → 准入拒绝、跳过改写、0 候选）。 |
+| `index.html` | GitHub Pages 在线预览页：展示工作台界面与两例真实业务脱敏运行回看（正常案例 / 高风险案例）。Pages 仅静态托管、不执行审核服务；完整交互演示请在本机启动工作台（见快速开始）。 |
 | `skill-source/medical-query-safety-review/` | 医药 Query 安全扩召回审核 Skill 本体（31 文件，可安装即用）：SKILL.md 入口、15 份规则库、3 份协议 Schema、9 个确定性引擎脚本、SQL 历史漏损查询。 |
 | `mock/` | 只读业务环境数据层：商品主数据 96 条、门店、待审 Query 180 条、关键词索引 48 条、供给/广告计划快照、标准词与别名；SQLite DDL/种子；只读 API 服务 `api_server.py`（7 个端点，含故障场景注入）。 |
 | `config/demo.yaml` | 连接配置：本地只读服务地址、令牌环境变量、超时/重试上限。 |
@@ -46,7 +46,8 @@ python3 tools/run_demo.py finalize --run-dir "<RUN_DIR>" --decision "<ITEM_DECIS
 
 ## 在线访问
 
-- GitHub Pages：https://lotus-he.github.io/interview-workbench/
+- GitHub Pages（静态预览，仅回看界面与案例）：https://lotus-he.github.io/interview-workbench/
+- 完整交互演示：clone 本仓库后在任意本机启动工作台（见快速开始），浏览器打开 `http://127.0.0.1:8877`
 
 ## Skill 自检
 
