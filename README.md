@@ -20,8 +20,3 @@ python3 medical-query-safety-review/scripts/validate_resources.py --output /tmp/
 # 期望 {"valid": true}
 ```
 
-## 口径说明
-
-- 品牌已替换为独立两字品牌：康安 / 泰和 / 仁济 / 恒康 / 安宁 / 瑞康 / 明康 / 沐安 / 清和 / 知康 / 舒康 / 景康
-- 全仓无"教学/模拟/教师/课程"字样，统一为"只读脱敏业务环境 / 脱敏数据 / 业务快照"面试口径
-- 技术标识（`mock/api_server.py`、`config/demo.yaml` 等）为安装运行必需的路径引用
