@@ -67,6 +67,16 @@ class Workbench:
             self.records[rid] = {'id':rid,'path':path.parent,'task':task,'readonly':True,
                 'label':path.parent.name,'scenario':'recorded','created_at':manifest.get('created_at'),
                 'job':{'status':'idle','error':None},'service':None}
+        # 扫描运行根目录下既有运行：重启后保留现场运行，供回看步骤产物（不重复注册）
+        for path in sorted(self.root.glob('*/run/manifest.json')):
+            manifest = read_json(path)
+            if manifest.get('phase') != 'complete': continue
+            task = optional_json(path.parent/'evidence/task.json', {})
+            rid = path.parent.parent.name
+            if rid in self.records: continue
+            self.records[rid] = {'id':rid,'path':path.parent,'task':task,'readonly':True,
+                'label':path.parent.parent.name,'scenario':'recorded','created_at':manifest.get('created_at'),
+                'job':{'status':'idle','error':None},'service':None}
 
     def record(self, rid):
         with self.lock:
@@ -90,7 +100,9 @@ class Workbench:
         for path in sorted(run.rglob('*')):
             if not path.is_file() or path.is_symlink(): continue
             rel = path.relative_to(run)
-            if any(p.is_symlink() for p in path.parents if p != run.parent): continue
+            # 仅检查运行目录内部（含运行目录自身）的符号链接，防止产物被替换为外部链接；
+            # 不检查运行目录之外的系统路径（如 macOS 的 /var -> private/var 软链），否则临时目录下的产物会被全部跳过。
+            if any(p.is_symlink() for p in path.parents if run in p.parents or p == run): continue
             if len(rel.parts)==1 and rel.name in TOP_FILES or len(rel.parts)==2 and rel.parts[0] in SAFE_PARTS and path.suffix=='.json':
                 result.append({'name':rel.as_posix(),'bytes':path.stat().st_size,
                     'url':f"/api/runs/{quote(record['id'])}/artifact?name={quote(rel.as_posix())}"})
@@ -322,9 +334,11 @@ def make_server(port=8877,app=None):
 
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--port',type=int,default=8877)
+    parser.add_argument('--root',default=None,help='持久化运行根目录；默认临时目录（重启后现场运行将保留在该目录下）')
     args=parser.parse_args()
     if not 1024<=args.port<=65535: parser.error('port must be 1024–65535')
-    try:server=make_server(args.port)
+    runtime_root=args.root or os.environ.get('WORKBENCH_RUNTIME_ROOT')
+    try:server=make_server(args.port, Workbench(runtime_root=runtime_root))
     except OSError as exc:
         if exc.errno==errno.EADDRINUSE:
             raise SystemExit(f'端口 {args.port} 已被占用；未启动新工作台，也没有连接或停止已有实例。请改用 --port {args.port+1}，或自行确认并关闭旧实例。')
