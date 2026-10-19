@@ -1,0 +1,5824 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>医药 Query 安全扩召回 · 面试演示工作台</title>
+<style>
+:root{
+  --bg:#faf8f4; --panel:#ffffff; --ink:#2b2b2b; --muted:#6b6b6b;
+  --line:#e5e0d8; --line-soft:#f0ece4;
+  --green:#2f8f6e; --green-soft:#e6f2ee; --green-line:#bfe0d4;
+  --amber:#b8860b; --amber-soft:#f7f1e0; --amber-line:#e4d9b0;
+  --red:#c0392b; --red-soft:#f9ece9; --red-line:#e6c8c2;
+  --side:#222a26; --side-ink:#e8f0ec; --side-muted:#9fb4aa;
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.55}
+.mono{font-family:var(--mono);font-size:12px}
+.muted{color:var(--muted)}
+button{font-family:inherit;cursor:pointer}
+.layout{display:flex;min-height:100vh}
+/* ---------- sidebar ---------- */
+.sidebar{width:248px;flex-shrink:0;background:var(--side);color:var(--side-ink);display:flex;flex-direction:column;padding:20px 16px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--side-ink);margin-bottom:6px}
+.brand-symbol{width:36px;height:36px;border-radius:10px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0}
+.brand-name{font-weight:700;font-size:15px;line-height:1.2}
+.brand-sub{display:block;font-size:10px;letter-spacing:.14em;color:var(--side-muted);font-weight:500}
+.sidebar-label{font-size:11px;letter-spacing:.12em;color:var(--side-muted);margin:22px 0 8px;display:flex;justify-content:space-between;align-items:center}
+.sidebar-label span{color:var(--green);font-family:var(--mono)}
+.run-list{display:flex;flex-direction:column;gap:8px}
+.run-button{background:transparent;border:1px solid rgba(255,255,255,.14);border-radius:10px;color:var(--side-ink);padding:10px 12px;text-align:left;width:100%;transition:background .15s,border-color .15s}
+.run-button:hover{background:rgba(255,255,255,.06)}
+.run-button.active{background:rgba(47,143,110,.18);border-color:var(--green)}
+.run-title{display:block;font-weight:600;font-size:13px;margin-bottom:6px;line-height:1.35}
+.run-bottom{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--side-muted)}
+.run-button.active .run-bottom{color:var(--side-ink)}
+.phase-tag{background:var(--green);color:#fff;border-radius:999px;padding:1px 8px;font-size:10px;font-weight:600;letter-spacing:.04em}
+.sidebar-bottom{margin-top:auto;padding-top:20px;font-size:11px;color:var(--side-muted);line-height:1.6;border-top:1px solid rgba(255,255,255,.12)}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px;animation:blink 2.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.sidebar-bottom .mono{color:var(--green);display:block;margin-top:10px;font-size:11px}
+/* ---------- main ---------- */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid var(--line);background:var(--panel)}
+.topbar .crumb{font-size:13px;color:var(--muted)}
+.topbar .crumb b{color:var(--ink);font-weight:600}
+.slash{color:#c9c2b4;margin:0 6px}
+.quiet{background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:7px 14px;font-size:13px}
+.quiet:hover{background:#f5f2ec}
+.notice{background:var(--amber-soft);border:1px solid var(--amber-line);color:#7a5c0a;border-radius:10px;margin:14px 28px 0;padding:10px 14px;font-size:13px;display:none}
+.content{padding:0 28px 28px;max-width:1200px;width:100%;margin:0 auto}
+/* hero */
+.hero{padding:26px 0 6px}
+.eyebrow{font-size:11px;letter-spacing:.18em;color:var(--green);font-weight:700}
+.hero-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.hero-heading h1{font-size:26px;margin:6px 0 2px;line-height:1.25}
+.hero-heading p{margin:0;font-size:13px}
+.hero-actions{display:flex;gap:8px;flex-shrink:0}
+.secondary{background:var(--green);border:1px solid var(--green);border-radius:8px;color:#fff;padding:8px 16px;font-size:13px;font-weight:600;text-decoration:none;display:inline-block}
+.secondary:hover{background:#287a5d}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.meta-tag{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:12px;color:#4d4d4d}
+/* trajectory */
+.section{padding-top:22px}
+.section-heading{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.section-heading h2{font-size:15px;margin:0;font-weight:700}
+.section-en{font-size:10px;letter-spacing:.16em;color:#c9c2b4;margin-left:8px;font-weight:600}
+.timeline{display:flex;gap:6px;flex-wrap:wrap}
+.step{flex:1 1 118px;min-width:118px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-align:left;font-family:inherit}
+.step:hover{border-color:#c9c2b4}
+.step-dot{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#eceae3;color:#8a8a8a;font-size:12px;font-weight:700;font-family:var(--mono)}
+.step-name{display:block;font-size:13px;font-weight:600;margin-top:7px}
+.step-state{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+.step.success .step-dot{background:var(--green);color:#fff}
+.step.success .step-state{color:var(--green)}
+.step.blocked .step-dot{background:var(--red);color:#fff}
+.step.blocked .step-state{color:var(--red)}
+.step.skipped .step-dot{background:#e9e6e0;color:#9a9a9a}
+.step.skipped .step-state{color:#9a9a9a}
+.step.pending .step-dot{background:#f1efe9;color:#b0aca4}
+.step.waiting{border-style:dashed;border-color:var(--amber-line)}
+.step.waiting .step-state{color:var(--amber)}
+/* reasoning: chain + decision */
+.reasoning{display:flex;gap:16px;margin-top:22px;align-items:stretch;flex-wrap:wrap}
+.chain-panel{flex:1;min-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.evidence-chain{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:12px}
+.chain-node{flex:1;min-width:150px;background:var(--bg);border:1px solid var(--line-soft);border-radius:10px;padding:12px 14px}
+.chain-node strong{display:block;font-size:14px;margin:6px 0 4px;line-height:1.4;word-break:break-word}
+.chain-node small{color:var(--muted);font-size:12px;display:block}
+.node-label{font-size:10px;letter-spacing:.1em;color:var(--green);font-weight:700}
+.node-label span{color:#c9c2b4;font-weight:500;margin-left:4px}
+.chain-arrow{align-self:center;color:var(--green);font-size:20px;font-weight:700}
+.attribute-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.attribute{background:var(--green-soft);border:1px solid var(--green-line);border-radius:8px;padding:6px 10px;font-size:12px;color:#3d6b5a}
+.attribute b{display:block;color:var(--ink);font-weight:600;margin-top:1px}
+.decision-panel{width:280px;flex-shrink:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column}
+.decision-panel h3{font-size:18px;margin:6px 0 8px;line-height:1.3}
+.decision-panel p{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+.decision-panel button{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:13px;text-align:left;width:100%}
+.decision-panel button:hover{border-color:var(--green);color:var(--green)}
+.decision-foot{margin-top:auto;padding-top:14px;display:flex;justify-content:space-between;font-size:11px;color:var(--muted);border-top:1px solid var(--line-soft)}
+.badge{display:inline-block;border-radius:999px;padding:2px 10px;font-size:11px;font-weight:600}
+.badge.pass{background:var(--green-soft);color:var(--green);border:1px solid var(--green-line)}
+.badge.reject{background:var(--red-soft);color:var(--red);border:1px solid var(--red-line)}
+.badge.unknown{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber-line)}
+.badge.pending{background:#f1efe9;color:#8a8a8a;border:1px solid #e5e0d8}
+.badge.skipped{background:#e9e6e0;color:#9a9a9a;border:1px solid #ddd8cf}
+/* review panel + tabs */
+.review-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-top:22px;overflow:hidden}
+.tabbar{display:flex;border-bottom:1px solid var(--line);background:var(--bg)}
+.tabbar button{background:transparent;border:none;padding:12px 18px;font-size:13px;font-weight:600;color:var(--muted);border-bottom:2px solid transparent}
+.tabbar button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--green)}
+.tabbar button span{color:var(--green);font-family:var(--mono);font-size:12px}
+.tab-content{padding:18px 20px}
+.table-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.table-toolbar p{font-size:12.5px;color:var(--muted);margin:0}
+.filters{display:flex;gap:6px}
+.filters button{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:4px 13px;font-size:12px;color:var(--muted)}
+.filters button.active{background:var(--green);border-color:var(--green);color:#fff}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11.5px;letter-spacing:.05em;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+tbody tr:hover{background:#faf9f5}
+td small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.detail-link{background:none;border:none;color:var(--green);font-size:12.5px;padding:0;text-decoration:none;font-weight:600}
+.detail-link:hover{text-decoration:underline}
+.empty{background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:26px;text-align:center;color:var(--muted);font-size:13px}
+.empty strong{display:block;font-size:14px;color:var(--ink);margin-bottom:6px}
+.data-section p{font-size:13px;margin:0 0 12px}
+.bar-row{display:grid;grid-template-columns:110px 1fr 64px;gap:10px;align-items:center;margin-bottom:8px;font-size:13px}
+.bar-row b{text-align:right;font-family:var(--mono);font-weight:600}
+progress{width:100%;height:8px;border:none;border-radius:99px;background:#f0ece4}
+progress::-webkit-progress-bar{background:#f0ece4;border-radius:99px}
+progress::-webkit-progress-value{background:var(--green);border-radius:99px}
+.form-note{background:var(--bg);border-left:3px solid var(--amber-line);padding:9px 12px;font-size:12px;color:#7a5c0a;margin-top:10px;border-radius:0 8px 8px 0}
+.trace-row{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:13px}
+.trace-row time{flex-shrink:0;font-family:var(--mono);font-size:11.5px;color:var(--green);padding-top:2px;width:96px}
+.trace-row small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.file-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line-soft)}
+.file-row.skill-row{background:rgba(47,143,110,.07);border-radius:8px;padding:7px 10px;border-bottom:none;margin-bottom:4px;border:1px solid rgba(47,143,110,.18)}
+.file-row .mono{color:var(--ink)}
+.file-row small{margin-left:8px}
+/* footer */
+.page-footer{display:flex;justify-content:space-between;gap:12px;padding:22px 28px 30px;font-size:12px;color:var(--muted);flex-wrap:wrap;max-width:1200px;width:100%;margin:0 auto}
+/* dialog drawer */
+dialog.drawer{border:1px solid var(--line);border-radius:16px;padding:0;background:var(--panel);box-shadow:0 20px 60px rgba(0,0,0,.18);width:min(760px,92vw);max-height:86vh;overflow:auto}
+dialog.drawer::backdrop{background:rgba(34,42,38,.5)}
+.dialog-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:20px 24px 0}
+.dialog-heading h2{font-size:17px;margin:6px 0 0}
+.icon-button{border:1px solid var(--line);background:var(--panel);border-radius:8px;width:34px;height:34px;font-size:16px;color:var(--muted)}
+.icon-button:hover{color:var(--ink)}
+.drawer-body{padding:6px 24px 24px}
+.drawer-body p{font-size:13px;color:var(--muted)}
+.drawer-body h3{font-size:14px;margin:16px 0 6px}
+.drawer-body pre{background:#222a26;color:#e8f0ec;border-radius:10px;padding:14px;overflow-x:auto;font-size:12px;font-family:var(--mono);line-height:1.5;max-height:420px;overflow-y:auto}
+.drawer-body details{background:var(--bg);border:1px solid var(--line-soft);border-radius:8px;padding:0 12px;margin-top:8px}
+.drawer-body summary{font-size:13px;font-weight:600;padding:9px 0;cursor:pointer}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin:12px 0}
+.fact{background:var(--bg);border:1px solid var(--line-soft);border-radius:8px;padding:8px 10px;font-size:12.5px}
+.fact small{display:block;color:var(--muted);font-size:11px;margin-bottom:2px}
+.button-row{display:flex;gap:10px;align-items:center;margin:10px 0}
+.decision-reason{background:var(--green-soft);border:1px solid var(--green-line);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:13px}
+/* presentation mode */
+body.present .sidebar{width:220px}
+body.present .content{max-width:1400px}
+body.present .hero-heading h1{font-size:30px}
+body.present .step-name{font-size:14px}
+body.present td,body.present th{font-size:14px}
+@media (max-width:960px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:static;flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px}
+  .run-list{flex-direction:row;flex-wrap:wrap}
+  .sidebar-bottom{display:none}
+  .chain-panel{min-width:0}
+  .decision-panel{width:100%}
+  .content{padding:0 14px 20px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="javascript:void(0)" onclick="return false">
+      <span class="brand-symbol">审</span>
+      <span class="brand-name">召回审核<span class="brand-sub">REVIEW STUDIO · 面试演示</span></span>
+    </a>
+    <div class="sidebar-label">审核案例 <span>02</span></div>
+    <nav class="run-list" id="run-list" aria-label="运行记录"></nav>
+    <div class="sidebar-bottom">
+      <span class="live-dot"></span>只读 · 脱敏业务环境
+      <p style="margin:6px 0 0">医药 Query 安全扩召回审核工作台，本人负责的真实业务项目；数据已脱敏，展示可追溯的审核过程与证据链。</p>
+      <span class="mono">SKILL / medical-query-safety-review</span>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumb">面试演示 <span class="slash">/</span> <b>医药 Query 安全扩召回审核</b></div>
+      <button id="presentation" class="quiet" aria-pressed="false">展示模式 ↗</button>
+    </header>
+    <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+    <div class="content">
+      <section class="hero">
+        <div class="eyebrow">EVIDENCE BEFORE EXPANSION</div>
+        <div class="hero-heading">
+          <div>
+            <h1 id="query-title">让每一次扩召回，都有依据。</h1>
+            <p id="query-subtitle" class="muted">读取真实业务运行记录，或切换高风险案例对比。</p>
+          </div>
+          <div id="hero-actions" class="hero-actions"></div>
+        </div>
+        <div id="task-meta" class="meta-row"></div>
+      </section>
+
+      <section class="section" aria-label="Skill执行步骤">
+        <div class="section-heading">
+          <h2>执行轨迹 <span class="section-en">EXECUTION TRACE</span></h2>
+          <span id="step-counter" class="muted">八步审核流程</span>
+        </div>
+        <div id="timeline" class="timeline"></div>
+      </section>
+
+      <section class="reasoning">
+        <div class="chain-panel">
+          <div class="section-heading">
+            <h2>从搜索意图，到可核验供给</h2>
+            <span class="muted">三段关系 · 独立校验</span>
+          </div>
+          <div id="evidence-chain" class="evidence-chain"></div>
+          <div id="attribute-row" class="attribute-row"></div>
+        </div>
+        <aside class="decision-panel" id="decision-panel"></aside>
+      </section>
+
+      <section class="review-panel">
+        <div class="tabbar" role="tablist" aria-label="审核明细">
+          <button role="tab" aria-selected="true" data-tab="candidates">候选审核 <span id="candidate-count">—</span></button>
+          <button role="tab" aria-selected="false" data-tab="history">历史证据</button>
+          <button role="tab" aria-selected="false" data-tab="trace">执行记录</button>
+          <button role="tab" aria-selected="false" data-tab="files">交付文件</button>
+        </div>
+        <div id="tab-content" class="tab-content" role="tabpanel"></div>
+      </section>
+    </div>
+
+    <footer class="page-footer">
+      <span>所有展示来自本次运行产物；未知不等于通过。</span>
+      <span>业务审核建议 / 人工审批前置</span>
+    </footer>
+  </div>
+</div>
+
+<dialog id="detail-dialog" class="drawer">
+  <div class="dialog-heading">
+    <div>
+      <div class="eyebrow" id="drawer-eyebrow">EVIDENCE DETAIL</div>
+      <h2 id="drawer-title">证据详情</h2>
+    </div>
+    <button class="icon-button close-dialog" aria-label="关闭详情">×</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</dialog>
+
+<script>const DATA = {
+ "schema": "interview-workbench-1.0",
+ "source": "真实业务脱敏样例（normal-v1-1 / high-risk-v1-1）",
+ "notice": "脱敏业务数据；界面展示可追溯的审核过程与证据链。",
+ "skill": {
+  "name": "SKILL.md（审核方法论）",
+  "text": "---\nname: medical-query-safety-review\ndescription: 对 medical_search 场域的医药广告 Query 执行离线安全扩召回审核。用于批量或单条处理待审 Query、名称归一与候选 term 生成、Query-term / term-商品 / Query-商品三段式相关性校验、当前供给资格核验、L 风险分层、意图分层、V1/V2/V3 商业价值分层、疑难案例路由及证据化报告输出；也用于回放历史案例、聚合 bad case 和验证审核规则。仅适用于授权范围内的只读业务数据源与脱敏演示数据；不得用于医疗诊断、用药建议、真实广告发布、预算修改、实时排序或模型训练。\n---\n\n# 医药 Query 安全扩召回审核\n\n## 目标\n\n把待审 Query 转化为可追溯的审核建议，在不改变用户原意、不突破医药业务红线的前提下，识别可进入候选词池的映射、需人工或药师复核的疑难项，以及应拒绝或因数据不足暂缓的项目。\n\n本 Skill 只输出审核建议，不执行发布、放量、预算修改、计划变更、索引写入或回滚。\n\n## 核心原则\n\n1. **事实先于推理**：先获取 Query、商品、供给、计划、资格与历史流量事实，再做语义判断。\n2. **确定性优先**：字段校验、红线命中、资格判断、时效判断、指标计算和 Schema 校验必须走脚本；只有名称归一、错别字理解、意图识别和模糊相关性判断可交给大模型。\n3. **不补造属性**：保留原 Query 明确表达的品牌、名称、剂型、包装数量和人群；不得跨品牌、跨人群、跨剂型或补造未表达的药品属性。\n4. **保守失败**：关键事实缺失、数据过期、接口部分失败、字段漂移或来源冲突时，不得默认为通过。\n5. **逐项留证**：每个结论必须记录事实来源、对象标识、版本、业务时点、命中规则和判断理由。\n6. **只读执行**：不得修改原始数据源、业务库表、接口状态或广告业务对象。\n\n## 资源\n\n按步骤读取，不要一次加载全部内容：\n\n- `references/business-policy.md`：审核范围、红线、L 风险分层、人工复核边界。\n- `references/rewrite-and-relevance.md`：名称归一、候选 term 生成、三段式相关性规则。\n- `references/data-contract.md`：业务数据契约（数据源结构、API、SQLite、字段、时效、分页与错误协议）。\n- `references/decision-contract.md`：意图层、V 层、审核状态、原因码和证据字段。\n- `assets/review-output.schema.json`：机器可读输出 Schema。\n- `assets/review-report-template.md`：人读报告模板。\n\n使用以下确定性脚本：\n\n- `scripts/check_environment.py`：校验数据与运行环境完整性、Python、SQLite、连接参数与服务健康状态。\n- `scripts/load_queries.py`：读取、筛选和标准化待审 Query。\n- `scripts/fetch_context.py`：从 API 获取当前 term、候选、商品、供给、门店、计划和资格事实。\n- `scripts/apply_hard_gates.py`：执行范围、资格、时效、属性冲突和可承接供给硬判断。\n- `scripts/calculate_value_tier.py`：从业务库计算完整 7 日窗口有效请求数，并结合当前合格门店数计算 V 层。\n- `scripts/render_report.py`：校验结果 Schema，生成 JSON 与 Markdown 报告。\n- `scripts/run_review.py`：端到端编排单条、批次或全量审核，生成最终 JSON 与 Markdown。\n- `scripts/self_test.py`：离线验证错别字归一、规格保留、风险分流和 V 层口径。\n\n运行任一脚本前先执行 `python3 <script> --help`，按脚本真实参数调用；不得猜测参数。默认先执行 `check_environment.py`，端到端任务优先调用 `run_review.py`，仅在调试单步时调用其余脚本。若配置中的默认端口被其他服务占用，应在安全端口启动本地只读模拟服务，并通过 `--base-url` 显式覆盖；不得停止或覆盖无关进程。\n\n## 输入契约\n\n开始前必须取得：\n\n- 业务数据根目录：优先使用用户提供的路径，其次使用环境变量配置的数据根目录；均不存在时询问用户，不得硬编码个人目录。\n- 审核范围：单个 `query_id`、query_id 列表、批次，或用户明确指定的筛选条件。\n- 城市范围：只能使用数据契约声明支持的城市；Query 自带提交城市时默认按其城市逐城审核。\n- 输出目录：用户指定位置；未指定时使用当前任务目录下的 `output/`，不得写回原始数据源。\n\n若用户只给自然语言筛选条件，先将其结构化并展示实际筛选口径；筛选口径不明确且会改变结果时再询问。\n\n## 执行流程\n\n### 1. 校验环境与冻结口径\n\n1. 执行 `scripts/check_environment.py`。\n2. 确认数据版本、政策版本、指标版本、业务时钟、历史窗口、城市范围和只读状态。\n3. 区分 `served_at` 与 `as_of`：前者是调用时间，后者才是业务事实时间。\n4. 若完整性检查失败、服务不可达且当前审核依赖实时 API，停止并报告；不得用旧 JSON 静默替代当前事实。\n\n### 2. 获取待审 Query\n\n1. 执行 `scripts/load_queries.py` 获取目标记录。\n2. 校验 `query_id`、`raw_query`、`scene_id`、`submitted_city_ids`、`submitted_at` 和来源批次。\n3. 非 `medical_search` 场域直接标记为范围外。\n4. 保存输入快照及其来源，不改写原记录。\n\n### 3. 准入与风险识别\n\n读取 `references/business-policy.md`，逐条检查：\n\n- 是否涉及本期不承接的处方药扩召回；\n- 是否为问诊诊断、剂量咨询、联合用药、副作用咨询或症状推药；\n- 是否包含孕妇、婴幼儿等敏感人群用药诉求；\n- 是否缺少完成审核所必需的事实；\n- 是否存在只能由人工或药师确认的医学边界。\n\n按规则输出 L 层和原因码。范围外红线不得进入候选生成；医学边界不清不得由模型自行补全。\n\n### 4. 归一化与候选 term 生成\n\n读取 `references/rewrite-and-relevance.md`：\n\n1. 从原 Query 提取品牌、通用名称、剂型、包装数量、包装单位、人群和其他明确限定。\n2. 使用已提供的标准词与别名进行名称归一；词典仅是名称资产，不是安全放行白名单。\n3. 可纠正有充分证据的错别字或空格变体，但必须保留原 Query 和变更证据。\n4. 为每个候选 term 记录生成方式、保留的属性和可能丢失的信息。\n5. 候选存在跨品牌、跨人群、跨剂型、包装数量冲突或补造属性时，直接拒绝该候选。\n6. 无安全候选时输出 `NO_SAFE_REWRITE`，不得为凑结果生成候选。\n\n### 5. 获取候选与当前业务事实\n\n执行 `scripts/fetch_context.py`，按 `term → recall → product → offer → ad-plan → store → qualification` 获取事实：\n\n- 处理分页，单页不超过接口上限；批量 ID 不超过接口上限。\n- `/recall` 返回原始关联，不代表候选合格。\n- HTTP 200 中仍要检查单对象 `errors`。\n- 保留对象的 `version`、`updated_at`、`as_of`、来源和接口请求编号，但不得在面向用户的报告中泄露不必要的技术标识或凭证。\n- 不把 `title` 当唯一键，也不默认标题优先于结构化字段。\n\n### 6. 执行确定性硬门禁\n\n执行 `scripts/apply_hard_gates.py`。当前可承接供给必须同时满足：\n\n- 商品与商家资格有效；\n- 商品在售；\n- 库存和价格为正；\n- 目标区域可达；\n- 广告计划启用；\n- 剩余预算为正；\n- 素材已批准；\n- 商品、供给和计划数据符合政策时效；\n- 供给与计划动态快照时间差在允许范围内。\n\n属性或资格为 `unknown/null` 时不得推断为合格。标题与结构化字段冲突且数据契约未给权威优先级时，标记冲突并路由复核。\n\n### 7. 三段式相关性终审\n\n对通过硬门禁的候选，依次判断：\n\n1. **Query → term**：候选是否忠实保留原 Query 的核心意图和显式限定。\n2. **term → 商品**：标准 term 是否与商品结构化属性一致。\n3. **Query → 商品**：回看原 Query，确认中间归一化或召回没有造成语义漂移。\n\n任一阶段出现品牌、人群、剂型或明确包装数量冲突时，不得通过。为每一段分别输出结论、理由、证据和置信度；不得只输出一个总分掩盖冲突。\n\n### 8. 计算商业价值层\n\n仅对数据完整且资格可确定的项目执行 `scripts/calculate_value_tier.py`：\n\n1. 使用政策规定的完整 7 日窗口。\n2. 先检查 `load_manifest`，存在缺失分区时不得给出确定 V 层。\n3. 有效请求数按不同 `request_id` 且 `is_valid=1` 计算。\n4. 当前合格门店数按 `store_id` 去重；不同门店不等于不同商家主体。\n5. 按 `references/decision-contract.md` 输出 `V1`、`V2`、`V3` 或 `UNKNOWN`。\n\n不得用曝光、点击、候选行数或重复投递事件替代有效请求数。\n\n### 9. 形成审核建议\n\n每个 Query × 城市输出一个建议：\n\n- `RECOMMEND_APPROVE`：范围内、映射保真、三段相关性通过，且至少存在一项当前可承接供给。\n- `RECOMMEND_REVIEW`：语义或属性存在可解释但不能自动裁决的边界，需要业务人员或药师复核。\n- `RECOMMEND_REJECT`：命中范围红线、映射改变原意、属性明确冲突，或无符合原意的候选。\n- `DEFER_DATA`：关键事实未知、数据过期、接口失败、字段漂移、分区缺失或来源冲突，当前不能形成可靠结论。\n\nV 层只表示商业优先级，不得覆盖安全和相关性结论。V1 也不能绕过红线，V3 也不能因价值低而自动拒绝。\n\n### 10. 输出、验证与交付\n\n1. 按 `assets/review-output.schema.json` 生成机器可读 JSON。\n2. 执行 `scripts/render_report.py`；Schema 校验失败时不得交付。\n3. 生成面向审核人员的 Markdown 报告，至少包含：范围与口径、总体统计、逐项决策、证据链、人工复核队列、数据异常和未关闭事项。\n4. 抽查至少一条通过、一条拒绝、一条复核或数据暂缓记录；批量中没有某类时如实说明。\n5. 核对汇总数等于明细数，V 层、L 层和建议状态不得互相替代。\n6. 明确报告为审核建议，不构成医疗建议，也不代表真实发布结果。\n\n## 失败处理\n\n- **接口限流**：遵守 `Retry-After`，总重试不超过政策上限；仍失败则 `DEFER_DATA`。\n- **单对象失败**：保留其他成功对象，仅将受影响对象标记数据未知；不得把整批结果判为成功。\n- **超时**：在总耗时约束内重试；不得无限重试。\n- **Schema 漂移**：记录字段、期望类型和实际类型，停止使用受影响字段，输出 `DEFER_DATA`。\n- **库存变化**：以当前合规时效内的最新业务事实为准，旧结论不得覆盖新快照。\n- **历史分区缺失**：V 层输出 `UNKNOWN`，不可用不完整窗口外推。\n- **来源冲突**：数据契约未规定权威优先级时，保留两方证据并路由人工复核。\n\n## 测试模式\n\n验证审核规则时，至少覆盖：\n\n1. `normal`：正常端到端审核。\n2. `stock-change`：验证旧资格结论不会覆盖库存变化。\n3. `partial-failure`：验证 HTTP 200 内单对象失败。\n4. `slow`：验证超时和有限重试。\n5. `rate-limit`：验证 429 与 `Retry-After`。\n6. `schema-drift`：验证字段类型漂移不会被静默接收。\n\n测试不得修改原始数据源。每轮规则变更后重新运行正常样本和困难样本；验证集与最终测试集必须分开。\n\n## 禁止事项\n\n- 不提供诊断、治疗、剂量、联合用药、替代药物或副作用处理建议。\n- 不把名称归一解释为医学等价或临床可替代。\n- 不依据模型常识补齐数据中没有的药品适应症、禁忌或人群结论。\n- 不使用写接口，不发布词池，不修改投放，不改变预算，不操作真实线上系统。\n- 不因接口返回候选、词典存在别名或历史曾有资格，就直接判定当前可通过。\n- 不输出虚构数据、虚构证据或无法追溯的确定性结论。\n",
+  "bytes": 12200
+ },
+ "runs": [
+  {
+   "id": "normal-v1-1",
+   "label": "正常案例 · Q0001",
+   "run_label": "康安维C咀嚼篇60片",
+   "readonly": true,
+   "task": {
+    "query_id": "Q0001",
+    "raw_query": "康安维C咀嚼篇60片",
+    "city_id": "330100",
+    "region_id": "330100-B",
+    "scene_id": "medical_search",
+    "history_start": "2026-09-13T00:00:00+08:00",
+    "history_end_exclusive": "2026-09-20T00:00:00+08:00"
+   },
+   "manifest": {
+    "run_id": "10be6911a015450988e3bc06f61cd794",
+    "created_at": "2026-09-21T12:22:50.206401+00:00",
+    "phase": "complete",
+    "mode": "mock",
+    "steps": {
+     "1": {
+      "status": "success"
+     },
+     "2": {
+      "status": "success"
+     },
+     "3": {
+      "status": "success",
+      "risk": "L1"
+     },
+     "4": {
+      "status": "success",
+      "reason": null
+     },
+     "5": {
+      "status": "success"
+     },
+     "6": {
+      "status": "success",
+      "reason": null
+     },
+     "7": {
+      "status": "success"
+     },
+     "8": {
+      "status": "success"
+     }
+    },
+    "model_calls": [
+     {
+      "phase": "query",
+      "producer": {
+       "type": "agent",
+       "model": "Codex-main (model version not exposed)"
+      },
+      "received_at": "2026-09-21T12:23:28.331710+00:00",
+      "mode": "agent_handoff"
+     },
+     {
+      "phase": "items",
+      "producer": {
+       "type": "agent",
+       "model": "Codex-main (model version not exposed)"
+      },
+      "received_at": "2026-09-21T12:24:10.336264+00:00",
+      "mode": "agent_handoff"
+     }
+    ],
+    "input_sha256": "c4bb38517af2bd5ecdf8f2802457bd4cc39ceefffab5ec5378ef9f41fd21206b",
+    "decision_hashes": {
+     "query-decision.json": "7d4a45c9e866dbe98f056f3e13fc7d15063e46f24e67d171dcc1d551565f4b59",
+     "item-decision.json": "8ee57376d1e5ee39e02b4ebe276d3af4ff99539a8a32c0347a2ed50857432e7a"
+    },
+    "evidence_hash_count": 6,
+    "artifact_hash_count": 7,
+    "source_hash_count": 31,
+    "revision": {
+     "type": "deterministic_snapshot_rebuild",
+     "version": "1.1",
+     "rebuilt_at": "2026-09-21T15:08:54.643649+00:00",
+     "new_model_calls": 0,
+     "new_product_api_calls": 0,
+     "note": "Original semantic decisions and product snapshot retained. Historical SQL, hard constraints and report rerun; not a new live audit."
+    },
+    "completed_at": "2026-09-21T15:08:55.034867+00:00"
+   },
+   "profile": {
+    "risk": "L1",
+    "attributes": {
+     "brand_name": "康安",
+     "generic_name": "维生素C",
+     "dosage_form": "咀嚼片",
+     "pack_count": 60,
+     "pack_unit": "片",
+     "audience": null
+    },
+    "attribute_evidence": {
+     "brand_name": {
+      "raw_span": "康安",
+      "source_ref": "evidence/task.json#/raw_query"
+     },
+     "generic_name": {
+      "raw_span": "维C",
+      "source_ref": "evidence/terminology.json#/aliases/0"
+     },
+     "dosage_form": {
+      "raw_span": "咀嚼篇",
+      "source_ref": "evidence/terminology.json#/aliases/0"
+     },
+     "pack_count": {
+      "raw_span": "60",
+      "source_ref": "evidence/task.json#/raw_query"
+     },
+     "pack_unit": {
+      "raw_span": "片",
+      "source_ref": "evidence/task.json#/raw_query"
+     }
+    },
+    "reason": "本次明确为康安维C咀嚼商品60片的商品搜索，没有咨询或敏感用药意图。独立词典明确维C咀嚼片对应维生素C咀嚼片，结合原文咀嚼篇及片数，可将单字误写篇纠为片；这只是文字纠错，不作临床替代。保留品牌、剂型、60片；原文未表达特定人群，不补造。",
+    "rule_refs": [
+     "ADM-002",
+     "ADM-003",
+     "ADM-004",
+     "RWR-001"
+    ],
+    "evidence_refs": [
+     "evidence/task.json#/raw_query",
+     "evidence/terminology.json#/aliases/0",
+     "evidence/catalog.json#/terms/0"
+    ]
+   },
+   "rewrites": [
+    {
+     "term_id": "T0001",
+     "attributes": {
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "audience": null
+     },
+     "decision": "pass",
+     "reason": "品牌、标准名称、咀嚼剂型及60片完整保留，词典支持名称归一，当前目录中索引启用。",
+     "rule_refs": [
+      "RWR-001",
+      "RWR-002",
+      "RWR-003"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/terminology.json#/aliases/0",
+      "evidence/catalog.json#/terms/0"
+     ]
+    },
+    {
+     "term_id": "T0002",
+     "attributes": {
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": null,
+      "pack_unit": null,
+      "audience": null
+     },
+     "decision": "reject",
+     "reason": "候选丢失原文明确的60片包装约束，不得扩大范围。",
+     "rule_refs": [
+      "PACK-001",
+      "RWR-005"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/catalog.json#/terms/1"
+     ]
+    },
+    {
+     "term_id": "T0003",
+     "attributes": {
+      "brand_name": "泰和",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "audience": null
+     },
+     "decision": "reject",
+     "reason": "泰和与原文康安品牌冲突，不能跨品牌改写。",
+     "rule_refs": [
+      "BRAND-001",
+      "RWR-005"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/catalog.json#/terms/2"
+     ]
+    },
+    {
+     "term_id": "T0004",
+     "attributes": {
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "片剂",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "audience": null
+     },
+     "decision": "reject",
+     "reason": "候选为片剂，不能替代原文有依据的咀嚼片剂型。",
+     "rule_refs": [
+      "FORM-001",
+      "RWR-005"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/catalog.json#/terms/3"
+     ]
+    }
+   ],
+   "query_decision_raw": {
+    "run_id": "10be6911a015450988e3bc06f61cd794",
+    "phase": "query",
+    "producer": {
+     "type": "agent",
+     "model": "Codex-main (model version not exposed)"
+    },
+    "profile": {
+     "risk": "L1",
+     "attributes": {
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "audience": null
+     },
+     "attribute_evidence": {
+      "brand_name": {
+       "raw_span": "康安",
+       "source_ref": "evidence/task.json#/raw_query"
+      },
+      "generic_name": {
+       "raw_span": "维C",
+       "source_ref": "evidence/terminology.json#/aliases/0"
+      },
+      "dosage_form": {
+       "raw_span": "咀嚼篇",
+       "source_ref": "evidence/terminology.json#/aliases/0"
+      },
+      "pack_count": {
+       "raw_span": "60",
+       "source_ref": "evidence/task.json#/raw_query"
+      },
+      "pack_unit": {
+       "raw_span": "片",
+       "source_ref": "evidence/task.json#/raw_query"
+      }
+     },
+     "reason": "本次明确为康安维C咀嚼商品60片的商品搜索，没有咨询或敏感用药意图。独立词典明确维C咀嚼片对应维生素C咀嚼片，结合原文咀嚼篇及片数，可将单字误写篇纠为片；这只是文字纠错，不作临床替代。保留品牌、剂型、60片；原文未表达特定人群，不补造。",
+     "rule_refs": [
+      "ADM-002",
+      "ADM-003",
+      "ADM-004",
+      "RWR-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/terminology.json#/aliases/0",
+      "evidence/catalog.json#/terms/0"
+     ]
+    },
+    "rewrites": [
+     {
+      "term_id": "T0001",
+      "attributes": {
+       "brand_name": "康安",
+       "generic_name": "维生素C",
+       "dosage_form": "咀嚼片",
+       "pack_count": 60,
+       "pack_unit": "片",
+       "audience": null
+      },
+      "decision": "pass",
+      "reason": "品牌、标准名称、咀嚼剂型及60片完整保留，词典支持名称归一，当前目录中索引启用。",
+      "rule_refs": [
+       "RWR-001",
+       "RWR-002",
+       "RWR-003"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/terminology.json#/aliases/0",
+       "evidence/catalog.json#/terms/0"
+      ]
+     },
+     {
+      "term_id": "T0002",
+      "attributes": {
+       "brand_name": "康安",
+       "generic_name": "维生素C",
+       "dosage_form": "咀嚼片",
+       "pack_count": null,
+       "pack_unit": null,
+       "audience": null
+      },
+      "decision": "reject",
+      "reason": "候选丢失原文明确的60片包装约束，不得扩大范围。",
+      "rule_refs": [
+       "PACK-001",
+       "RWR-005"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/catalog.json#/terms/1"
+      ]
+     },
+     {
+      "term_id": "T0003",
+      "attributes": {
+       "brand_name": "泰和",
+       "generic_name": "维生素C",
+       "dosage_form": "咀嚼片",
+       "pack_count": 60,
+       "pack_unit": "片",
+       "audience": null
+      },
+      "decision": "reject",
+      "reason": "泰和与原文康安品牌冲突，不能跨品牌改写。",
+      "rule_refs": [
+       "BRAND-001",
+       "RWR-005"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/catalog.json#/terms/2"
+      ]
+     },
+     {
+      "term_id": "T0004",
+      "attributes": {
+       "brand_name": "康安",
+       "generic_name": "维生素C",
+       "dosage_form": "片剂",
+       "pack_count": 60,
+       "pack_unit": "片",
+       "audience": null
+      },
+      "decision": "reject",
+      "reason": "候选为片剂，不能替代原文有依据的咀嚼片剂型。",
+      "rule_refs": [
+       "FORM-001",
+       "RWR-005"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/catalog.json#/terms/3"
+      ]
+     }
+    ]
+   },
+   "items": [
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00001",
+     "term_item": "pass",
+     "query_item": "pass",
+     "relevance": "pass",
+     "eligibility": "pass",
+     "reasons": [],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/0/product"
+     ],
+     "reason": "商品品牌、名称、咀嚼剂型及60片与term和原Query一致，标题与结构化属性一致；当前资格另行检查。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00002",
+     "term_item": "pass",
+     "query_item": "pass",
+     "relevance": "pass",
+     "eligibility": "reject",
+     "reasons": [
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/1/product"
+     ],
+     "reason": "该候选同为SKU0001，品牌、名称、剂型、60片均吻合；库存不参与语义相关性判断。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00003",
+     "term_item": "pass",
+     "query_item": "pass",
+     "relevance": "pass",
+     "eligibility": "reject",
+     "reasons": [
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/2/product"
+     ],
+     "reason": "该候选SKU0001与term及原Query的明确商品约束一致；计划和供给事实单独审核。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00010",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "pass",
+     "reasons": [
+      "PACK-001: product pack_count conflicts (query=60, candidate=100)"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/3/product"
+     ],
+     "reason": "商品为100片，与term及原Query明确的60片冲突。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00011",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "reject",
+     "reasons": [
+      "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/4/product"
+     ],
+     "reason": "该计划关联的SKU0002为100片，不能满足原Query及term的60片包装约束。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00012",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "reject",
+     "reasons": [
+      "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/5/product"
+     ],
+     "reason": "结构化与标题均为100片，不可将同SPU当作60片匹配依据。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00019",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "pass",
+     "reasons": [
+      "FORM-001: product dosage_form conflicts with explicit query attribute"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/6/product"
+     ],
+     "reason": "商品是片剂，不是term与原Query指向的咀嚼片；不能跨剂型放行。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00020",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "reject",
+     "reasons": [
+      "FORM-001: product dosage_form conflicts with explicit query attribute",
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/7/product"
+     ],
+     "reason": "SKU0003的片剂与所需咀嚼片不同，同名或同SPU不消除剂型冲突。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00021",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "reject",
+     "reasons": [
+      "FORM-001: product dosage_form conflicts with explicit query attribute",
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/8/product"
+     ],
+     "reason": "片剂与咀嚼片剂型冲突，term和原Query均不能匹配。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00028",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "pass",
+     "reasons": [
+      "BRAND-001: product brand_name conflicts with explicit query brand"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/9/product"
+     ],
+     "reason": "商品品牌泰和与原Query和term的康安冲突。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00029",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "reject",
+     "reasons": [
+      "BRAND-001: product brand_name conflicts with explicit query brand",
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/10/product"
+     ],
+     "reason": "该计划商品是泰和，不能跨品牌替换康安。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00030",
+     "term_item": "reject",
+     "query_item": "reject",
+     "relevance": "reject",
+     "eligibility": "reject",
+     "reasons": [
+      "BRAND-001: product brand_name conflicts with explicit query brand",
+      "ELIG-001: merchant_qualification=expired",
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/11/product"
+     ],
+     "reason": "品牌明确不一致，其他属性相似不能覆盖原始品牌要求。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00037",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "pass",
+     "reasons": [
+      "AUDIENCE-001: product adds a specific audience not expressed by query"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "AUDIENCE-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/12/product"
+     ],
+     "reason": "结构化人群为儿童，原Query和term未表达儿童意图；没有证据确认这一受限人群商品满足未限定人群的原意，留待复核。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00038",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "reject",
+     "reasons": [
+      "AUDIENCE-001: product adds a specific audience not expressed by query",
+      "ELIG-001: merchant_qualification=expired",
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "AUDIENCE-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/13/product"
+     ],
+     "reason": "同名SKU0005为儿童人群商品，不能从标题推断为通用，也不能补造用户儿童意图。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00039",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "reject",
+     "reasons": [
+      "AUDIENCE-001: product adds a specific audience not expressed by query",
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "AUDIENCE-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/14/product"
+     ],
+     "reason": "品牌、剂型和包装一致，但特定儿童人群与未限定人群的映射依据不足，暂不确认。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00046",
+     "term_item": "pass",
+     "query_item": "pass",
+     "relevance": "pass",
+     "eligibility": "reject",
+     "reasons": [
+      "ELIG-001: qualification_status=expired",
+      "ELIG-001: prescription drug expansion is out of scope",
+      "ELIG-001: merchant_qualification=expired"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/15/product"
+     ],
+     "reason": "名称、品牌、咀嚼剂型及60片均吻合；RX类型和资质过期属于独立准投资格事实，不据此伪造语义不相关。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00047",
+     "term_item": "pass",
+     "query_item": "pass",
+     "relevance": "pass",
+     "eligibility": "reject",
+     "reasons": [
+      "ELIG-001: qualification_status=expired",
+      "ELIG-001: prescription drug expansion is out of scope",
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/16/product"
+     ],
+     "reason": "SKU0006与term及原Query的显式商品属性相符，处方类型及资质必须由资格门禁另行拒绝，不等同语义拒绝。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00048",
+     "term_item": "pass",
+     "query_item": "pass",
+     "relevance": "pass",
+     "eligibility": "reject",
+     "reasons": [
+      "ELIG-001: qualification_status=expired",
+      "ELIG-001: prescription drug expansion is out of scope",
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/17/product"
+     ],
+     "reason": "商品语义约束吻合；处方类型、资质状态不用于宣称当前可投，交由确定性资格检查。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00055",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "pass",
+     "reasons": [
+      "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+      "PACK-001: title and structured pack_count conflict; no source is preferred"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/18/product"
+     ],
+     "reason": "标题60片与结构化100片自相矛盾，不能任取对放行有利的一侧。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00056",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "reject",
+     "reasons": [
+      "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+      "PACK-001: title and structured pack_count conflict; no source is preferred",
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/19/product"
+     ],
+     "reason": "SKU0007包装存在标题与结构化冲突，原Query和term都不能被确认满足。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00057",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "reject",
+     "reasons": [
+      "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+      "PACK-001: title and structured pack_count conflict; no source is preferred",
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/20/product"
+     ],
+     "reason": "包装数量冲突需补证，不能因同SPU或标题相同而确认相关。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00064",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "unknown",
+     "reasons": [
+      "EVIDENCE-001: item model relevance is unknown or incomplete",
+      "ELIG-001: qualification_status is missing or unknown"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/21/product"
+     ],
+     "reason": "商品人群字段缺失，不能补造通用人群；核心属性相符但证据不完整，保留未知，资质未知另行判断。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00065",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "reject",
+     "reasons": [
+      "EVIDENCE-001: item model relevance is unknown or incomplete",
+      "ELIG-001: qualification_status is missing or unknown",
+      "ELIG-001: stock is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/22/product"
+     ],
+     "reason": "SKU0008人群事实为null，不能把缺失等同通用或安全匹配；待补商品属性。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00066",
+     "term_item": "unknown",
+     "query_item": "unknown",
+     "relevance": "unknown",
+     "eligibility": "reject",
+     "reasons": [
+      "EVIDENCE-001: item model relevance is unknown or incomplete",
+      "ELIG-001: qualification_status is missing or unknown",
+      "ELIG-001: remaining_budget_fen is not positive"
+     ],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/23/product"
+     ],
+     "reason": "人群属性未知，依据规则保留未知，不用标题替代结构化缺失事实。"
+    },
+    {
+     "term_id": "T0001",
+     "candidate_id": "A00999",
+     "term_item": "pass",
+     "query_item": "pass",
+     "relevance": "pass",
+     "eligibility": "pass",
+     "reasons": [],
+     "rule_refs": [
+      "REWRITE-001",
+      "EVIDENCE-001",
+      "BRAND-001",
+      "FORM-001",
+      "PACK-001",
+      "ELIG-001",
+      "TIME-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/candidates.json#/terms/0",
+      "evidence/candidates.json#/candidates/24/product"
+     ],
+     "reason": "同一O00001的另一广告计划仍关联SKU0001，商品属性满足term及原Query；保留计划维度，不能重复计为第二份供给。"
+    }
+   ],
+   "item_decision_raw": {
+    "phase": "items",
+    "producer": {
+     "type": "agent",
+     "model": "Codex-main (model version not exposed)"
+    },
+    "review_count": 25
+   },
+   "result": {
+    "rewrites": [
+     {
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "pass",
+      "decision": "pass",
+      "model_decision": "pass",
+      "reasons": [],
+      "rule_refs": [
+       "BRAND-001",
+       "REWRITE-001",
+       "FORM-001",
+       "PACK-001"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/terminology.json#/aliases/0",
+       "evidence/catalog.json#/terms/0"
+      ],
+      "term": "康安维生素C咀嚼片60片"
+     },
+     {
+      "term_id": "T0002",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "decision": "reject",
+      "model_decision": "reject",
+      "reasons": [
+       "REWRITE-001: query model rejected this rewrite"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "ADMIT-001"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/catalog.json#/terms/1"
+      ]
+     },
+     {
+      "term_id": "T0003",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "decision": "reject",
+      "model_decision": "reject",
+      "reasons": [
+       "REWRITE-001: query model rejected this rewrite"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "ADMIT-001"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/catalog.json#/terms/2"
+      ]
+     },
+     {
+      "term_id": "T0004",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "decision": "reject",
+      "model_decision": "reject",
+      "reasons": [
+       "REWRITE-001: query model rejected this rewrite"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "ADMIT-001"
+      ],
+      "evidence_refs": [
+       "evidence/task.json#/raw_query",
+       "evidence/catalog.json#/terms/3"
+      ]
+     }
+    ],
+    "items": [
+     {
+      "candidate_id": "A00001",
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "pass",
+      "reasons": [],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/0",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/0/product"
+      ],
+      "sku_id": "SKU0001",
+      "offer_id": "O00001",
+      "store_id": "S001",
+      "ad_plan_id": "A00001",
+      "model_relevance": "pass"
+     },
+     {
+      "candidate_id": "A00002",
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "reject",
+      "reasons": [
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/1",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/1/product"
+      ],
+      "sku_id": "SKU0001",
+      "offer_id": "O00002",
+      "store_id": "S002",
+      "ad_plan_id": "A00002",
+      "model_relevance": "pass"
+     },
+     {
+      "candidate_id": "A00003",
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "reject",
+      "reasons": [
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/2",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/2/product"
+      ],
+      "sku_id": "SKU0001",
+      "offer_id": "O00003",
+      "store_id": "S003",
+      "ad_plan_id": "A00003",
+      "model_relevance": "pass"
+     },
+     {
+      "candidate_id": "A00010",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "pass",
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/3",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/3/product"
+      ],
+      "sku_id": "SKU0002",
+      "offer_id": "O00010",
+      "store_id": "S002",
+      "ad_plan_id": "A00010",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00011",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/4",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/4/product"
+      ],
+      "sku_id": "SKU0002",
+      "offer_id": "O00011",
+      "store_id": "S003",
+      "ad_plan_id": "A00011",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00012",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/5",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/5/product"
+      ],
+      "sku_id": "SKU0002",
+      "offer_id": "O00012",
+      "store_id": "S004",
+      "ad_plan_id": "A00012",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00019",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "pass",
+      "reasons": [
+       "FORM-001: product dosage_form conflicts with explicit query attribute"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/6",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/6/product"
+      ],
+      "sku_id": "SKU0003",
+      "offer_id": "O00019",
+      "store_id": "S003",
+      "ad_plan_id": "A00019",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00020",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "reasons": [
+       "FORM-001: product dosage_form conflicts with explicit query attribute",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/7",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/7/product"
+      ],
+      "sku_id": "SKU0003",
+      "offer_id": "O00020",
+      "store_id": "S004",
+      "ad_plan_id": "A00020",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00021",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "reasons": [
+       "FORM-001: product dosage_form conflicts with explicit query attribute",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/8",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/8/product"
+      ],
+      "sku_id": "SKU0003",
+      "offer_id": "O00021",
+      "store_id": "S005",
+      "ad_plan_id": "A00021",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00028",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "pass",
+      "reasons": [
+       "BRAND-001: product brand_name conflicts with explicit query brand"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/9",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/9/product"
+      ],
+      "sku_id": "SKU0004",
+      "offer_id": "O00028",
+      "store_id": "S004",
+      "ad_plan_id": "A00028",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00029",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "reasons": [
+       "BRAND-001: product brand_name conflicts with explicit query brand",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/10",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/10/product"
+      ],
+      "sku_id": "SKU0004",
+      "offer_id": "O00029",
+      "store_id": "S005",
+      "ad_plan_id": "A00029",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00030",
+      "term_id": "T0001",
+      "relevance": "reject",
+      "eligibility": "reject",
+      "reasons": [
+       "BRAND-001: product brand_name conflicts with explicit query brand",
+       "ELIG-001: merchant_qualification=expired",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/11",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/11/product"
+      ],
+      "sku_id": "SKU0004",
+      "offer_id": "O00030",
+      "store_id": "S006",
+      "ad_plan_id": "A00030",
+      "model_relevance": "reject"
+     },
+     {
+      "candidate_id": "A00037",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "pass",
+      "reasons": [
+       "AUDIENCE-001: product adds a specific audience not expressed by query"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "AUDIENCE-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/12",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/12/product"
+      ],
+      "sku_id": "SKU0005",
+      "offer_id": "O00037",
+      "store_id": "S005",
+      "ad_plan_id": "A00037",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00038",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "reject",
+      "reasons": [
+       "AUDIENCE-001: product adds a specific audience not expressed by query",
+       "ELIG-001: merchant_qualification=expired",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "AUDIENCE-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/13",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/13/product"
+      ],
+      "sku_id": "SKU0005",
+      "offer_id": "O00038",
+      "store_id": "S006",
+      "ad_plan_id": "A00038",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00039",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "reject",
+      "reasons": [
+       "AUDIENCE-001: product adds a specific audience not expressed by query",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "AUDIENCE-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/14",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/14/product"
+      ],
+      "sku_id": "SKU0005",
+      "offer_id": "O00039",
+      "store_id": "S001",
+      "ad_plan_id": "A00039",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00046",
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "reject",
+      "reasons": [
+       "ELIG-001: qualification_status=expired",
+       "ELIG-001: prescription drug expansion is out of scope",
+       "ELIG-001: merchant_qualification=expired"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/15",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/15/product"
+      ],
+      "sku_id": "SKU0006",
+      "offer_id": "O00046",
+      "store_id": "S006",
+      "ad_plan_id": "A00046",
+      "model_relevance": "pass"
+     },
+     {
+      "candidate_id": "A00047",
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "reject",
+      "reasons": [
+       "ELIG-001: qualification_status=expired",
+       "ELIG-001: prescription drug expansion is out of scope",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/16",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/16/product"
+      ],
+      "sku_id": "SKU0006",
+      "offer_id": "O00047",
+      "store_id": "S001",
+      "ad_plan_id": "A00047",
+      "model_relevance": "pass"
+     },
+     {
+      "candidate_id": "A00048",
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "reject",
+      "reasons": [
+       "ELIG-001: qualification_status=expired",
+       "ELIG-001: prescription drug expansion is out of scope",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/17",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/17/product"
+      ],
+      "sku_id": "SKU0006",
+      "offer_id": "O00048",
+      "store_id": "S002",
+      "ad_plan_id": "A00048",
+      "model_relevance": "pass"
+     },
+     {
+      "candidate_id": "A00055",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "pass",
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "PACK-001: title and structured pack_count conflict; no source is preferred"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/18",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/18/product"
+      ],
+      "sku_id": "SKU0007",
+      "offer_id": "O00055",
+      "store_id": "S001",
+      "ad_plan_id": "A00055",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00056",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "reject",
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "PACK-001: title and structured pack_count conflict; no source is preferred",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/19",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/19/product"
+      ],
+      "sku_id": "SKU0007",
+      "offer_id": "O00056",
+      "store_id": "S002",
+      "ad_plan_id": "A00056",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00057",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "reject",
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "PACK-001: title and structured pack_count conflict; no source is preferred",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/20",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/20/product"
+      ],
+      "sku_id": "SKU0007",
+      "offer_id": "O00057",
+      "store_id": "S003",
+      "ad_plan_id": "A00057",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00064",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "unknown",
+      "reasons": [
+       "EVIDENCE-001: item model relevance is unknown or incomplete",
+       "ELIG-001: qualification_status is missing or unknown"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/21",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/21/product"
+      ],
+      "sku_id": "SKU0008",
+      "offer_id": "O00064",
+      "store_id": "S002",
+      "ad_plan_id": "A00064",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00065",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "reject",
+      "reasons": [
+       "EVIDENCE-001: item model relevance is unknown or incomplete",
+       "ELIG-001: qualification_status is missing or unknown",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/22",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/22/product"
+      ],
+      "sku_id": "SKU0008",
+      "offer_id": "O00065",
+      "store_id": "S003",
+      "ad_plan_id": "A00065",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00066",
+      "term_id": "T0001",
+      "relevance": "unknown",
+      "eligibility": "reject",
+      "reasons": [
+       "EVIDENCE-001: item model relevance is unknown or incomplete",
+       "ELIG-001: qualification_status is missing or unknown",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/23",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/23/product"
+      ],
+      "sku_id": "SKU0008",
+      "offer_id": "O00066",
+      "store_id": "S004",
+      "ad_plan_id": "A00066",
+      "model_relevance": "unknown"
+     },
+     {
+      "candidate_id": "A00999",
+      "term_id": "T0001",
+      "relevance": "pass",
+      "eligibility": "pass",
+      "reasons": [],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/24",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/24/product"
+      ],
+      "sku_id": "SKU0001",
+      "offer_id": "O00001",
+      "store_id": "S001",
+      "ad_plan_id": "A00999",
+      "model_relevance": "pass"
+     }
+    ],
+    "recommendation": "submit_for_human_review",
+    "risk": "L1",
+    "value_tier": "V2",
+    "review_queue": [
+     {
+      "candidate_id": "A00037",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/12",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/12/product"
+      ],
+      "reasons": [
+       "AUDIENCE-001: product adds a specific audience not expressed by query"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "AUDIENCE-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00038",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/13",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/13/product"
+      ],
+      "reasons": [
+       "AUDIENCE-001: product adds a specific audience not expressed by query",
+       "ELIG-001: merchant_qualification=expired",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "AUDIENCE-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00039",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/14",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/14/product"
+      ],
+      "reasons": [
+       "AUDIENCE-001: product adds a specific audience not expressed by query",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "AUDIENCE-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00055",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/18",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/18/product"
+      ],
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "PACK-001: title and structured pack_count conflict; no source is preferred"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00056",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/19",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/19/product"
+      ],
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "PACK-001: title and structured pack_count conflict; no source is preferred",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00057",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/20",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/20/product"
+      ],
+      "reasons": [
+       "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+       "PACK-001: title and structured pack_count conflict; no source is preferred",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00064",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/21",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/21/product"
+      ],
+      "reasons": [
+       "EVIDENCE-001: item model relevance is unknown or incomplete",
+       "ELIG-001: qualification_status is missing or unknown"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00065",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/22",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/22/product"
+      ],
+      "reasons": [
+       "EVIDENCE-001: item model relevance is unknown or incomplete",
+       "ELIG-001: qualification_status is missing or unknown",
+       "ELIG-001: stock is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     },
+     {
+      "candidate_id": "A00066",
+      "evidence_refs": [
+       "evidence/candidates.json#/candidates/23",
+       "evidence/task.json#/raw_query",
+       "evidence/candidates.json#/terms/0",
+       "evidence/candidates.json#/candidates/23/product"
+      ],
+      "reasons": [
+       "EVIDENCE-001: item model relevance is unknown or incomplete",
+       "ELIG-001: qualification_status is missing or unknown",
+       "ELIG-001: remaining_budget_fen is not positive"
+      ],
+      "rule_refs": [
+       "REWRITE-001",
+       "EVIDENCE-001",
+       "BRAND-001",
+       "FORM-001",
+       "PACK-001",
+       "ELIG-001",
+       "TIME-001"
+      ],
+      "term_id": "T0001",
+      "type": "item_review"
+     }
+    ],
+    "history_status": "verified_linked",
+    "history_verified_gap_count": 6000,
+    "history_gap_is_potential_only": true,
+    "confirmed_current_offer_count": 1,
+    "confirmed_current_candidate_count": 2,
+    "distinct_store_count": 1,
+    "valid_request_count": 12000
+   },
+   "history": {
+    "request_count": 12000,
+    "eligible_count": 3000,
+    "keyword_miss_count": 6000,
+    "supply_fail_count": 2000,
+    "plan_fail_count": 1000,
+    "unknown_count": 0,
+    "verified_gap_count": 6000,
+    "complete": true,
+    "load_gaps": [],
+    "parameters": {
+     "query_id": "Q0001",
+     "raw_query": "康安维C咀嚼篇60片",
+     "city_id": "330100",
+     "region_id": "330100-B",
+     "scene_id": "medical_search",
+     "history_start": "2026-09-13T00:00:00+08:00",
+     "history_end_exclusive": "2026-09-20T00:00:00+08:00"
+    },
+    "source": "sqlite:read-only",
+    "sql_sha256": "f4938c936ff559119cd98fd101266503264d60acd5fbf2c865927088644db7d9",
+    "candidate_gap_evidence_ref": "#/evidence_rows",
+    "evidence_contract": {
+     "evidence_type": "potential_supply_opportunity",
+     "evidence_scope": "independent_historical_replay_only",
+     "attribute_version_comparison": "not_available",
+     "semantic_review_status": "not_run",
+     "safe_review_gate": "hold_pending_semantic_review",
+     "note": "Historical qualification does not prove semantic equivalence. Row verification_status is the historical qualification state; no duplicate status aliases."
+    },
+    "candidate_gap_evidence_count": 500,
+    "candidate_gap_evidence_total": 6000,
+    "candidate_gap_evidence_verified_count": 500,
+    "evidence_rows_returned": 500,
+    "evidence_rows_total": 6000,
+    "output_truncated": true,
+    "evidence_row_limit": 500,
+    "evidence_order": "request_id, term_id, ad_plan_id, offer_id; first rows, not a random sample",
+    "verification_blocked": false,
+    "history_unknown_request_count": 0,
+    "sample_rows": [
+     {
+      "request_id": "R0003001",
+      "event_time": "2026-09-17T08:00:50+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-1",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003002",
+      "event_time": "2026-09-18T09:01:51+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-1",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003003",
+      "event_time": "2026-09-19T10:02:52+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-1",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003004",
+      "event_time": "2026-09-13T11:03:53+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-0",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003005",
+      "event_time": "2026-09-14T12:04:54+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-0",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003006",
+      "event_time": "2026-09-15T13:05:55+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-0",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003007",
+      "event_time": "2026-09-16T14:06:56+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-0",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003008",
+      "event_time": "2026-09-17T15:07:57+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-1",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003009",
+      "event_time": "2026-09-18T16:08:58+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-1",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003010",
+      "event_time": "2026-09-19T17:09:00+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-1",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003011",
+      "event_time": "2026-09-13T18:10:01+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-0",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     },
+     {
+      "request_id": "R0003012",
+      "event_time": "2026-09-14T19:11:02+08:00",
+      "term_id": "T0001",
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "sku_id": "SKU0001",
+      "replay_index_version": "idx-20260913-1",
+      "replay_row_count": 1,
+      "snapshot_id": "H0000-0",
+      "snapshot_count": 1,
+      "verification_status": "verified",
+      "verification_reason": null,
+      "historically_qualified": true
+     }
+    ]
+   },
+   "terms": [
+    {
+     "term_id": "T0001",
+     "term": "康安维生素C咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0002",
+     "term": "康安维生素C咀嚼片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0003",
+     "term": "泰和维生素C咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0004",
+     "term": "康安维生素C片剂60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0005",
+     "term": "泰和布洛芬混悬液100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0006",
+     "term": "泰和布洛芬混悬液",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0007",
+     "term": "景康布洛芬混悬液100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0008",
+     "term": "泰和布洛芬胶囊100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0009",
+     "term": "景康氯雷他定片10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0010",
+     "term": "景康氯雷他定片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0011",
+     "term": "沐安氯雷他定片10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0012",
+     "term": "景康氯雷他定糖浆10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0013",
+     "term": "沐安蒙脱石散10袋",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0014",
+     "term": "沐安蒙脱石散",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0015",
+     "term": "知康蒙脱石散10袋",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0016",
+     "term": "沐安蒙脱石混悬液10袋",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0017",
+     "term": "知康碳酸钙咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0018",
+     "term": "知康碳酸钙咀嚼片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0019",
+     "term": "瑞康碳酸钙咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0020",
+     "term": "知康碳酸钙片剂60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0021",
+     "term": "瑞康维生素B2片100片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0022",
+     "term": "瑞康维生素B2片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0023",
+     "term": "恒康维生素B2片100片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0024",
+     "term": "瑞康维生素B2胶囊100片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0025",
+     "term": "恒康炉甘石洗剂100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0026",
+     "term": "恒康炉甘石洗剂",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0027",
+     "term": "清和炉甘石洗剂100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0028",
+     "term": "恒康炉甘石乳膏100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0029",
+     "term": "清和生理性海水鼻腔喷雾60毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0030",
+     "term": "清和生理性海水鼻腔喷雾",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0031",
+     "term": "舒康生理性海水鼻腔喷雾60毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0032",
+     "term": "清和生理性海水滴鼻液60毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": false
+    },
+    {
+     "term_id": "T0033",
+     "term": "舒康医用退热贴6贴",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0034",
+     "term": "舒康医用退热贴",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0035",
+     "term": "明康医用退热贴6贴",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0036",
+     "term": "舒康医用凝胶6支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0037",
+     "term": "明康医用棉签100支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0038",
+     "term": "明康医用棉签",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0039",
+     "term": "仁济医用棉签100支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0040",
+     "term": "明康医用棉球100支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0041",
+     "term": "仁济医用纱布块10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0042",
+     "term": "仁济医用纱布块",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0043",
+     "term": "安宁医用纱布块10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0044",
+     "term": "仁济医用绷带10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0045",
+     "term": "安宁医用口罩10只",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0046",
+     "term": "安宁医用口罩",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0047",
+     "term": "康安医用口罩10只",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0048",
+     "term": "安宁医用防护面罩10只",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    }
+   ],
+   "catalog_meta": {
+    "source": "synthetic_company_api",
+    "dataset_version": "assignment-1.0",
+    "scenario": "normal",
+    "business_time": "2026-09-20T12:00:00+08:00",
+    "as_of": "2026-09-20T12:00:00+08:00",
+    "health_checked": true
+   },
+   "lexicon": {
+    "version": "lex-1",
+    "source": "mock/数据/标准词与别名.json",
+    "aliases": [
+     {
+      "alias": "维C咀嚼片",
+      "canonical_name": "维生素C咀嚼片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-001",
+      "version": "lex-1"
+     },
+     {
+      "alias": "布洛芬混悬液",
+      "canonical_name": "布洛芬混悬液",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-002",
+      "version": "lex-1"
+     },
+     {
+      "alias": "氯雷他定片",
+      "canonical_name": "氯雷他定片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-003",
+      "version": "lex-1"
+     },
+     {
+      "alias": "蒙脱石散",
+      "canonical_name": "蒙脱石散",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-004",
+      "version": "lex-1"
+     },
+     {
+      "alias": "碳酸钙咀嚼片",
+      "canonical_name": "碳酸钙咀嚼片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-005",
+      "version": "lex-1"
+     }
+    ],
+    "brands": [
+     {
+      "brand_id": "BR000",
+      "brand_name": "康安"
+     },
+     {
+      "brand_id": "BR001",
+      "brand_name": "泰和"
+     },
+     {
+      "brand_id": "BR002",
+      "brand_name": "景康"
+     },
+     {
+      "brand_id": "BR003",
+      "brand_name": "沐安"
+     },
+     {
+      "brand_id": "BR004",
+      "brand_name": "知康"
+     },
+     {
+      "brand_id": "BR005",
+      "brand_name": "瑞康"
+     },
+     {
+      "brand_id": "BR006",
+      "brand_name": "恒康"
+     },
+     {
+      "brand_id": "BR007",
+      "brand_name": "清和"
+     },
+     {
+      "brand_id": "BR008",
+      "brand_name": "舒康"
+     },
+     {
+      "brand_id": "BR009",
+      "brand_name": "明康"
+     },
+     {
+      "brand_id": "BR010",
+      "brand_name": "仁济"
+     },
+     {
+      "brand_id": "BR011",
+      "brand_name": "安宁"
+     }
+    ],
+    "notice": "只包含原始标准名、品牌和别名资料，不包含 Query 审核结论、商品选择或评测标签；不能由通用或缺失人群推断特殊人群适用。"
+   },
+   "candidates": [
+    {
+     "candidate_id": "A00001",
+     "term_id": "T0001",
+     "sku_id": "SKU0001",
+     "offer_id": "O00001",
+     "store_id": "S001",
+     "product": {
+      "sku_id": "SKU0001",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00001",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1500,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00001",
+      "offer_id": "O00001",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S001",
+      "store_name": "杭州市药房1",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0001",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00001",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00002",
+     "term_id": "T0001",
+     "sku_id": "SKU0001",
+     "offer_id": "O00002",
+     "store_id": "S002",
+     "product": {
+      "sku_id": "SKU0001",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00002",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1600,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00002",
+      "offer_id": "O00002",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S002",
+      "store_name": "杭州市药房2",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0001",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00002",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00003",
+     "term_id": "T0001",
+     "sku_id": "SKU0001",
+     "offer_id": "O00003",
+     "store_id": "S003",
+     "product": {
+      "sku_id": "SKU0001",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00003",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1700,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00003",
+      "offer_id": "O00003",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S003",
+      "store_name": "杭州市药房3",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0001",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00003",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00010",
+     "term_id": "T0001",
+     "sku_id": "SKU0002",
+     "offer_id": "O00010",
+     "store_id": "S002",
+     "product": {
+      "sku_id": "SKU0002",
+      "title": "康安维生素C咀嚼片100片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 100,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00010",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1515,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00010",
+      "offer_id": "O00010",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S002",
+      "store_name": "杭州市药房2",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0002",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00010",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00011",
+     "term_id": "T0001",
+     "sku_id": "SKU0002",
+     "offer_id": "O00011",
+     "store_id": "S003",
+     "product": {
+      "sku_id": "SKU0002",
+      "title": "康安维生素C咀嚼片100片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 100,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00011",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1615,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00011",
+      "offer_id": "O00011",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S003",
+      "store_name": "杭州市药房3",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0002",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00011",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00012",
+     "term_id": "T0001",
+     "sku_id": "SKU0002",
+     "offer_id": "O00012",
+     "store_id": "S004",
+     "product": {
+      "sku_id": "SKU0002",
+      "title": "康安维生素C咀嚼片100片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 100,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00012",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1715,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00012",
+      "offer_id": "O00012",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S004",
+      "store_name": "杭州市药房4",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0002",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00012",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00019",
+     "term_id": "T0001",
+     "sku_id": "SKU0003",
+     "offer_id": "O00019",
+     "store_id": "S003",
+     "product": {
+      "sku_id": "SKU0003",
+      "title": "康安维生素C片剂60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "片剂",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00019",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1530,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00019",
+      "offer_id": "O00019",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S003",
+      "store_name": "杭州市药房3",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0003",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00019",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00020",
+     "term_id": "T0001",
+     "sku_id": "SKU0003",
+     "offer_id": "O00020",
+     "store_id": "S004",
+     "product": {
+      "sku_id": "SKU0003",
+      "title": "康安维生素C片剂60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "片剂",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00020",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1630,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00020",
+      "offer_id": "O00020",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S004",
+      "store_name": "杭州市药房4",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0003",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00020",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00021",
+     "term_id": "T0001",
+     "sku_id": "SKU0003",
+     "offer_id": "O00021",
+     "store_id": "S005",
+     "product": {
+      "sku_id": "SKU0003",
+      "title": "康安维生素C片剂60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "片剂",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00021",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1730,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00021",
+      "offer_id": "O00021",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S005",
+      "store_name": "杭州市药房5",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0003",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00021",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00028",
+     "term_id": "T0001",
+     "sku_id": "SKU0004",
+     "offer_id": "O00028",
+     "store_id": "S004",
+     "product": {
+      "sku_id": "SKU0004",
+      "title": "泰和维生素C咀嚼片60片",
+      "brand_name": "泰和",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00028",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1545,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00028",
+      "offer_id": "O00028",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S004",
+      "store_name": "杭州市药房4",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0004",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00028",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00029",
+     "term_id": "T0001",
+     "sku_id": "SKU0004",
+     "offer_id": "O00029",
+     "store_id": "S005",
+     "product": {
+      "sku_id": "SKU0004",
+      "title": "泰和维生素C咀嚼片60片",
+      "brand_name": "泰和",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00029",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1645,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00029",
+      "offer_id": "O00029",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S005",
+      "store_name": "杭州市药房5",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0004",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00029",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00030",
+     "term_id": "T0001",
+     "sku_id": "SKU0004",
+     "offer_id": "O00030",
+     "store_id": "S006",
+     "product": {
+      "sku_id": "SKU0004",
+      "title": "泰和维生素C咀嚼片60片",
+      "brand_name": "泰和",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00030",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1745,
+      "merchant_qualification": "expired",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00030",
+      "offer_id": "O00030",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S006",
+      "store_name": "杭州市药房6",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "expired"
+     },
+     "qualification": {
+      "sku_id": "SKU0004",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00030",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00037",
+     "term_id": "T0001",
+     "sku_id": "SKU0005",
+     "offer_id": "O00037",
+     "store_id": "S005",
+     "product": {
+      "sku_id": "SKU0005",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "儿童",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00037",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1560,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00037",
+      "offer_id": "O00037",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S005",
+      "store_name": "杭州市药房5",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0005",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00037",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00038",
+     "term_id": "T0001",
+     "sku_id": "SKU0005",
+     "offer_id": "O00038",
+     "store_id": "S006",
+     "product": {
+      "sku_id": "SKU0005",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "儿童",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00038",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1660,
+      "merchant_qualification": "expired",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00038",
+      "offer_id": "O00038",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S006",
+      "store_name": "杭州市药房6",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "expired"
+     },
+     "qualification": {
+      "sku_id": "SKU0005",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00038",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00039",
+     "term_id": "T0001",
+     "sku_id": "SKU0005",
+     "offer_id": "O00039",
+     "store_id": "S001",
+     "product": {
+      "sku_id": "SKU0005",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "儿童",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00039",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1760,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00039",
+      "offer_id": "O00039",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S001",
+      "store_name": "杭州市药房1",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0005",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00039",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00046",
+     "term_id": "T0001",
+     "sku_id": "SKU0006",
+     "offer_id": "O00046",
+     "store_id": "S006",
+     "product": {
+      "sku_id": "SKU0006",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "RX",
+      "qualification_status": "expired",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00046",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1575,
+      "merchant_qualification": "expired",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00046",
+      "offer_id": "O00046",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S006",
+      "store_name": "杭州市药房6",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "expired"
+     },
+     "qualification": {
+      "sku_id": "SKU0006",
+      "category": "DRUG",
+      "prescription_type": "RX",
+      "qualification_status": "expired",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00046",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00047",
+     "term_id": "T0001",
+     "sku_id": "SKU0006",
+     "offer_id": "O00047",
+     "store_id": "S001",
+     "product": {
+      "sku_id": "SKU0006",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "RX",
+      "qualification_status": "expired",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00047",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1675,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00047",
+      "offer_id": "O00047",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S001",
+      "store_name": "杭州市药房1",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0006",
+      "category": "DRUG",
+      "prescription_type": "RX",
+      "qualification_status": "expired",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00047",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00048",
+     "term_id": "T0001",
+     "sku_id": "SKU0006",
+     "offer_id": "O00048",
+     "store_id": "S002",
+     "product": {
+      "sku_id": "SKU0006",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "RX",
+      "qualification_status": "expired",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00048",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1775,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00048",
+      "offer_id": "O00048",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S002",
+      "store_name": "杭州市药房2",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0006",
+      "category": "DRUG",
+      "prescription_type": "RX",
+      "qualification_status": "expired",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00048",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00055",
+     "term_id": "T0001",
+     "sku_id": "SKU0007",
+     "offer_id": "O00055",
+     "store_id": "S001",
+     "product": {
+      "sku_id": "SKU0007",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 100,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00055",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1590,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00055",
+      "offer_id": "O00055",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S001",
+      "store_name": "杭州市药房1",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0007",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00055",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00056",
+     "term_id": "T0001",
+     "sku_id": "SKU0007",
+     "offer_id": "O00056",
+     "store_id": "S002",
+     "product": {
+      "sku_id": "SKU0007",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 100,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00056",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1690,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00056",
+      "offer_id": "O00056",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S002",
+      "store_name": "杭州市药房2",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0007",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00056",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00057",
+     "term_id": "T0001",
+     "sku_id": "SKU0007",
+     "offer_id": "O00057",
+     "store_id": "S003",
+     "product": {
+      "sku_id": "SKU0007",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 100,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00057",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1790,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00057",
+      "offer_id": "O00057",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S003",
+      "store_name": "杭州市药房3",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0007",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00057",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00064",
+     "term_id": "T0001",
+     "sku_id": "SKU0008",
+     "offer_id": "O00064",
+     "store_id": "S002",
+     "product": {
+      "sku_id": "SKU0008",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": null,
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "unknown",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00064",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1605,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00064",
+      "offer_id": "O00064",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S002",
+      "store_name": "杭州市药房2",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0008",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "unknown",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00064",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00065",
+     "term_id": "T0001",
+     "sku_id": "SKU0008",
+     "offer_id": "O00065",
+     "store_id": "S003",
+     "product": {
+      "sku_id": "SKU0008",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": null,
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "unknown",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00065",
+      "on_shelf": true,
+      "stock": 0,
+      "price_fen": 1705,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00065",
+      "offer_id": "O00065",
+      "status": "active",
+      "remaining_budget_fen": 12000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S003",
+      "store_name": "杭州市药房3",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0008",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "unknown",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00065",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00066",
+     "term_id": "T0001",
+     "sku_id": "SKU0008",
+     "offer_id": "O00066",
+     "store_id": "S004",
+     "product": {
+      "sku_id": "SKU0008",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": null,
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "unknown",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00066",
+      "on_shelf": true,
+      "stock": 8,
+      "price_fen": 1805,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00066",
+      "offer_id": "O00066",
+      "status": "active",
+      "remaining_budget_fen": 0,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S004",
+      "store_name": "杭州市药房4",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0008",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "unknown",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00066",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    },
+    {
+     "candidate_id": "A00999",
+     "term_id": "T0001",
+     "sku_id": "SKU0001",
+     "offer_id": "O00001",
+     "store_id": "S001",
+     "product": {
+      "sku_id": "SKU0001",
+      "title": "康安维生素C咀嚼片60片",
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "strength": "规格-X（非临床剂量）",
+      "audience": "通用",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "source": "mock_catalog"
+     },
+     "offer": {
+      "offer_id": "O00001",
+      "on_shelf": true,
+      "stock": 20,
+      "price_fen": 1500,
+      "merchant_qualification": "valid",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "offer-20260920-1"
+     },
+     "plan": {
+      "ad_plan_id": "A00999",
+      "offer_id": "O00001",
+      "status": "active",
+      "remaining_budget_fen": 5000,
+      "bid_fen": 180,
+      "material_status": "approved",
+      "as_of": "2026-09-20T12:00:00+08:00",
+      "version": "ad-20260920-1"
+     },
+     "store": {
+      "store_id": "S001",
+      "store_name": "杭州市药房1",
+      "city_id": "330100",
+      "region_ids": [
+       "330100-A",
+       "330100-B"
+      ],
+      "merchant_qualification": "valid"
+     },
+     "qualification": {
+      "sku_id": "SKU0001",
+      "category": "DRUG",
+      "prescription_type": "OTC",
+      "qualification_status": "valid",
+      "product_version": "prod-20260920-1",
+      "as_of": "2026-09-20T12:00:00+08:00"
+     },
+     "recall": {
+      "ad_plan_id": "A00999",
+      "index_version": "idx-20260920-1",
+      "updated_at": "2026-09-20T12:00:00+08:00"
+     },
+     "errors": []
+    }
+   ],
+   "snapshot": {
+    "source": "synthetic_company_api",
+    "dataset_version": "assignment-1.0",
+    "scenario": "normal",
+    "business_time": "2026-09-20T12:00:00+08:00",
+    "as_of": "2026-09-20T12:00:00+08:00",
+    "health_checked": true
+   },
+   "calls_count": 10,
+   "events": [
+    {
+     "at": "2026-09-21T15:08:54.651215+00:00",
+     "event": "snapshot_rebuild",
+     "version": "1.1",
+     "source_archive_sha256": "8bbf0a88e9bc9d2d8abba0ce6b473760344b48ab07f90396b930f32523a320eb",
+     "new_model_calls": 0
+    },
+    {
+     "at": "2026-09-21T15:08:54.684133+00:00",
+     "event": "step_started",
+     "step": 6
+    },
+    {
+     "at": "2026-09-21T15:08:54.692614+00:00",
+     "event": "step_finished",
+     "step": 6,
+     "status": "success"
+    },
+    {
+     "at": "2026-09-21T15:08:54.692665+00:00",
+     "event": "step_finished",
+     "step": 7,
+     "status": "success"
+    },
+    {
+     "at": "2026-09-21T15:08:54.750490+00:00",
+     "event": "step_started",
+     "step": 8
+    },
+    {
+     "at": "2026-09-21T15:08:55.036143+00:00",
+     "event": "completed",
+     "recommendation": "submit_for_human_review"
+    }
+   ],
+   "report": "# 医药 Query 安全扩召回审核报告\n\n> 脱敏业务数据｜只读证据｜未执行发布或投放变更\n\n- Run：10be6911a015450988e3bc06f61cd794\n- Query：康安维C咀嚼篇60片\n- 范围：330100 / 330100-B / medical_search\n- 历史窗口：2026-09-13T00:00:00+08:00 — 2026-09-20T00:00:00+08:00\n- 执行模式：智能体交接；模型记录见manifest，不含自动模型API调用。\n\n## 审核结论\n\n- 准入：L1\n- 准入理由：本次明确为康安维C咀嚼商品60片的商品搜索，没有咨询或敏感用药意图。独立词典明确维C咀嚼片对应维生素C咀嚼片，结合原文咀嚼篇及片数，可将单字误写篇纠为片；这只是文字纠错，不作临床替代。保留品牌、剂型、60片；原文未表达特定人群，不补造。\n- 建议：材料可提交人工审批（不代表已批准）\n- 商业分层：V2\n- 双通过计划数：2；按 offer_id 去重后的可用供给数：1。同一供给关联多个计划，不重复计为多份供给。\n- 修订方式：沿用原run的真实模型判断和商品快照，重新执行历史SQL及确定性校验；本次修订没有新增模型或商品接口调用。\n\n## 实际执行轨迹\n\n| 步骤 | 状态 |\n| --- | --- |\n| 1. 任务与规则 | 已完成 |\n| 2. 历史漏损 | 已完成 |\n| 3. Query准入 | 已完成 |\n| 4. 改写与索引 | 已完成 |\n| 5. 当前证据 | 已完成 |\n| 6. 相关性与资格 | 已完成 |\n| 7. 审批建议 | 已完成 |\n| 8. 校验与报告 | 结构与引用已校验；最终状态见manifest |\n\n## 历史证据\n\n| 指标 | 结果 |\n| --- | ---: |\n| 有效请求数 | 12000 |\n| 已合格请求数 | 3000 |\n| 关键词缺口请求数 | 6000 |\n| 供给失败请求数 | 2000 |\n| 计划失败请求数 | 1000 |\n| 未知请求数 | 0 |\n| 独立回放核验的潜在缺口请求数 | 6000 |\n| 数据是否完整 | True |\n\n行级证据保留 500 / 6000 条；是否截断：True。顶层统计来自全窗口SQL，不由截断明细推算；明细中未找到关联只能暂缓，不能据此认定全量没有机会。\n\n历史回放只提供潜在承接证据，不代表可追回曝光、成交或收入。\n\n## 改写审核\n\n| term | 硬约束后结论 |\n| --- | --- |\n| T0001 | pass |\n| T0002 | reject |\n| T0003 | reject |\n| T0004 | reject |\n\n## 逐候选审核\n\n下表一行是一个计划级候选，不是一份独立供给；供给数量按 offer_id 去重。\n\n| term / candidate（计划） | offer_id（供给） | 相关性 | 当前资格 | 依据 |\n| --- | --- | --- | --- | --- |\n| T0001 / A00001 | O00001 | pass | pass | \\[\\] |\n| T0001 / A00002 | O00002 | pass | reject | \\[\"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00003 | O00003 | pass | reject | \\[\"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00010 | O00010 | reject | pass | \\[\"PACK-001: product pack\\_count conflicts (query=60, candidate=100)\"\\] |\n| T0001 / A00011 | O00011 | reject | reject | \\[\"PACK-001: product pack\\_count conflicts (query=60, candidate=100)\", \"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00012 | O00012 | reject | reject | \\[\"PACK-001: product pack\\_count conflicts (query=60, candidate=100)\", \"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00019 | O00019 | reject | pass | \\[\"FORM-001: product dosage\\_form conflicts with explicit query attribute\"\\] |\n| T0001 / A00020 | O00020 | reject | reject | \\[\"FORM-001: product dosage\\_form conflicts with explicit query attribute\", \"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00021 | O00021 | reject | reject | \\[\"FORM-001: product dosage\\_form conflicts with explicit query attribute\", \"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00028 | O00028 | reject | pass | \\[\"BRAND-001: product brand\\_name conflicts with explicit query brand\"\\] |\n| T0001 / A00029 | O00029 | reject | reject | \\[\"BRAND-001: product brand\\_name conflicts with explicit query brand\", \"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00030 | O00030 | reject | reject | \\[\"BRAND-001: product brand\\_name conflicts with explicit query brand\", \"ELIG-001: merchant\\_qualification=expired\", \"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00037 | O00037 | unknown | pass | \\[\"AUDIENCE-001: product adds a specific audience not expressed by query\"\\] |\n| T0001 / A00038 | O00038 | unknown | reject | \\[\"AUDIENCE-001: product adds a specific audience not expressed by query\", \"ELIG-001: merchant\\_qualification=expired\", \"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00039 | O00039 | unknown | reject | \\[\"AUDIENCE-001: product adds a specific audience not expressed by query\", \"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00046 | O00046 | pass | reject | \\[\"ELIG-001: qualification\\_status=expired\", \"ELIG-001: prescription drug expansion is out of scope\", \"ELIG-001: merchant\\_qualification=expired\"\\] |\n| T0001 / A00047 | O00047 | pass | reject | \\[\"ELIG-001: qualification\\_status=expired\", \"ELIG-001: prescription drug expansion is out of scope\", \"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00048 | O00048 | pass | reject | \\[\"ELIG-001: qualification\\_status=expired\", \"ELIG-001: prescription drug expansion is out of scope\", \"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00055 | O00055 | unknown | pass | \\[\"PACK-001: product pack\\_count conflicts (query=60, candidate=100)\", \"PACK-001: title and structured pack\\_count conflict; no source is preferred\"\\] |\n| T0001 / A00056 | O00056 | unknown | reject | \\[\"PACK-001: product pack\\_count conflicts (query=60, candidate=100)\", \"PACK-001: title and structured pack\\_count conflict; no source is preferred\", \"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00057 | O00057 | unknown | reject | \\[\"PACK-001: product pack\\_count conflicts (query=60, candidate=100)\", \"PACK-001: title and structured pack\\_count conflict; no source is preferred\", \"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00064 | O00064 | unknown | unknown | \\[\"EVIDENCE-001: item model relevance is unknown or incomplete\", \"ELIG-001: qualification\\_status is missing or unknown\"\\] |\n| T0001 / A00065 | O00065 | unknown | reject | \\[\"EVIDENCE-001: item model relevance is unknown or incomplete\", \"ELIG-001: qualification\\_status is missing or unknown\", \"ELIG-001: stock is not positive\"\\] |\n| T0001 / A00066 | O00066 | unknown | reject | \\[\"EVIDENCE-001: item model relevance is unknown or incomplete\", \"ELIG-001: qualification\\_status is missing or unknown\", \"ELIG-001: remaining\\_budget\\_fen is not positive\"\\] |\n| T0001 / A00999 | O00001 | pass | pass | \\[\\] |\n\n## 待复核事项\n\n- item\\_review：AUDIENCE-001: product adds a specific audience not expressed by query\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, AUDIENCE-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/12, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/12/product\n- item\\_review：AUDIENCE-001: product adds a specific audience not expressed by query；ELIG-001: merchant\\_qualification=expired；ELIG-001: stock is not positive\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, AUDIENCE-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/13, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/13/product\n- item\\_review：AUDIENCE-001: product adds a specific audience not expressed by query；ELIG-001: remaining\\_budget\\_fen is not positive\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, AUDIENCE-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/14, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/14/product\n- item\\_review：PACK-001: product pack\\_count conflicts (query=60, candidate=100)；PACK-001: title and structured pack\\_count conflict; no source is preferred\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/18, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/18/product\n- item\\_review：PACK-001: product pack\\_count conflicts (query=60, candidate=100)；PACK-001: title and structured pack\\_count conflict; no source is preferred；ELIG-001: stock is not positive\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/19, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/19/product\n- item\\_review：PACK-001: product pack\\_count conflicts (query=60, candidate=100)；PACK-001: title and structured pack\\_count conflict; no source is preferred；ELIG-001: remaining\\_budget\\_fen is not positive\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/20, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/20/product\n- item\\_review：EVIDENCE-001: item model relevance is unknown or incomplete；ELIG-001: qualification\\_status is missing or unknown\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/21, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/21/product\n- item\\_review：EVIDENCE-001: item model relevance is unknown or incomplete；ELIG-001: qualification\\_status is missing or unknown；ELIG-001: stock is not positive\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/22, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/22/product\n- item\\_review：EVIDENCE-001: item model relevance is unknown or incomplete；ELIG-001: qualification\\_status is missing or unknown；ELIG-001: remaining\\_budget\\_fen is not positive\n  - 规则：REWRITE-001, EVIDENCE-001, BRAND-001, FORM-001, PACK-001, ELIG-001, TIME-001；证据：evidence/candidates.json#/candidates/23, evidence/task.json#/raw\\_query, evidence/candidates.json#/terms/0, evidence/candidates.json#/candidates/23/product\n\n## 追溯\n\n结构化结论见steps/，实际取数与响应见evidence/，规则版本及模型交接记录见manifest.json。\n当前资格只对应本次业务快照；不保证未来请求的实时可投状态。\n\n",
+   "artifacts": [
+    {
+     "name": "manifest.json",
+     "bytes": 6183
+    },
+    {
+     "name": "query-decision.json",
+     "bytes": 2532
+    },
+    {
+     "name": "item-decision.json",
+     "bytes": 8804
+    },
+    {
+     "name": "review-report.md",
+     "bytes": 10632
+    },
+    {
+     "name": "evidence/history.json",
+     "bytes": 5851
+    },
+    {
+     "name": "evidence/candidates.json",
+     "bytes": 34521
+    },
+    {
+     "name": "evidence/catalog.json",
+     "bytes": 7773
+    }
+   ]
+  },
+  {
+   "id": "high-risk-v1-1",
+   "label": "高风险案例 · Q0014",
+   "run_label": "康安维生素C咀嚼片怎么用一次多少",
+   "readonly": true,
+   "task": {
+    "query_id": "Q0014",
+    "raw_query": "康安维生素C咀嚼片怎么用一次多少",
+    "city_id": "330100",
+    "region_id": "330100-B",
+    "scene_id": "medical_search",
+    "history_start": "2026-09-13T00:00:00+08:00",
+    "history_end_exclusive": "2026-09-20T00:00:00+08:00"
+   },
+   "manifest": {
+    "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+    "created_at": "2026-09-21T12:20:38.298063+00:00",
+    "phase": "complete",
+    "mode": "mock",
+    "steps": {
+     "1": {
+      "status": "success"
+     },
+     "2": {
+      "status": "skipped",
+      "reason": "admission_stopped"
+     },
+     "3": {
+      "status": "success",
+      "risk": "L0"
+     },
+     "4": {
+      "status": "skipped",
+      "reason": "admission_stopped"
+     },
+     "5": {
+      "status": "skipped",
+      "reason": "no_admitted_indexed_rewrite"
+     },
+     "6": {
+      "status": "skipped",
+      "reason": "no_candidates"
+     },
+     "7": {
+      "status": "success"
+     },
+     "8": {
+      "status": "success"
+     }
+    },
+    "model_calls": [
+     {
+      "phase": "query",
+      "producer": {
+       "type": "agent",
+       "model": "Codex-main (model version not exposed)"
+      },
+      "received_at": "2026-09-21T12:20:52.580786+00:00",
+      "mode": "agent_handoff"
+     }
+    ],
+    "input_sha256": "fabdfdc22a2e27ed06cfa05361e3f208ce2172940e6fdd02a859823c433a3f9a",
+    "decision_hashes": {
+     "query-decision.json": "4b1477413420c9670880685378e67cfb786568606515170c74f127938d07f4ec",
+     "item-decision.json": "b963bb98422cd2be53690375bbefaf7a7522fa8881881c1d2f21b3f595b2e179"
+    },
+    "evidence_hash_count": 6,
+    "artifact_hash_count": 7,
+    "source_hash_count": 31,
+    "revision": {
+     "type": "deterministic_snapshot_rebuild",
+     "version": "1.1",
+     "rebuilt_at": "2026-09-21T15:08:55.199257+00:00",
+     "new_model_calls": 0,
+     "new_product_api_calls": 0,
+     "note": "Original semantic decisions and product snapshot retained. Historical SQL, hard constraints and report rerun; not a new live audit."
+    },
+    "completed_at": "2026-09-21T15:08:55.279708+00:00"
+   },
+   "profile": {
+    "risk": "L0",
+    "attributes": {
+     "brand_name": "康安",
+     "generic_name": "维生素C",
+     "dosage_form": "咀嚼片",
+     "pack_count": null,
+     "pack_unit": null,
+     "audience": null
+    },
+    "attribute_evidence": {
+     "brand_name": {
+      "raw_span": "康安",
+      "source_ref": "evidence/task.json#/raw_query"
+     },
+     "generic_name": {
+      "raw_span": "维生素C",
+      "source_ref": "evidence/task.json#/raw_query"
+     },
+     "dosage_form": {
+      "raw_span": "咀嚼片",
+      "source_ref": "evidence/task.json#/raw_query"
+     }
+    },
+    "reason": "本次Query原文仍为明确用法、单次用量咨询：‘怎么用一次多少’。依据ADM-002停止广告扩召回；商品名称仅作原文属性记录，不能覆盖咨询意图。未出现包装数量、单位或特定人群，保留null。无需为该已拒绝任务补查商业历史或商品供给。",
+    "rule_refs": [
+     "ADM-002",
+     "ADM-003",
+     "ADM-004",
+     "ADMIT-001"
+    ],
+    "evidence_refs": [
+     "evidence/task.json#/raw_query"
+    ]
+   },
+   "rewrites": [],
+   "query_decision_raw": {
+    "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+    "phase": "query",
+    "producer": {
+     "type": "agent",
+     "model": "Codex-main (model version not exposed)"
+    },
+    "profile": {
+     "risk": "L0",
+     "attributes": {
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": null,
+      "pack_unit": null,
+      "audience": null
+     },
+     "attribute_evidence": {
+      "brand_name": {
+       "raw_span": "康安",
+       "source_ref": "evidence/task.json#/raw_query"
+      },
+      "generic_name": {
+       "raw_span": "维生素C",
+       "source_ref": "evidence/task.json#/raw_query"
+      },
+      "dosage_form": {
+       "raw_span": "咀嚼片",
+       "source_ref": "evidence/task.json#/raw_query"
+      }
+     },
+     "reason": "本次Query原文仍为明确用法、单次用量咨询：‘怎么用一次多少’。依据ADM-002停止广告扩召回；商品名称仅作原文属性记录，不能覆盖咨询意图。未出现包装数量、单位或特定人群，保留null。无需为该已拒绝任务补查商业历史或商品供给。",
+     "rule_refs": [
+      "ADM-002",
+      "ADM-003",
+      "ADM-004",
+      "ADMIT-001"
+     ],
+     "evidence_refs": [
+      "evidence/task.json#/raw_query"
+     ]
+    },
+    "rewrites": []
+   },
+   "items": [],
+   "item_decision_raw": {
+    "phase": "items",
+    "producer": {
+     "type": "not_executed",
+     "model": null
+    },
+    "review_count": 0
+   },
+   "result": {
+    "rewrites": [],
+    "items": [],
+    "recommendation": "reject",
+    "risk": "L0",
+    "value_tier": "unknown",
+    "review_queue": [],
+    "history_status": "not_evaluated",
+    "history_verified_gap_count": null,
+    "history_gap_is_potential_only": false,
+    "confirmed_current_offer_count": 0,
+    "confirmed_current_candidate_count": 0,
+    "distinct_store_count": null,
+    "valid_request_count": null
+   },
+   "history": {
+    "complete": false,
+    "verified_gap_count": null,
+    "reason": "not_executed",
+    "sample_rows": []
+   },
+   "terms": [
+    {
+     "term_id": "T0001",
+     "term": "康安维生素C咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0002",
+     "term": "康安维生素C咀嚼片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0003",
+     "term": "泰和维生素C咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0004",
+     "term": "康安维生素C片剂60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0005",
+     "term": "泰和布洛芬混悬液100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0006",
+     "term": "泰和布洛芬混悬液",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0007",
+     "term": "景康布洛芬混悬液100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0008",
+     "term": "泰和布洛芬胶囊100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0009",
+     "term": "景康氯雷他定片10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0010",
+     "term": "景康氯雷他定片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0011",
+     "term": "沐安氯雷他定片10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0012",
+     "term": "景康氯雷他定糖浆10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0013",
+     "term": "沐安蒙脱石散10袋",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0014",
+     "term": "沐安蒙脱石散",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0015",
+     "term": "知康蒙脱石散10袋",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0016",
+     "term": "沐安蒙脱石混悬液10袋",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0017",
+     "term": "知康碳酸钙咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0018",
+     "term": "知康碳酸钙咀嚼片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0019",
+     "term": "瑞康碳酸钙咀嚼片60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0020",
+     "term": "知康碳酸钙片剂60片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0021",
+     "term": "瑞康维生素B2片100片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0022",
+     "term": "瑞康维生素B2片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0023",
+     "term": "恒康维生素B2片100片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0024",
+     "term": "瑞康维生素B2胶囊100片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0025",
+     "term": "恒康炉甘石洗剂100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0026",
+     "term": "恒康炉甘石洗剂",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0027",
+     "term": "清和炉甘石洗剂100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0028",
+     "term": "恒康炉甘石乳膏100毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0029",
+     "term": "清和生理性海水鼻腔喷雾60毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0030",
+     "term": "清和生理性海水鼻腔喷雾",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0031",
+     "term": "舒康生理性海水鼻腔喷雾60毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0032",
+     "term": "清和生理性海水滴鼻液60毫升",
+     "index_version": "idx-20260920-1",
+     "enabled": false
+    },
+    {
+     "term_id": "T0033",
+     "term": "舒康医用退热贴6贴",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0034",
+     "term": "舒康医用退热贴",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0035",
+     "term": "明康医用退热贴6贴",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0036",
+     "term": "舒康医用凝胶6支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0037",
+     "term": "明康医用棉签100支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0038",
+     "term": "明康医用棉签",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0039",
+     "term": "仁济医用棉签100支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0040",
+     "term": "明康医用棉球100支",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0041",
+     "term": "仁济医用纱布块10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0042",
+     "term": "仁济医用纱布块",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0043",
+     "term": "安宁医用纱布块10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0044",
+     "term": "仁济医用绷带10片",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0045",
+     "term": "安宁医用口罩10只",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0046",
+     "term": "安宁医用口罩",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0047",
+     "term": "康安医用口罩10只",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    },
+    {
+     "term_id": "T0048",
+     "term": "安宁医用防护面罩10只",
+     "index_version": "idx-20260920-1",
+     "enabled": true
+    }
+   ],
+   "catalog_meta": {
+    "source": "synthetic_company_api",
+    "dataset_version": "assignment-1.0",
+    "scenario": "normal",
+    "business_time": "2026-09-20T12:00:00+08:00",
+    "as_of": "2026-09-20T12:00:00+08:00",
+    "health_checked": true
+   },
+   "lexicon": {
+    "version": "lex-1",
+    "source": "mock/数据/标准词与别名.json",
+    "aliases": [
+     {
+      "alias": "维C咀嚼片",
+      "canonical_name": "维生素C咀嚼片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-001",
+      "version": "lex-1"
+     },
+     {
+      "alias": "布洛芬混悬液",
+      "canonical_name": "布洛芬混悬液",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-002",
+      "version": "lex-1"
+     },
+     {
+      "alias": "氯雷他定片",
+      "canonical_name": "氯雷他定片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-003",
+      "version": "lex-1"
+     },
+     {
+      "alias": "蒙脱石散",
+      "canonical_name": "蒙脱石散",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-004",
+      "version": "lex-1"
+     },
+     {
+      "alias": "碳酸钙咀嚼片",
+      "canonical_name": "碳酸钙咀嚼片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-005",
+      "version": "lex-1"
+     }
+    ],
+    "brands": [
+     {
+      "brand_id": "BR000",
+      "brand_name": "康安"
+     },
+     {
+      "brand_id": "BR001",
+      "brand_name": "泰和"
+     },
+     {
+      "brand_id": "BR002",
+      "brand_name": "景康"
+     },
+     {
+      "brand_id": "BR003",
+      "brand_name": "沐安"
+     },
+     {
+      "brand_id": "BR004",
+      "brand_name": "知康"
+     },
+     {
+      "brand_id": "BR005",
+      "brand_name": "瑞康"
+     },
+     {
+      "brand_id": "BR006",
+      "brand_name": "恒康"
+     },
+     {
+      "brand_id": "BR007",
+      "brand_name": "清和"
+     },
+     {
+      "brand_id": "BR008",
+      "brand_name": "舒康"
+     },
+     {
+      "brand_id": "BR009",
+      "brand_name": "明康"
+     },
+     {
+      "brand_id": "BR010",
+      "brand_name": "仁济"
+     },
+     {
+      "brand_id": "BR011",
+      "brand_name": "安宁"
+     }
+    ],
+    "notice": "只包含原始标准名、品牌和别名资料，不包含 Query 审核结论、商品选择或评测标签；不能由通用或缺失人群推断特殊人群适用。"
+   },
+   "candidates": [],
+   "snapshot": {
+    "source": "not_called"
+   },
+   "calls_count": 2,
+   "events": [
+    {
+     "at": "2026-09-21T15:08:55.203495+00:00",
+     "event": "snapshot_rebuild",
+     "version": "1.1",
+     "source_archive_sha256": "8bbf0a88e9bc9d2d8abba0ce6b473760344b48ab07f90396b930f32523a320eb",
+     "new_model_calls": 0
+    },
+    {
+     "at": "2026-09-21T15:08:55.207136+00:00",
+     "event": "step_started",
+     "step": 6
+    },
+    {
+     "at": "2026-09-21T15:08:55.207523+00:00",
+     "event": "step_finished",
+     "step": 6,
+     "status": "skipped"
+    },
+    {
+     "at": "2026-09-21T15:08:55.207573+00:00",
+     "event": "step_finished",
+     "step": 7,
+     "status": "success"
+    },
+    {
+     "at": "2026-09-21T15:08:55.261583+00:00",
+     "event": "step_started",
+     "step": 8
+    },
+    {
+     "at": "2026-09-21T15:08:55.280577+00:00",
+     "event": "completed",
+     "recommendation": "reject"
+    }
+   ],
+   "report": "# 医药 Query 安全扩召回审核报告\n\n> 脱敏业务数据｜只读证据｜未执行发布或投放变更\n\n- Run：e05733a0447c47eeb88c1edbb5a1fd6d\n- Query：康安维生素C咀嚼片怎么用一次多少\n- 范围：330100 / 330100-B / medical_search\n- 历史窗口：2026-09-13T00:00:00+08:00 — 2026-09-20T00:00:00+08:00\n- 执行模式：智能体交接；模型记录见manifest，不含自动模型API调用。\n\n## 审核结论\n\n- 准入：L0\n- 准入理由：本次Query原文仍为明确用法、单次用量咨询：‘怎么用一次多少’。依据ADM-002停止广告扩召回；商品名称仅作原文属性记录，不能覆盖咨询意图。未出现包装数量、单位或特定人群，保留null。无需为该已拒绝任务补查商业历史或商品供给。\n- 建议：拒绝扩展\n- 商业分层：unknown\n- 当前计划与去重供给数：未评估（商品审核早停，不填成已查得0份供给）。\n- 修订方式：沿用原run的真实模型判断和商品快照，重新执行历史SQL及确定性校验；本次修订没有新增模型或商品接口调用。\n\n## 实际执行轨迹\n\n| 步骤 | 状态 |\n| --- | --- |\n| 1. 任务与规则 | 已完成 |\n| 2. 历史漏损 | 未执行 |\n| 3. Query准入 | 已完成 |\n| 4. 改写与索引 | 未执行 |\n| 5. 当前证据 | 未执行 |\n| 6. 相关性与资格 | 未执行 |\n| 7. 审批建议 | 已完成 |\n| 8. 校验与报告 | 结构与引用已校验；最终状态见manifest |\n\n## 历史证据\n\n准入阶段已停止，本次未执行历史SQL；不把未执行解释为零漏损，也不要求为已拒绝任务补商业价值证据。\n\n历史回放只提供潜在承接证据，不代表可追回曝光、成交或收入。\n\n## 改写审核\n\n| term | 硬约束后结论 |\n| --- | --- |\n| — | 本次未执行改写或无候选 |\n\n## 逐候选审核\n\n下表一行是一个计划级候选，不是一份独立供给；供给数量按 offer_id 去重。\n\n| term / candidate（计划） | offer_id（供给） | 相关性 | 当前资格 | 依据 |\n| --- | --- | --- | --- | --- |\n| — | — | 未执行 | 未执行 | 没有进入商品审核分支 |\n\n## 待复核事项\n\n本次未列出额外复核事项；只有提交建议才进入人工审批，拒绝或暂缓不等于已获批准。\n\n## 追溯\n\n结构化结论见steps/，实际取数与响应见evidence/，规则版本及模型交接记录见manifest.json。\n当前资格只对应本次业务快照；不保证未来请求的实时可投状态。\n\n",
+   "artifacts": [
+    {
+     "name": "manifest.json",
+     "bytes": 6103
+    },
+    {
+     "name": "query-decision.json",
+     "bytes": 848
+    },
+    {
+     "name": "item-decision.json",
+     "bytes": 132
+    },
+    {
+     "name": "review-report.md",
+     "bytes": 2504
+    },
+    {
+     "name": "evidence/history.json",
+     "bytes": 92
+    },
+    {
+     "name": "evidence/candidates.json",
+     "bytes": 2
+    },
+    {
+     "name": "evidence/catalog.json",
+     "bytes": 7773
+    }
+   ]
+  }
+ ]
+};</script>
+<script>'use strict';
+const $ = q => document.querySelector(q);
+const $$ = q => [...document.querySelectorAll(q)];
+const esc = v => String(v ?? '—').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const json = v => JSON.stringify(v, null, 2);
+const number = v => typeof v === 'number' ? v.toLocaleString('zh-CN') : '—';
+const stepNames = ['任务与规则','历史漏损','Query 准入','改写与索引','当前证据','相关性与资格','审批建议','校验与报告'];
+const states = {pending:'待执行', running:'执行中', success:'已完成', partial:'部分完成', blocked:'已阻断', skipped:'未执行'};
+const decisions = {submit_for_human_review:'可提交人工审批', hold:'暂缓，等待补证', reject:'停止扩召回', no_rewrite:'无可用改写'};
+const badge = (value, labels = {pass:'通过', reject:'拒绝', unknown:'未知', pending:'待审核', skipped:'未执行'}) =>
+  `<span class="badge ${['pass','reject','unknown','pending','skipped'].includes(value) ? value : 'pending'}">${esc(labels[value] || value || '待审核')}</span>`;
+const S = {run:null, tab:'candidates', filter:'all'};
+
+function notice(message){
+  const el = $('#notice');
+  el.textContent = message;
+  el.hidden = false;
+  clearTimeout(notice.timer);
+  notice.timer = setTimeout(() => el.hidden = true, 9000);
+}
+function openDrawer(title, body, eyebrow = 'EVIDENCE DETAIL'){
+  $('#drawer-title').textContent = title;
+  $('#drawer-eyebrow').textContent = eyebrow;
+  $('#drawer-body').innerHTML = body;
+  const d = $('#detail-dialog');
+  if(typeof d.showModal === 'function') d.showModal();
+  else d.setAttribute('open', '');
+}
+function closeDrawer(){
+  const d = $('#detail-dialog');
+  if(typeof d.close === 'function') d.close();
+  else d.removeAttribute('open');
+}
+
+/* ---------- runs ---------- */
+function renderRuns(){
+  $('#run-list').innerHTML = DATA.runs.map(r =>
+    `<button class="run-button ${r.id === S.run?.id ? 'active' : ''}" data-run="${esc(r.id)}" ${r.id === S.run?.id ? 'aria-current="true"' : ''}>
+       <span class="run-title">${esc(r.label)}</span>
+       <span class="run-bottom"><span class="mono">${esc(r.task.query_id)}</span><span class="phase-tag">历史回看</span></span>
+     </button>`).join('');
+}
+function selectRun(id){
+  S.run = DATA.runs.find(r => r.id === id);
+  S.filter = 'all';
+  renderRuns();
+  render();
+}
+
+/* ---------- main render ---------- */
+function render(){
+  const r = S.run;
+  $('#query-title').textContent = r.task.raw_query;
+  $('#query-subtitle').textContent = '历史运行回看 · 只读脱敏环境，展示来自真实业务运行产物，不代表本次重新调用模型。';
+  const report = {name:'review-report.md'};
+  $('#hero-actions').innerHTML = `<button class="secondary" data-action="download-report">下载审核报告 ↓</button>
+                                  <button class="quiet" data-action="download-evidence">证据摘要 ↓</button>`;
+  $('#task-meta').innerHTML = [r.task.query_id, r.task.city_id + ' / ' + r.task.region_id, r.task.scene_id,
+    r.snapshot?.business_time ? '业务快照 ' + r.snapshot.business_time : '业务快照', '只读历史']
+    .map(t => `<span class="meta-tag">${esc(t)}</span>`).join('');
+
+  const steps = r.manifest.steps || {};
+  const done = Object.values(steps).filter(s => ['success','partial','skipped'].includes(s.status)).length;
+  $('#step-counter').textContent = `${done} / 8 已结束`;
+
+  $('#timeline').innerHTML = stepNames.map((name, i) => {
+    const n = String(i + 1);
+    const st = steps[n]?.status || 'pending';
+    let state = st;
+    if(st === 'success' && steps[n]?.risk) state = 'success';
+    const reasonNote = steps[n]?.reason ? `<small style="display:block;font-size:10.5px;color:#9a9a9a;margin-top:2px">${esc(steps[n].reason)}</small>` : '';
+    return `<button class="step ${esc(state)}" data-step="${n}" aria-label="第${n}步 ${name} ${states[state]||state}">
+      <span class="step-dot">${state === 'success' ? '✓' : String(i + 1).padStart(2,'0')}</span>
+      <span class="step-name">${name}${steps[n]?.risk ? ' · ' + esc(steps[n].risk) : ''}</span>
+      <span class="step-state">${states[state] || state}</span>${reasonNote}
+    </button>`;
+  }).join('');
+
+  /* evidence chain */
+  const passed = (r.rewrites || []).filter(x => x.decision === 'pass');
+  const term = passed[0];
+  const termText = term ? (r.terms.find(t => t.term_id === term.term_id)?.term || term.term_id) : null;
+  const result = r.result;
+  const termNode = termText
+    ? `<div class="chain-node"><span class="node-label">02 / TERM <span>词词审核</span></span><strong>${esc(termText)}</strong><small>${passed.length} / ${r.rewrites.length} 个候选改写通过</small></div>`
+    : `<div class="chain-node"><span class="node-label">02 / TERM <span>词词审核</span></span><strong>${r.rewrites.length ? '无通过改写' : '准入已停止 · 无可用改写'}</strong><small>${r.rewrites.length ? '其余候选全部拒绝' : '未执行，不默认通过'}</small></div>`;
+  const supplyNode = result && result.confirmed_current_candidate_count !== undefined
+    ? (result.confirmed_current_candidate_count > 0
+      ? `<div class="chain-node"><span class="node-label">03 / SUPPLY <span>当前承接</span></span><strong>${number(result.confirmed_current_offer_count)} 份确认供给</strong><small>${number(result.confirmed_current_candidate_count)} 个合格计划 · 同供给去重</small></div>`
+      : `<div class="chain-node"><span class="node-label">03 / SUPPLY <span>当前承接</span></span><strong>未取证 · 0 个候选</strong><small>准入拒绝，不补查商业证据</small></div>`)
+    : `<div class="chain-node"><span class="node-label">03 / SUPPLY <span>当前承接</span></span><strong>${r.candidates.length} 个待核候选</strong><small>相关性与资格分开审核</small></div>`;
+  $('#evidence-chain').innerHTML =
+    `<div class="chain-node"><span class="node-label">01 / QUERY <span>原始意图</span></span><strong>${esc(r.task.raw_query)}</strong><small>${r.profile ? '准入 ' + esc(r.profile.risk) : '等待准入判断'}</small></div>
+     <div class="chain-arrow">→</div>${termNode}
+     <div class="chain-arrow">→</div>${supplyNode}`;
+
+  const attrs = r.profile?.attributes || {};
+  const attrLabels = {brand_name:'品牌', generic_name:'名称', dosage_form:'剂型', pack_count:'包装数量', pack_unit:'单位', audience:'人群'};
+  $('#attribute-row').innerHTML = Object.entries(attrLabels)
+    .map(([k, label]) => `<span class="attribute">${label}<b>${esc(attrs[k] ?? '未明确')}</b></span>`).join('');
+
+  const rec = result?.recommendation;
+  const recText = result ? (decisions[rec] || rec) : '结论等待证据';
+  const recExplain = rec === 'submit_for_human_review'
+    ? '只有确认相关且当前合格的候选进入审批材料；其余候选保留拒绝或复核结论。本次未执行发布。'
+    : rec === 'reject'
+      ? '准入已停止。未执行的商品与历史步骤不算通过，也不需要为拒绝任务补商业价值。'
+      : '不把缺失、超时或未知当作通过。结论以本次证据与规则约束为准。';
+  $('#decision-panel').innerHTML =
+    `<div><div class="eyebrow">REVIEW DECISION</div><h3>${esc(recText)}</h3><p>${esc(recExplain)}</p>
+     <button data-action="review-queue">${result ? `${result.review_queue?.length || 0} 项待复核事项` : '查看任务边界'} →</button></div>
+     <div class="decision-foot"><span>商业分层 ${esc(result?.value_tier || '未评估')}</span><span>人工审批前置</span></div>`;
+
+  $('#candidate-count').textContent = r.candidates.length;
+  renderTab();
+}
+
+/* ---------- tabs ---------- */
+function renderTab(){
+  if(!S.run) return;
+  $$('[data-tab]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === S.tab)));
+  const target = $('#tab-content');
+  if(S.tab === 'candidates') target.innerHTML = candidateTab();
+  if(S.tab === 'history') target.innerHTML = historyTab();
+  if(S.tab === 'trace') target.innerHTML = traceTab();
+  if(S.tab === 'files') target.innerHTML = filesTab();
+}
+
+function candidateTab(){
+  const r = S.run;
+  const index = new Map(r.items.map(x => [x.term_id + '|' + x.candidate_id, x]));
+  let rows = r.candidates.map(c => ({c, item: index.get(c.term_id + '|' + c.candidate_id)}));
+  if(S.filter !== 'all'){
+    rows = rows.filter(({item}) =>
+      S.filter === 'pass' ? item?.relevance === 'pass' && item?.eligibility === 'pass'
+      : S.filter === 'unknown' ? item?.relevance === 'unknown' || item?.eligibility === 'unknown'
+      : item?.relevance === 'reject' || item?.eligibility === 'reject');
+  }
+  const toolbar = `<div class="table-toolbar">
+    <p>${r.candidates.length} 个计划级候选 · 保留多计划，供给单独去重</p>
+    <div class="filters" aria-label="候选筛选">
+      ${[['all','全部'],['pass','双通过'],['unknown','待复核'],['reject','有拒绝']]
+        .map(([v,t]) => `<button data-filter="${v}" class="${S.filter === v ? 'active' : ''}" aria-pressed="${S.filter === v}">${t}</button>`).join('')}
+    </div></div>`;
+  if(!rows.length){
+    return toolbar + `<div class="empty"><strong>${r.candidates.length ? '当前筛选下没有候选' : '本次尚无商品审核结果'}</strong>
+      ${r.manifest.steps?.['6']?.status === 'skipped' ? '该分支未执行商品审核，不能解读为全部通过。' : '等待取证，或调整筛选查看其他候选。'}</div>`;
+  }
+  return toolbar + `<div class="table-wrap"><table>
+    <thead><tr><th>商品 / 计划</th><th>规格与供给</th><th>语义相关性</th><th>当前资格</th><th>依据</th></tr></thead>
+    <tbody>${rows.map(({c, item}) => `<tr>
+      <td>${esc(c.product?.title || '商品事实缺失')}<small class="mono">${esc(c.sku_id)} · ${esc(c.candidate_id)}</small></td>
+      <td>${esc(c.product?.dosage_form || '未知')} / ${esc(c.product?.pack_count ?? '未知')}${esc(c.product?.pack_unit || '')}<small class="mono">${esc(c.offer_id)} · ${esc(c.store_id)}</small></td>
+      <td>${badge(item?.relevance || 'pending')}</td>
+      <td>${badge(item?.eligibility || 'pending')}</td>
+      <td><button class="detail-link" data-candidate="${esc(c.candidate_id)}" data-term="${esc(c.term_id)}">详情 ↗</button></td>
+    </tr>`).join('')}</tbody></table></div>`;
+}
+
+function historyTab(){
+  const r = S.run, h = r.history;
+  if(!h || r.manifest.steps?.['2']?.status === 'skipped'){
+    return '<div class="empty"><strong>历史 SQL 未执行</strong>准入早停或尚未到达该步骤；未执行不等于没有漏损。</div>';
+  }
+  const metrics = [['request_count','有效请求'],['eligible_count','已合格请求'],['keyword_miss_count','关键词缺口'],
+                   ['supply_fail_count','供给失败'],['plan_fail_count','计划失败'],['unknown_count','未知请求']];
+  const gapNote = h.verified_gap_count != null
+    ? `<div class="form-note">独立回放核验潜在缺口：${number(h.verified_gap_count)} 个请求。这不是可追回曝光、成交或收入；还需与语义及资格证据关联。${h.evidence_rows_returned != null ? `行级证据保留 ${h.evidence_rows_returned} / ${h.evidence_rows_total} 条${h.output_truncated ? '（已截断，不影响全窗口统计）' : ''}。` : ''}</div>`
+    : '';
+  const sample = h.sample_rows?.length
+    ? `<details><summary>行级证据抽样（前 ${h.sample_rows.length} 条）</summary><pre>${esc(json(h.sample_rows))}</pre></details>`
+    : '';
+  return `<div class="data-section">
+    <p>请求级去重 · ${esc(h.parameters?.history_start)} 至 ${esc(h.parameters?.history_end_exclusive)}<br>数据完整性：${h.complete ? '完整' : '不完整，不能确定归因或分层'}</p>
+    ${metrics.map(([key, label]) => `<div class="bar-row"><span>${label}</span><progress max="${Math.max(h.request_count || 0, 1)}" value="${typeof h[key] === 'number' ? h[key] : 0}" aria-label="${label} ${number(h[key])}"></progress><b>${number(h[key])}</b></div>`).join('')}
+    ${gapNote}${sample}
+  </div>`;
+}
+
+function traceTab(){
+  const r = S.run;
+  const callsNote = r.manifest.model_calls.length === 1 && r.manifest.model_calls[0].phase === 'query'
+    ? '（高风险准入早停：仅第一次 Query 交接，商品语义未执行）' : '';
+  return `<div class="data-section">
+    <p>真实日志与交接记录，不播放实时进度。模型交接 ${r.manifest.model_calls.length} 次${callsNote}；接口调用 ${r.calls_count} 条。</p>
+    ${(r.manifest.model_calls || []).map(c => `<div class="trace-row"><time>智能体交接</time><div>${esc(c.phase)} · ${esc(c.producer?.model)}<small>${esc(c.received_at)} · ${esc(c.mode)}</small></div></div>`).join('')}
+    ${r.events.map(e => `<div class="trace-row"><time>${esc((e.at || '').slice(11, 19))} UTC</time><div>${esc(e.event)}<small>${esc(json(Object.fromEntries(Object.entries(e).filter(([k]) => !['at','event'].includes(k)))))}</small></div></div>`).join('')}
+  </div>`;
+}
+
+function filesTab(){
+  const r = S.run;
+  const skillRow = DATA.skill
+    ? `<div class="file-row skill-row">
+      <div><span class="mono">${esc(DATA.skill.name)}</span><small class="muted">· ${number(Math.ceil(DATA.skill.bytes / 1024))} KB</small></div>
+      <div><button class="detail-link" data-file="SKILL.md">预览</button> · <button class="detail-link" data-download="SKILL.md">下载 ↓</button></div>
+    </div>`
+    : '';
+  return `<div class="data-section">
+    <p>审核方法论、六份结构化产物、原始证据、版本清单与可读报告。点击预览本页内置内容，下载生成对应文件。</p>
+    ${skillRow}
+    ${r.artifacts.map(a => `<div class="file-row">
+      <div><span class="mono">${esc(a.name)}</span><small class="muted">· ${number(Math.ceil(a.bytes / 1024))} KB</small></div>
+      <div><button class="detail-link" data-file="${esc(a.name)}">预览</button> · <button class="detail-link" data-download="${esc(a.name)}">下载 ↓</button></div>
+    </div>`).join('')}
+  </div>`;
+}
+
+/* ---------- drawers ---------- */
+function fileContent(name){
+  const r = S.run;
+  if(name === 'SKILL.md' && DATA.skill) return {text: DATA.skill.text, label: '审核方法论（Markdown）'};
+  const map = {
+    'review-report.md': {text: r.report, label: 'Markdown'},
+    'query-decision.json': {obj: r.query_decision_raw, label: 'JSON'},
+    'item-decision.json': {obj: r.item_decision_raw, label: 'JSON'},
+    'manifest.json': {obj: {
+        run_id: r.manifest.run_id, phase: r.manifest.phase, created_at: r.manifest.created_at,
+        mode: r.manifest.mode, steps: r.manifest.steps, model_calls: r.manifest.model_calls,
+        input_sha256: r.manifest.input_sha256, decision_hashes: r.manifest.decision_hashes,
+        evidence_hash_count: r.manifest.evidence_hash_count, artifact_hash_count: r.manifest.artifact_hash_count,
+        source_hash_count: r.manifest.source_hash_count, revision: r.manifest.revision,
+        completed_at: r.manifest.completed_at
+      }, label: 'JSON 摘要（原始文件含完整哈希清单）'},
+    'evidence/history.json': {obj: r.history, label: 'JSON 摘要（行级证据抽样，不含 executed_sql）'},
+    'evidence/candidates.json': {obj: r.candidates, label: 'JSON 摘要（含完整候选事实）'},
+    'evidence/catalog.json': {obj: {terms: r.terms, lexicon: r.lexicon, meta: r.catalog_meta}, label: 'JSON 摘要'},
+    'steps/40_final_review.json': {obj: r.result, label: 'JSON（步骤4产物 data）'},
+  };
+  return map[name] || null;
+}
+
+function previewFile(name){
+  const content = fileContent(name);
+  if(!content){ notice('本静态演示不含该原始文件。'); return; }
+  const text = content.text != null ? content.text : json(content.obj);
+  const cut = text.length > 60000;
+  const shown = cut ? text.slice(0, 60000) : text;
+  openDrawer(name,
+    `<p>${esc(content.label)} · 来自本次审核运行的真实产物。</p>${cut ? '<p>预览仅显示前 60,000 字符，可下载完整内容。</p>' : ''}<pre>${esc(shown)}</pre>`,
+    'ARTIFACT PREVIEW');
+}
+
+function downloadText(filename, text, mime = 'text/plain;charset=utf-8'){
+  const blob = new Blob([text], {type: mime});
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(link.href), 4000);
+}
+function downloadFile(name){
+  const content = fileContent(name);
+  if(!content){ notice('本静态演示不含该原始文件。'); return; }
+  const text = content.text != null ? content.text : json(content.obj);
+  const mime = name.endsWith('.md') ? 'text/markdown;charset=utf-8' : 'application/json;charset=utf-8';
+  downloadText(name, text, mime);
+}
+
+function stepDetail(n){
+  const r = S.run;
+  const descriptions = [
+    '确认 Query、范围、版本与只读边界，取得词典和真实索引目录。',
+    '按 request 粒度去重，核查加载完整性，再做独立候选回放。',
+    '保留原文明示属性；高风险早停，不用商业价值覆盖风险。',
+    '分别记录改写语义、索引命中和属性约束，不凭字符串相似放行。',
+    '通过只读业务接口获取商品、供给、计划、门店与资质，记录版本和失败。',
+    '分开判断 term—商品、原 Query—商品；再执行当前承接的确定性约束。',
+    '形成建议、价值分层和人工复核清单；这里不发布广告。',
+    '检查完整文件集合、哈希、规则与证据引用，并重算确定性约束后生成报告。'
+  ];
+  const files = [
+    ['evidence/task.json'], ['evidence/history.json'], ['query-decision.json'],
+    ['query-decision.json'], ['evidence/candidates.json'], ['item-decision.json'],
+    ['steps/40_final_review.json'], ['manifest.json', 'review-report.md']
+  ][n - 1];
+  const st = r.manifest.steps?.[n]?.status || 'pending';
+  const riskNote = n === 3 && r.profile ? `<h3>本次准入依据</h3><p>${esc(r.profile.reason)}</p>` : '';
+  const skipNote = n === 3 && r.result?.recommendation === 'reject'
+    ? `<div class="form-note">该任务准入已拒绝：原文为「${esc(r.task.raw_query)}」的用量咨询，依据 ADM-002 停止扩召回；不补查商业历史或商品供给。</div>` : '';
+  openDrawer(`${String(n).padStart(2,'0')} / ${stepNames[n-1]}`,
+    `<p>${descriptions[n-1]}</p><div class="form-note">实际状态：${esc(states[st] || '待执行')}。界面按 manifest 呈现；等待智能体不算执行完成。</div>${riskNote}${skipNote}
+     <h3>本步真实产物</h3>${files.map(f => `<p style="margin:6px 0"><button class="detail-link" data-file="${esc(f)}">${esc(f)} ↗</button></p>`).join('')}`,
+    'SKILL EXECUTION');
+}
+
+function candidateDetail(id, term){
+  const r = S.run;
+  const c = r.candidates.find(x => x.candidate_id === id && x.term_id === term);
+  const item = r.items.find(x => x.candidate_id === id && x.term_id === term);
+  if(!c) return;
+  const p = c.product || {};
+  const o = c.offer || {};
+  const pl = c.plan || {};
+  const facts = [['SKU', c.sku_id], ['供给', c.offer_id], ['剂型', p.dosage_form], ['包装', `${p.pack_count ?? '未知'}${p.pack_unit || ''}`],
+    ['品牌', p.brand_name], ['人群', p.audience ?? '未知'], ['处方类型', p.prescription_type ?? '未知'],
+    ['库存', o.stock ?? '未知'], ['在售', o.on_shelf ?? '未知'], ['价格(分)', o.price_fen ?? '未知'],
+    ['计划状态', pl.status ?? '未知'], ['剩余预算(分)', pl.remaining_budget_fen ?? '未知'], ['素材', pl.material_status ?? '未知'],
+    ['门店', c.store?.store_name || c.store_id]];
+  openDrawer(`${id} · 商品与资格证据`,
+    `<p>${esc(p.title || '商品事实缺失')}</p>
+     <div class="button-row">相关性 ${badge(item?.relevance || 'pending')}　当前资格 ${badge(item?.eligibility || 'pending')}</div>
+     <div class="fact-grid">${facts.map(([k, v]) => `<div class="fact"><small>${k}</small>${esc(v)}</div>`).join('')}</div>
+     <div class="decision-reason"><h3 style="margin-top:0">智能体语义判断</h3>
+       <p>${esc(item?.reason || '本阶段尚未形成语义判断。')}</p>
+       <p>term—商品：${esc(item?.term_item || '未执行')}；原 Query—商品：${esc(item?.query_item || '未执行')}</p></div>
+     <h3>确定性约束与规则</h3>
+     <p>${esc((item?.reasons || []).join('；') || '没有记录额外硬冲突；通过仍须结合完整证据与审批条件。')}</p>
+     <p class="mono">${esc((item?.rule_refs || []).join(' · ') || '—')}</p>
+     ${[['商品主数据', c.product], ['当前供给', c.offer], ['广告计划', c.plan], ['门店', c.store], ['资格', c.qualification], ['召回记录', c.recall], ['候选错误', c.errors]]
+       .map(([title, value]) => `<details><summary>${title}</summary><pre>${esc(json(value ?? null))}</pre></details>`).join('')}`,
+    'EVIDENCE DETAIL');
+}
+
+function queue(){
+  const rows = S.run.result?.review_queue || [];
+  openDrawer('人工复核与审批边界',
+    `<p>这里交付审核材料，不执行正式词池发布。局部候选未知不会被标成通过；提交建议也不是审批结果。</p>
+     ${rows.length ? rows.map(row => `<h3>${esc(row.type)} ${esc(row.candidate_id || row.term_id || '')}</h3><p>${esc((row.reasons || []).join('；'))}</p><p class="mono">${esc((row.rule_refs || []).join(' · '))}</p>`).join('')
+     : '<div class="form-note">本次没有额外复核条目。高风险拒绝不需要继续补商业价值证据。</div>'}`,
+    'HUMAN REVIEW');
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', event => {
+  const b = event.target.closest('button');
+  if(!b) return;
+  if(b.matches('.close-dialog')) closeDrawer();
+  if(b.dataset.run) selectRun(b.dataset.run);
+  if(b.dataset.tab){ S.tab = b.dataset.tab; renderTab(); }
+  if(b.dataset.filter){ S.filter = b.dataset.filter; renderTab(); }
+  if(b.dataset.candidate) candidateDetail(b.dataset.candidate, b.dataset.term);
+  if(b.dataset.step) stepDetail(Number(b.dataset.step));
+  if(b.dataset.file) previewFile(b.dataset.file);
+  if(b.dataset.download) downloadFile(b.dataset.download);
+  if(b.dataset.action === 'review-queue') queue();
+  if(b.dataset.action === 'download-report') downloadText('review-report.md', S.run.report, 'text/markdown;charset=utf-8');
+  if(b.dataset.action === 'download-evidence'){
+    const summary = {run_id: S.run.manifest.run_id, task: S.run.task, steps: S.run.manifest.steps,
+      rewrites: S.run.rewrites, items: S.run.items, result: S.run.result,
+      history: S.run.history, candidates: S.run.candidates};
+    downloadText(`evidence-${S.run.task.query_id}.json`, json(summary), 'application/json;charset=utf-8');
+  }
+});
+$('#presentation').addEventListener('click', () => {
+  const on = document.body.classList.toggle('present');
+  $('#presentation').setAttribute('aria-pressed', String(on));
+  $('#presentation').textContent = on ? '退出展示模式 ↙' : '展示模式 ↗';
+});
+
+/* ---------- boot ---------- */
+renderRuns();
+selectRun(DATA.runs[0].id);
+window.scrollTo(0, 0);
+/* 支持 URL hash 直达案例与 tab：#normal / #high-risk / #candidates / #history / #trace / #files */
+function applyHash(){
+  const hash = location.hash.slice(1);
+  if(hash === 'normal' || hash === 'high-risk') selectRun(hash);
+  if(['candidates','history','trace','files'].includes(hash)){ S.tab = hash; renderTab(); }
+}
+window.addEventListener('hashchange', applyHash);
+applyHash();
+</script>
+</body>
+</html>
