@@ -1,0 +1,290 @@
+[
+  {
+    "term_id": "T0001",
+    "term": "康安维生素C咀嚼片60片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0002",
+    "term": "康安维生素C咀嚼片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0003",
+    "term": "泰和维生素C咀嚼片60片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0004",
+    "term": "康安维生素C片剂60片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0005",
+    "term": "泰和布洛芬混悬液100毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0006",
+    "term": "泰和布洛芬混悬液",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0007",
+    "term": "景康布洛芬混悬液100毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0008",
+    "term": "泰和布洛芬胶囊100毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0009",
+    "term": "景康氯雷他定片10片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0010",
+    "term": "景康氯雷他定片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0011",
+    "term": "沐安氯雷他定片10片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0012",
+    "term": "景康氯雷他定糖浆10片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0013",
+    "term": "沐安蒙脱石散10袋",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0014",
+    "term": "沐安蒙脱石散",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0015",
+    "term": "知康蒙脱石散10袋",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0016",
+    "term": "沐安蒙脱石混悬液10袋",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0017",
+    "term": "知康碳酸钙咀嚼片60片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0018",
+    "term": "知康碳酸钙咀嚼片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0019",
+    "term": "瑞康碳酸钙咀嚼片60片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0020",
+    "term": "知康碳酸钙片剂60片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0021",
+    "term": "瑞康维生素B2片100片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0022",
+    "term": "瑞康维生素B2片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0023",
+    "term": "恒康维生素B2片100片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0024",
+    "term": "瑞康维生素B2胶囊100片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0025",
+    "term": "恒康炉甘石洗剂100毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0026",
+    "term": "恒康炉甘石洗剂",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0027",
+    "term": "清和炉甘石洗剂100毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0028",
+    "term": "恒康炉甘石乳膏100毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0029",
+    "term": "清和生理性海水鼻腔喷雾60毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0030",
+    "term": "清和生理性海水鼻腔喷雾",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0031",
+    "term": "舒康生理性海水鼻腔喷雾60毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0032",
+    "term": "清和生理性海水滴鼻液60毫升",
+    "index_version": "idx-20260920-1",
+    "enabled": false
+  },
+  {
+    "term_id": "T0033",
+    "term": "舒康医用退热贴6贴",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0034",
+    "term": "舒康医用退热贴",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0035",
+    "term": "明康医用退热贴6贴",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0036",
+    "term": "舒康医用凝胶6支",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0037",
+    "term": "明康医用棉签100支",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0038",
+    "term": "明康医用棉签",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0039",
+    "term": "仁济医用棉签100支",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0040",
+    "term": "明康医用棉球100支",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0041",
+    "term": "仁济医用纱布块10片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0042",
+    "term": "仁济医用纱布块",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0043",
+    "term": "安宁医用纱布块10片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0044",
+    "term": "仁济医用绷带10片",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0045",
+    "term": "安宁医用口罩10只",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0046",
+    "term": "安宁医用口罩",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0047",
+    "term": "康安医用口罩10只",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  },
+  {
+    "term_id": "T0048",
+    "term": "安宁医用防护面罩10只",
+    "index_version": "idx-20260920-1",
+    "enabled": true
+  }
+]

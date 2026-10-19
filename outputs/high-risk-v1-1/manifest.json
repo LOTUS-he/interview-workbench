@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+  "created_at": "2026-09-21T12:20:38.298063+00:00",
+  "mode": "mock",
+  "phase": "complete",
+  "config_sha256": "dee1960fbf0f8a35f2e50061d4ca3d21098fc9debc8c485895c322eb507f1476",
+  "database_sha256": "13d869b076f534cf99fe6fa77f270dd3780a9561b5b9f47fc39c190a82d0f904",
+  "source_hashes": {
+    "SKILL.md": "ac4294d49094bc1d2a6ae16509098f8d317047db24d13c3ded9ade2ec0cb4074",
+    "assets/review-report-template.md": "9af8257f7b8465aae4b5b36d8714fc8d43ab64a4394ba2f2eae2b1ac238bb641",
+    "references/INDEX.md": "63fb4a34f015c4ebde22dd3a5ed413c8b2ea064adf8568c2a6bbed2604dc116c",
+    "references/admission-rules.md": "4232f51ae3f5cce5d53fcc3b56f882b3b0850be65a0c1219b0fa40185ad2f75b",
+    "references/business-scope.md": "5308d628118c7e4117276c083f6c8cded7b9a07d53ea31e44a98b31431009028",
+    "references/decision-policy.md": "b6fe9086840be8f905bca0eaa163f427fe6acec97a01a063d7e58dcfd9c9cfe2",
+    "references/eligibility-rules.yaml": "395dffeb4f38a27dcc1f790406bedc5fa68fe8dc10e65befc2377c92386b18f8",
+    "references/field-dictionary.yaml": "245c5d84e874d139ad7fab5f5c8c81caf7bac685ead7af5c2b3951c80a6644e1",
+    "references/glossary.md": "aea8ae1d0f2d61c495609945bd1298f8b0c14e918b646486634a6cdd739d32ff",
+    "references/integration-contract.md": "cdf1b46a4c491cec1e41c139ba808c2b829f8dc69d8de1d2cca495fd29c0d023",
+    "references/metric-definitions.md": "fa758532ba29c5f3f17c0ece16c3ba631ce01d54051a28ca3b51cedf3fbab5be",
+    "references/output-contract.md": "0ef89909f099865e28003bf592bb2d26c70b0b7d5a7a71ecc31503e871721cc0",
+    "references/relevance-rules.md": "f8eae2f97140ccab8922a157ef78765849b9144734fb3f57fd348802d75f3eed",
+    "references/resource-map.yaml": "521fa6b0d7aec27014c7ee29871da53518cee9941450bcd19345a16796dfd3aa",
+    "references/rewrite-rules.md": "b03a16ab195c5ba752cfdf5a6d72c4fcaaf3c38f196ff247251239c5afbaac81",
+    "references/table-relations.md": "2f0a4d32ff41cd9e9a4c0fc3cc787e4211be419d5e66e62a6fa4adf65a152daa",
+    "references/terminology-catalog.json": "156a548618319afc65d651be3ea9fc003304f41c0800a4cdca953725b6520486",
+    "schemas/handoff.schema.json": "96e3254923f091bed1f493abb7850d6400825628258825039d7ec2006af4b317",
+    "schemas/input.schema.json": "4ea8e8abcbf9766e25daa847c267b981ae822accee6fefb501b8f5619345e569",
+    "schemas/step-result.schema.json": "16f7761bf28b41e2c12d2284f75cb315d3e13b4276ddd07a6c819ab5fb2da188",
+    "scripts/README.md": "bdbc737b64ec2c7d40a7ce093318e5c7dc5881d8d2fa898078e5b64717da5c70",
+    "scripts/build_report.py": "26d440759090024979a9de68b8451d88ce708af7a79979be1da1bfe9ecd917cb",
+    "scripts/check_constraints.py": "99a77a343db905538f04a96a3454782b4bf1b4b68fd1496bfe4d8463b67e88ea",
+    "scripts/fetch_evidence.py": "63a6bda3f5ab9c7db171697f6ae2c17f493c7b691b6c53b1665eb79387d4406c",
+    "scripts/query_history.py": "d731bbb4f0efa980ffdfb2a37312fcbbf2cd9d4ead5f7c28e7cef390a88775c2",
+    "scripts/runtime_io.py": "bd8d463f2162227aba4886ee348a890123369f9c78c20a3ab48bd80b722a21c8",
+    "scripts/validate_input.py": "4001d8576cf6387ba766c30dcd0ea581964e7d94cdac05d93f2ab18ddee27890",
+    "scripts/validate_outputs.py": "16618ec42f18bbd4b77fbfb6e6a1bb51a7d5c4069e9ded884f5cf674c4cab92c",
+    "scripts/validate_resources.py": "0fbfc90d75a82f362c7bb7e0abcbd911e5f33f9184c0b3caee21a175f70ae12b",
+    "sql/INDEX.md": "ea2a945c170b7a883a91aff8471c09d18661aca31ff9d2d848c6ca1d05fcffc2",
+    "sql/query_gap.sql": "f4938c936ff559119cd98fd101266503264d60acd5fbf2c865927088644db7d9"
+  },
+  "input_sha256": "fabdfdc22a2e27ed06cfa05361e3f208ce2172940e6fdd02a859823c433a3f9a",
+  "steps": {
+    "1": {
+      "status": "success"
+    },
+    "2": {
+      "status": "skipped",
+      "reason": "admission_stopped"
+    },
+    "3": {
+      "status": "success",
+      "risk": "L0"
+    },
+    "4": {
+      "status": "skipped",
+      "reason": "admission_stopped"
+    },
+    "5": {
+      "status": "skipped",
+      "reason": "no_admitted_indexed_rewrite"
+    },
+    "6": {
+      "status": "skipped",
+      "reason": "no_candidates"
+    },
+    "7": {
+      "status": "success"
+    },
+    "8": {
+      "status": "success"
+    }
+  },
+  "decision_hashes": {
+    "query-decision.json": "4b1477413420c9670880685378e67cfb786568606515170c74f127938d07f4ec",
+    "item-decision.json": "b963bb98422cd2be53690375bbefaf7a7522fa8881881c1d2f21b3f595b2e179"
+  },
+  "model_calls": [
+    {
+      "phase": "query",
+      "producer": {
+        "type": "agent",
+        "model": "Codex-main (model version not exposed)"
+      },
+      "received_at": "2026-09-21T12:20:52.580786+00:00",
+      "mode": "agent_handoff"
+    }
+  ],
+  "evidence_hashes": {
+    "evidence/candidates.json": "079e895080f057effe453c56918979ed836079a02ae474dd6c54bf9ca96fc3e4",
+    "evidence/catalog.json": "32cab9b07a5bcf642fe5a27f64ad8c69dfdb942dea53235ae817d9c0e199cb7a",
+    "evidence/config-public.json": "2c3cfcf57542f9e34a78d5f8c38f108453a61158462feb34f2575e11732d90e8",
+    "evidence/history.json": "28f2731e17dfcf1ab1f92eba0355c813a7b50df9a6b733adbf6e99ad183f6c5f",
+    "evidence/task.json": "fabdfdc22a2e27ed06cfa05361e3f208ce2172940e6fdd02a859823c433a3f9a",
+    "evidence/terminology.json": "aa2581bd2ec1c87424045e4ef43b322316a454db7a3f35473e83e2654cf3960f"
+  },
+  "runtime_binding": "local-only .runtime.json; excluded from release",
+  "reproduction": {
+    "config_template": "config/demo.yaml",
+    "database_builder": "mock/init_db.py",
+    "database_seed": "mock/seed.sql"
+  },
+  "revision": {
+    "type": "deterministic_snapshot_rebuild",
+    "version": "1.1",
+    "rebuilt_at": "2026-09-21T15:08:55.199257+00:00",
+    "source_archive": "医药Query安全扩召回_业务工程_v1",
+    "source_archive_sha256": "8bbf0a88e9bc9d2d8abba0ce6b473760344b48ab07f90396b930f32523a320eb",
+    "source_run": "high-risk-02",
+    "source_manifest_sha256": "41b242f5cb1a9d6b4ad22d3270e52d8746f43b7defce0837aef2d74ec1d5e357",
+    "new_model_calls": 0,
+    "new_product_api_calls": 0,
+    "note": "Original semantic decisions and product snapshot retained. Historical SQL, hard constraints and report rerun; not a new live audit."
+  },
+  "completed_at": "2026-09-21T15:08:55.279708+00:00",
+  "artifact_hashes": {
+    "steps/00_input.json": "22e0ec52323f2e294ed45741e800d04d7397674dfddc4bab54016222a3fd5782",
+    "steps/10_query_profile.json": "807770282650b1d161fd2bf900f23f088f5afa371117cd25b68ffc9c7c3b5b76",
+    "steps/20_rewrite_check.json": "89b0e7eb22c238d27c644dd523afe5464fd86e695ea75cc8023f392ca6f1b508",
+    "steps/30_term_item_check.json": "37452be6b416518ea479ffe7a2ecb1182e9dd71e56911ea0049215a43a9557ed",
+    "steps/40_final_review.json": "dbcbdd7d97923f7f591dbaa5aede62d40eec538f027a7d514d6fb5f4cb264e64",
+    "steps/50_decision_report.json": "c4aed57811592ffda8a895e6c88c9169b8d4a40e8c88c417dcaac10cccfa52cc",
+    "review-report.md": "f87592c14e85eab7f3f56a4e089f02c4e4b34c284cbbb3f0011148f824f403cf"
+  },
+  "source_archive": "医药Query安全扩召回_业务工程_v1"
+}

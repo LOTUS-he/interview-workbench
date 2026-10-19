@@ -1,0 +1,1468 @@
+{
+  "schema_version": "1.0",
+  "generated_by": "scripts/validate_resources.py",
+  "skill": "medical-query-safety-review",
+  "strict": true,
+  "stable_rule_ids": [
+    "ADMIT-001",
+    "AUDIENCE-001",
+    "BRAND-001",
+    "DECISION-001",
+    "ELIG-001",
+    "EVIDENCE-001",
+    "FORM-001",
+    "PACK-001",
+    "REWRITE-001",
+    "SCOPE-001",
+    "TIME-001",
+    "VALUE-001"
+  ],
+  "rule_ids": [
+    "ADM-001",
+    "ADM-002",
+    "ADM-003",
+    "ADM-004",
+    "ADM-005",
+    "ADMIT-001",
+    "AUDIENCE-001",
+    "BRAND-001",
+    "DATA-001",
+    "DATA-002",
+    "DATA-003",
+    "DATA-004",
+    "DEC-001",
+    "DEC-002",
+    "DEC-003",
+    "DEC-004",
+    "DEC-005",
+    "DEC-006",
+    "DEC-007",
+    "DECISION-001",
+    "ELIG-001",
+    "EVIDENCE-001",
+    "FORM-001",
+    "INT-001",
+    "INT-002",
+    "INT-003",
+    "INT-004",
+    "INT-005",
+    "METRIC-001",
+    "METRIC-002",
+    "METRIC-003",
+    "METRIC-004",
+    "METRIC-005",
+    "METRIC-006",
+    "METRIC-007",
+    "OUT-001",
+    "OUT-002",
+    "OUT-003",
+    "OUT-004",
+    "PACK-001",
+    "REL-001",
+    "REL-002",
+    "REL-003",
+    "REL-004",
+    "REL-005",
+    "REL-006",
+    "REWRITE-001",
+    "RWR-001",
+    "RWR-002",
+    "RWR-003",
+    "RWR-004",
+    "RWR-005",
+    "RWR-006",
+    "SCOPE-001",
+    "SCOPE-002",
+    "TIME-001",
+    "VALUE-001"
+  ],
+  "missing": [],
+  "by_step": {
+    "01": {
+      "name": "读取任务与业务规则",
+      "reads": [
+        "REF_SCOPE",
+        "REF_GLOSSARY",
+        "REF_OUTPUT"
+      ],
+      "execute": [
+        "SCRIPT_INPUT",
+        "../../tools/run_demo.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ],
+      "outputs": [
+        "00"
+      ],
+      "rules": [
+        "ADM-001",
+        "INT-001",
+        "SCOPE-001",
+        "SCOPE-002"
+      ]
+    },
+    "02": {
+      "name": "确认扩召回问题",
+      "reads": [
+        "REF_METRICS",
+        "REF_FIELDS",
+        "REF_RELATIONS"
+      ],
+      "execute": [
+        "SCRIPT_HISTORY"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ],
+      "outputs": [
+        "00"
+      ],
+      "rules": [
+        "DATA-001",
+        "DATA-002",
+        "DATA-003",
+        "DATA-004",
+        "DEC-005",
+        "METRIC-001",
+        "METRIC-002",
+        "METRIC-003",
+        "METRIC-004",
+        "METRIC-005",
+        "METRIC-006",
+        "METRIC-007",
+        "TIME-001",
+        "VALUE-001"
+      ]
+    },
+    "03": {
+      "name": "Query 准入与结构化识别",
+      "reads": [
+        "REF_ADMISSION",
+        "REF_GLOSSARY",
+        "REF_LEXICON"
+      ],
+      "execute": [
+        "SCHEMA_HANDOFF"
+      ],
+      "tests": [
+        "../../tests/test_rules.py",
+        "../../tests/test_pipeline.py"
+      ],
+      "outputs": [
+        "10"
+      ],
+      "rules": [
+        "ADM-001",
+        "ADM-002",
+        "ADM-003",
+        "ADM-004",
+        "ADM-005",
+        "ADMIT-001",
+        "AUDIENCE-001",
+        "BRAND-001",
+        "DEC-004",
+        "EVIDENCE-001",
+        "FORM-001",
+        "INT-005",
+        "PACK-001"
+      ]
+    },
+    "04": {
+      "name": "候选 term 改写审核",
+      "reads": [
+        "REF_REWRITE",
+        "REF_RELEVANCE",
+        "REF_INTEGRATION"
+      ],
+      "execute": [
+        "SCRIPT_EVIDENCE",
+        "SCHEMA_HANDOFF"
+      ],
+      "tests": [
+        "../../tests/test_api.py",
+        "../../tests/test_pipeline.py"
+      ],
+      "outputs": [
+        "20"
+      ],
+      "rules": [
+        "ADM-003",
+        "AUDIENCE-001",
+        "BRAND-001",
+        "DEC-004",
+        "FORM-001",
+        "INT-001",
+        "INT-005",
+        "PACK-001",
+        "REWRITE-001",
+        "RWR-001",
+        "RWR-002",
+        "RWR-003",
+        "RWR-004",
+        "RWR-005",
+        "RWR-006"
+      ]
+    },
+    "05": {
+      "name": "获取候选商品与当前证据",
+      "reads": [
+        "REF_INTEGRATION",
+        "REF_ELIGIBILITY",
+        "REF_FIELDS"
+      ],
+      "execute": [
+        "SCRIPT_EVIDENCE"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ],
+      "outputs": [
+        "30"
+      ],
+      "rules": [
+        "ELIG-001",
+        "INT-001",
+        "INT-002",
+        "INT-003",
+        "INT-004",
+        "REL-005",
+        "TIME-001"
+      ]
+    },
+    "06": {
+      "name": "三段相关性与资格审核",
+      "reads": [
+        "REF_RELEVANCE",
+        "REF_ELIGIBILITY",
+        "REF_OUTPUT"
+      ],
+      "execute": [
+        "SCRIPT_CONSTRAINTS",
+        "SCHEMA_HANDOFF"
+      ],
+      "tests": [
+        "../../tests/test_rules.py",
+        "../../tests/test_pipeline.py"
+      ],
+      "outputs": [
+        "30",
+        "40"
+      ],
+      "rules": [
+        "ADM-005",
+        "AUDIENCE-001",
+        "BRAND-001",
+        "DEC-006",
+        "ELIG-001",
+        "EVIDENCE-001",
+        "FORM-001",
+        "PACK-001",
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-004",
+        "REL-005",
+        "REL-006",
+        "RWR-002",
+        "RWR-005",
+        "TIME-001"
+      ]
+    },
+    "07": {
+      "name": "形成入池与分层建议",
+      "reads": [
+        "REF_POLICY",
+        "REF_METRICS",
+        "REF_ELIGIBILITY"
+      ],
+      "execute": [
+        "SCHEMA_STEP"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ],
+      "outputs": [
+        "40"
+      ],
+      "rules": [
+        "DEC-001",
+        "DEC-002",
+        "DEC-003",
+        "DEC-004",
+        "DEC-005",
+        "DEC-006",
+        "DECISION-001",
+        "ELIG-001",
+        "METRIC-001",
+        "METRIC-004",
+        "SCOPE-002",
+        "VALUE-001"
+      ]
+    },
+    "08": {
+      "name": "校验结论并生成审核包",
+      "reads": [
+        "REF_OUTPUT",
+        "SCHEMA_INPUT",
+        "SCHEMA_HANDOFF",
+        "SCHEMA_STEP",
+        "ASSET_REPORT",
+        "REF_MAP"
+      ],
+      "execute": [
+        "SCRIPT_RESOURCES",
+        "SCRIPT_OUTPUTS",
+        "SCRIPT_REPORT"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ],
+      "outputs": [
+        "50"
+      ],
+      "rules": [
+        "DEC-001",
+        "DEC-003",
+        "DEC-007",
+        "DECISION-001",
+        "EVIDENCE-001",
+        "OUT-001",
+        "OUT-002",
+        "OUT-003",
+        "OUT-004",
+        "SCOPE-002"
+      ]
+    }
+  },
+  "by_rule": {
+    "ADM-001": {
+      "source": "references/admission-rules.md",
+      "steps": [
+        "01",
+        "03"
+      ],
+      "scripts": [
+        "scripts/validate_input.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "ADM-002": {
+      "source": "references/admission-rules.md",
+      "steps": [
+        "03"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "ADM-003": {
+      "source": "references/admission-rules.md",
+      "steps": [
+        "03",
+        "04"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "ADM-004": {
+      "source": "references/admission-rules.md",
+      "steps": [
+        "03"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "ADM-005": {
+      "source": "references/admission-rules.md",
+      "steps": [
+        "03",
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "ADMIT-001": {
+      "source": "references/admission-rules.md",
+      "steps": [
+        "03"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "AUDIENCE-001": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "03",
+        "04",
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "BRAND-001": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "03",
+        "04",
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "DATA-001": {
+      "source": "references/table-relations.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "DATA-002": {
+      "source": "references/table-relations.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "DATA-003": {
+      "source": "references/table-relations.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "DATA-004": {
+      "source": "references/table-relations.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "DEC-001": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "07",
+        "08"
+      ],
+      "scripts": [
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "DEC-002": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "07"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "DEC-003": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "07",
+        "08"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py",
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "DEC-004": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "03",
+        "04",
+        "07"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "DEC-005": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "02",
+        "07"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "DEC-006": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "06",
+        "07"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ]
+    },
+    "DEC-007": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "08"
+      ],
+      "scripts": [
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "DECISION-001": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "07",
+        "08"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py",
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py",
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "ELIG-001": {
+      "source": "references/eligibility-rules.yaml",
+      "steps": [
+        "05",
+        "06",
+        "07"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py",
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py",
+        "../../tests/test_api.py"
+      ]
+    },
+    "EVIDENCE-001": {
+      "source": "references/admission-rules.md",
+      "steps": [
+        "03",
+        "06",
+        "08"
+      ],
+      "scripts": [
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py",
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "FORM-001": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "03",
+        "04",
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "INT-001": {
+      "source": "references/integration-contract.md",
+      "steps": [
+        "01",
+        "04",
+        "05"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ]
+    },
+    "INT-002": {
+      "source": "references/integration-contract.md",
+      "steps": [
+        "05"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ]
+    },
+    "INT-003": {
+      "source": "references/integration-contract.md",
+      "steps": [
+        "05"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ]
+    },
+    "INT-004": {
+      "source": "references/integration-contract.md",
+      "steps": [
+        "05"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ]
+    },
+    "INT-005": {
+      "source": "references/integration-contract.md",
+      "steps": [
+        "03",
+        "04"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ]
+    },
+    "METRIC-001": {
+      "source": "references/metric-definitions.md",
+      "steps": [
+        "02",
+        "07"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "METRIC-002": {
+      "source": "references/metric-definitions.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "METRIC-003": {
+      "source": "references/metric-definitions.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "METRIC-004": {
+      "source": "references/metric-definitions.md",
+      "steps": [
+        "02",
+        "07"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "METRIC-005": {
+      "source": "references/metric-definitions.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "METRIC-006": {
+      "source": "references/metric-definitions.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "METRIC-007": {
+      "source": "references/metric-definitions.md",
+      "steps": [
+        "02"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py"
+      ]
+    },
+    "OUT-001": {
+      "source": "references/output-contract.md",
+      "steps": [
+        "08"
+      ],
+      "scripts": [
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "OUT-002": {
+      "source": "references/output-contract.md",
+      "steps": [
+        "08"
+      ],
+      "scripts": [
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "OUT-003": {
+      "source": "references/output-contract.md",
+      "steps": [
+        "08"
+      ],
+      "scripts": [
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "OUT-004": {
+      "source": "references/output-contract.md",
+      "steps": [
+        "08"
+      ],
+      "scripts": [
+        "scripts/validate_outputs.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "PACK-001": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "03",
+        "04",
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "REL-001": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "06"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "REL-002": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "REL-003": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "REL-004": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "06"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "REL-005": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "05",
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py",
+        "../../tests/test_rules.py"
+      ]
+    },
+    "REL-006": {
+      "source": "references/relevance-rules.md",
+      "steps": [
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "REWRITE-001": {
+      "source": "references/rewrite-rules.md",
+      "steps": [
+        "04"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py",
+        "../../tests/test_api.py"
+      ]
+    },
+    "RWR-001": {
+      "source": "references/rewrite-rules.md",
+      "steps": [
+        "04"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "RWR-002": {
+      "source": "references/rewrite-rules.md",
+      "steps": [
+        "04",
+        "06"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "RWR-003": {
+      "source": "references/rewrite-rules.md",
+      "steps": [
+        "04"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_api.py"
+      ]
+    },
+    "RWR-004": {
+      "source": "references/rewrite-rules.md",
+      "steps": [
+        "04"
+      ],
+      "scripts": [],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "RWR-005": {
+      "source": "references/rewrite-rules.md",
+      "steps": [
+        "04",
+        "06"
+      ],
+      "scripts": [
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_rules.py"
+      ]
+    },
+    "RWR-006": {
+      "source": "references/rewrite-rules.md",
+      "steps": [
+        "04"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "SCOPE-001": {
+      "source": "references/business-scope.md",
+      "steps": [
+        "01"
+      ],
+      "scripts": [
+        "scripts/validate_input.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "SCOPE-002": {
+      "source": "references/business-scope.md",
+      "steps": [
+        "01",
+        "07",
+        "08"
+      ],
+      "scripts": [
+        "../../tools/run_demo.py"
+      ],
+      "tests": [
+        "../../tests/test_pipeline.py"
+      ]
+    },
+    "TIME-001": {
+      "source": "references/integration-contract.md",
+      "steps": [
+        "02",
+        "05",
+        "06"
+      ],
+      "scripts": [
+        "scripts/fetch_evidence.py",
+        "scripts/query_history.py",
+        "scripts/check_constraints.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py",
+        "../../tests/test_api.py"
+      ]
+    },
+    "VALUE-001": {
+      "source": "references/decision-policy.md",
+      "steps": [
+        "02",
+        "07"
+      ],
+      "scripts": [
+        "scripts/query_history.py"
+      ],
+      "tests": [
+        "../../tests/test_sql.py",
+        "../../tests/test_pipeline.py"
+      ]
+    }
+  },
+  "by_resource": {
+    "SKILL": {
+      "path": "SKILL.md",
+      "kind": "entrypoint",
+      "exists": true,
+      "required": true,
+      "steps": [],
+      "rules": []
+    },
+    "REF_INDEX": {
+      "path": "references/INDEX.md",
+      "kind": "index",
+      "exists": true,
+      "required": true,
+      "steps": [],
+      "rules": []
+    },
+    "REF_SCOPE": {
+      "path": "references/business-scope.md",
+      "kind": "reference",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "01"
+      ],
+      "rules": [
+        "SCOPE-001",
+        "SCOPE-002"
+      ]
+    },
+    "REF_GLOSSARY": {
+      "path": "references/glossary.md",
+      "kind": "reference",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "01",
+        "03"
+      ],
+      "rules": []
+    },
+    "REF_METRICS": {
+      "path": "references/metric-definitions.md",
+      "kind": "reference",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "02",
+        "07"
+      ],
+      "rules": [
+        "METRIC-001",
+        "METRIC-002",
+        "METRIC-003",
+        "METRIC-004",
+        "METRIC-005",
+        "METRIC-006",
+        "METRIC-007"
+      ]
+    },
+    "REF_FIELDS": {
+      "path": "references/field-dictionary.yaml",
+      "kind": "schema-reference",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "02",
+        "05"
+      ],
+      "rules": []
+    },
+    "REF_RELATIONS": {
+      "path": "references/table-relations.md",
+      "kind": "reference",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "02"
+      ],
+      "rules": [
+        "DATA-001",
+        "DATA-002",
+        "DATA-003",
+        "DATA-004"
+      ]
+    },
+    "REF_LEXICON": {
+      "path": "references/terminology-catalog.json",
+      "kind": "dictionary",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "03"
+      ],
+      "rules": []
+    },
+    "REF_ADMISSION": {
+      "path": "references/admission-rules.md",
+      "kind": "rules",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "03"
+      ],
+      "rules": [
+        "ADM-001",
+        "ADM-002",
+        "ADM-003",
+        "ADM-004",
+        "ADM-005",
+        "ADMIT-001",
+        "EVIDENCE-001"
+      ]
+    },
+    "REF_REWRITE": {
+      "path": "references/rewrite-rules.md",
+      "kind": "rules",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "04"
+      ],
+      "rules": [
+        "REWRITE-001",
+        "RWR-001",
+        "RWR-002",
+        "RWR-003",
+        "RWR-004",
+        "RWR-005",
+        "RWR-006"
+      ]
+    },
+    "REF_RELEVANCE": {
+      "path": "references/relevance-rules.md",
+      "kind": "rules",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "04",
+        "06"
+      ],
+      "rules": [
+        "AUDIENCE-001",
+        "BRAND-001",
+        "FORM-001",
+        "PACK-001",
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-004",
+        "REL-005",
+        "REL-006"
+      ]
+    },
+    "REF_ELIGIBILITY": {
+      "path": "references/eligibility-rules.yaml",
+      "kind": "rules",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "05",
+        "06",
+        "07"
+      ],
+      "rules": [
+        "ELIG-001"
+      ]
+    },
+    "REF_POLICY": {
+      "path": "references/decision-policy.md",
+      "kind": "rules",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "07"
+      ],
+      "rules": [
+        "DEC-001",
+        "DEC-002",
+        "DEC-003",
+        "DEC-004",
+        "DEC-005",
+        "DEC-006",
+        "DEC-007",
+        "DECISION-001",
+        "VALUE-001"
+      ]
+    },
+    "REF_INTEGRATION": {
+      "path": "references/integration-contract.md",
+      "kind": "contract",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "04",
+        "05"
+      ],
+      "rules": [
+        "INT-001",
+        "INT-002",
+        "INT-003",
+        "INT-004",
+        "INT-005",
+        "TIME-001"
+      ]
+    },
+    "REF_OUTPUT": {
+      "path": "references/output-contract.md",
+      "kind": "contract",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "01",
+        "06",
+        "08"
+      ],
+      "rules": [
+        "OUT-001",
+        "OUT-002",
+        "OUT-003",
+        "OUT-004"
+      ]
+    },
+    "REF_MAP": {
+      "path": "references/resource-map.yaml",
+      "kind": "index",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "08"
+      ],
+      "rules": []
+    },
+    "SCHEMA_INPUT": {
+      "path": "schemas/input.schema.json",
+      "kind": "schema",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "08"
+      ],
+      "rules": []
+    },
+    "SCHEMA_HANDOFF": {
+      "path": "schemas/handoff.schema.json",
+      "kind": "schema",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "03",
+        "04",
+        "06",
+        "08"
+      ],
+      "rules": []
+    },
+    "SCHEMA_STEP": {
+      "path": "schemas/step-result.schema.json",
+      "kind": "schema",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "07",
+        "08"
+      ],
+      "rules": []
+    },
+    "ASSET_REPORT": {
+      "path": "assets/review-report-template.md",
+      "kind": "template",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "08"
+      ],
+      "rules": []
+    },
+    "SCRIPT_IO": {
+      "path": "scripts/runtime_io.py",
+      "kind": "helper",
+      "exists": true,
+      "required": true,
+      "steps": [],
+      "rules": []
+    },
+    "SCRIPT_INPUT": {
+      "path": "scripts/validate_input.py",
+      "kind": "validator",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "01"
+      ],
+      "rules": [
+        "ADM-001",
+        "SCOPE-001"
+      ]
+    },
+    "SCRIPT_HISTORY": {
+      "path": "scripts/query_history.py",
+      "kind": "deterministic-tool",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "02"
+      ],
+      "rules": [
+        "DATA-001",
+        "DATA-002",
+        "DATA-003",
+        "DATA-004",
+        "DEC-005",
+        "METRIC-001",
+        "METRIC-002",
+        "METRIC-003",
+        "METRIC-004",
+        "METRIC-005",
+        "METRIC-006",
+        "METRIC-007",
+        "TIME-001",
+        "VALUE-001"
+      ]
+    },
+    "SCRIPT_EVIDENCE": {
+      "path": "scripts/fetch_evidence.py",
+      "kind": "deterministic-tool",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "04",
+        "05"
+      ],
+      "rules": [
+        "ELIG-001",
+        "INT-001",
+        "INT-002",
+        "INT-003",
+        "INT-004",
+        "INT-005",
+        "REWRITE-001",
+        "RWR-003",
+        "RWR-006",
+        "TIME-001"
+      ]
+    },
+    "SCRIPT_CONSTRAINTS": {
+      "path": "scripts/check_constraints.py",
+      "kind": "validator",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "06"
+      ],
+      "rules": [
+        "ADM-005",
+        "AUDIENCE-001",
+        "BRAND-001",
+        "DEC-002",
+        "DEC-003",
+        "DEC-004",
+        "DEC-006",
+        "DECISION-001",
+        "ELIG-001",
+        "FORM-001",
+        "PACK-001",
+        "REL-002",
+        "REL-003",
+        "REL-005",
+        "REL-006",
+        "RWR-005",
+        "TIME-001"
+      ]
+    },
+    "SCRIPT_OUTPUTS": {
+      "path": "scripts/validate_outputs.py",
+      "kind": "validator",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "08"
+      ],
+      "rules": [
+        "DEC-001",
+        "DEC-003",
+        "DEC-007",
+        "DECISION-001",
+        "EVIDENCE-001",
+        "OUT-001",
+        "OUT-002",
+        "OUT-003",
+        "OUT-004"
+      ]
+    },
+    "SCRIPT_REPORT": {
+      "path": "scripts/build_report.py",
+      "kind": "report-builder",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "08"
+      ],
+      "rules": []
+    },
+    "SCRIPT_RESOURCES": {
+      "path": "scripts/validate_resources.py",
+      "kind": "validator",
+      "exists": true,
+      "required": true,
+      "steps": [
+        "08"
+      ],
+      "rules": []
+    }
+  },
+  "output": "medical-query-safety-review/scripts/validate_resources.py（本运行目录内生成）"
+}

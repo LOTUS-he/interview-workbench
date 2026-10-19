@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.1",
+  "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+  "step_id": "00",
+  "status": "partial",
+  "data": {
+    "task": {
+      "query_id": "Q0014",
+      "raw_query": "康安维生素C咀嚼片怎么用一次多少",
+      "city_id": "330100",
+      "region_id": "330100-B",
+      "scene_id": "medical_search",
+      "history_start": "2026-09-13T00:00:00+08:00",
+      "history_end_exclusive": "2026-09-20T00:00:00+08:00"
+    },
+    "history_ref": {
+      "path": "evidence/history.json",
+      "sha256": "28f2731e17dfcf1ab1f92eba0355c813a7b50df9a6b733adbf6e99ad183f6c5f"
+    },
+    "execution_note": "部分完成：必要证据未完整取得或本分支不执行历史核验；详见history及errors。"
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/history.json"
+  ],
+  "rule_refs": []
+}

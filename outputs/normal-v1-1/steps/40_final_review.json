@@ -1,0 +1,1079 @@
+{
+  "schema_version": "1.1",
+  "run_id": "10be6911a015450988e3bc06f61cd794",
+  "step_id": "40",
+  "status": "success",
+  "data": {
+    "rewrites": [
+      {
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "pass",
+        "decision": "pass",
+        "model_decision": "pass",
+        "reasons": [],
+        "rule_refs": [
+          "BRAND-001",
+          "REWRITE-001",
+          "FORM-001",
+          "PACK-001"
+        ],
+        "evidence_refs": [
+          "evidence/task.json#/raw_query",
+          "evidence/terminology.json#/aliases/0",
+          "evidence/catalog.json#/terms/0"
+        ],
+        "term": "康安维生素C咀嚼片60片"
+      },
+      {
+        "term_id": "T0002",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "decision": "reject",
+        "model_decision": "reject",
+        "reasons": [
+          "REWRITE-001: query model rejected this rewrite"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "ADMIT-001"
+        ],
+        "evidence_refs": [
+          "evidence/task.json#/raw_query",
+          "evidence/catalog.json#/terms/1"
+        ]
+      },
+      {
+        "term_id": "T0003",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "decision": "reject",
+        "model_decision": "reject",
+        "reasons": [
+          "REWRITE-001: query model rejected this rewrite"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "ADMIT-001"
+        ],
+        "evidence_refs": [
+          "evidence/task.json#/raw_query",
+          "evidence/catalog.json#/terms/2"
+        ]
+      },
+      {
+        "term_id": "T0004",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "decision": "reject",
+        "model_decision": "reject",
+        "reasons": [
+          "REWRITE-001: query model rejected this rewrite"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "ADMIT-001"
+        ],
+        "evidence_refs": [
+          "evidence/task.json#/raw_query",
+          "evidence/catalog.json#/terms/3"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "candidate_id": "A00001",
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "pass",
+        "reasons": [],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/0",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/0/product"
+        ],
+        "sku_id": "SKU0001",
+        "offer_id": "O00001",
+        "store_id": "S001",
+        "ad_plan_id": "A00001",
+        "model_relevance": "pass"
+      },
+      {
+        "candidate_id": "A00002",
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "reject",
+        "reasons": [
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/1",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/1/product"
+        ],
+        "sku_id": "SKU0001",
+        "offer_id": "O00002",
+        "store_id": "S002",
+        "ad_plan_id": "A00002",
+        "model_relevance": "pass"
+      },
+      {
+        "candidate_id": "A00003",
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "reject",
+        "reasons": [
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/2",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/2/product"
+        ],
+        "sku_id": "SKU0001",
+        "offer_id": "O00003",
+        "store_id": "S003",
+        "ad_plan_id": "A00003",
+        "model_relevance": "pass"
+      },
+      {
+        "candidate_id": "A00010",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "pass",
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/3",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/3/product"
+        ],
+        "sku_id": "SKU0002",
+        "offer_id": "O00010",
+        "store_id": "S002",
+        "ad_plan_id": "A00010",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00011",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/4",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/4/product"
+        ],
+        "sku_id": "SKU0002",
+        "offer_id": "O00011",
+        "store_id": "S003",
+        "ad_plan_id": "A00011",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00012",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/5",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/5/product"
+        ],
+        "sku_id": "SKU0002",
+        "offer_id": "O00012",
+        "store_id": "S004",
+        "ad_plan_id": "A00012",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00019",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "pass",
+        "reasons": [
+          "FORM-001: product dosage_form conflicts with explicit query attribute"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/6",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/6/product"
+        ],
+        "sku_id": "SKU0003",
+        "offer_id": "O00019",
+        "store_id": "S003",
+        "ad_plan_id": "A00019",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00020",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "reasons": [
+          "FORM-001: product dosage_form conflicts with explicit query attribute",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/7",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/7/product"
+        ],
+        "sku_id": "SKU0003",
+        "offer_id": "O00020",
+        "store_id": "S004",
+        "ad_plan_id": "A00020",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00021",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "reasons": [
+          "FORM-001: product dosage_form conflicts with explicit query attribute",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/8",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/8/product"
+        ],
+        "sku_id": "SKU0003",
+        "offer_id": "O00021",
+        "store_id": "S005",
+        "ad_plan_id": "A00021",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00028",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "pass",
+        "reasons": [
+          "BRAND-001: product brand_name conflicts with explicit query brand"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/9",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/9/product"
+        ],
+        "sku_id": "SKU0004",
+        "offer_id": "O00028",
+        "store_id": "S004",
+        "ad_plan_id": "A00028",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00029",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "reasons": [
+          "BRAND-001: product brand_name conflicts with explicit query brand",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/10",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/10/product"
+        ],
+        "sku_id": "SKU0004",
+        "offer_id": "O00029",
+        "store_id": "S005",
+        "ad_plan_id": "A00029",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00030",
+        "term_id": "T0001",
+        "relevance": "reject",
+        "eligibility": "reject",
+        "reasons": [
+          "BRAND-001: product brand_name conflicts with explicit query brand",
+          "ELIG-001: merchant_qualification=expired",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/11",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/11/product"
+        ],
+        "sku_id": "SKU0004",
+        "offer_id": "O00030",
+        "store_id": "S006",
+        "ad_plan_id": "A00030",
+        "model_relevance": "reject"
+      },
+      {
+        "candidate_id": "A00037",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "pass",
+        "reasons": [
+          "AUDIENCE-001: product adds a specific audience not expressed by query"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "AUDIENCE-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/12",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/12/product"
+        ],
+        "sku_id": "SKU0005",
+        "offer_id": "O00037",
+        "store_id": "S005",
+        "ad_plan_id": "A00037",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00038",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "reject",
+        "reasons": [
+          "AUDIENCE-001: product adds a specific audience not expressed by query",
+          "ELIG-001: merchant_qualification=expired",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "AUDIENCE-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/13",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/13/product"
+        ],
+        "sku_id": "SKU0005",
+        "offer_id": "O00038",
+        "store_id": "S006",
+        "ad_plan_id": "A00038",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00039",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "reject",
+        "reasons": [
+          "AUDIENCE-001: product adds a specific audience not expressed by query",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "AUDIENCE-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/14",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/14/product"
+        ],
+        "sku_id": "SKU0005",
+        "offer_id": "O00039",
+        "store_id": "S001",
+        "ad_plan_id": "A00039",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00046",
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "reject",
+        "reasons": [
+          "ELIG-001: qualification_status=expired",
+          "ELIG-001: prescription drug expansion is out of scope",
+          "ELIG-001: merchant_qualification=expired"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/15",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/15/product"
+        ],
+        "sku_id": "SKU0006",
+        "offer_id": "O00046",
+        "store_id": "S006",
+        "ad_plan_id": "A00046",
+        "model_relevance": "pass"
+      },
+      {
+        "candidate_id": "A00047",
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "reject",
+        "reasons": [
+          "ELIG-001: qualification_status=expired",
+          "ELIG-001: prescription drug expansion is out of scope",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/16",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/16/product"
+        ],
+        "sku_id": "SKU0006",
+        "offer_id": "O00047",
+        "store_id": "S001",
+        "ad_plan_id": "A00047",
+        "model_relevance": "pass"
+      },
+      {
+        "candidate_id": "A00048",
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "reject",
+        "reasons": [
+          "ELIG-001: qualification_status=expired",
+          "ELIG-001: prescription drug expansion is out of scope",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/17",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/17/product"
+        ],
+        "sku_id": "SKU0006",
+        "offer_id": "O00048",
+        "store_id": "S002",
+        "ad_plan_id": "A00048",
+        "model_relevance": "pass"
+      },
+      {
+        "candidate_id": "A00055",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "pass",
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "PACK-001: title and structured pack_count conflict; no source is preferred"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/18",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/18/product"
+        ],
+        "sku_id": "SKU0007",
+        "offer_id": "O00055",
+        "store_id": "S001",
+        "ad_plan_id": "A00055",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00056",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "reject",
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "PACK-001: title and structured pack_count conflict; no source is preferred",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/19",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/19/product"
+        ],
+        "sku_id": "SKU0007",
+        "offer_id": "O00056",
+        "store_id": "S002",
+        "ad_plan_id": "A00056",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00057",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "reject",
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "PACK-001: title and structured pack_count conflict; no source is preferred",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/20",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/20/product"
+        ],
+        "sku_id": "SKU0007",
+        "offer_id": "O00057",
+        "store_id": "S003",
+        "ad_plan_id": "A00057",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00064",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "unknown",
+        "reasons": [
+          "EVIDENCE-001: item model relevance is unknown or incomplete",
+          "ELIG-001: qualification_status is missing or unknown"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/21",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/21/product"
+        ],
+        "sku_id": "SKU0008",
+        "offer_id": "O00064",
+        "store_id": "S002",
+        "ad_plan_id": "A00064",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00065",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "reject",
+        "reasons": [
+          "EVIDENCE-001: item model relevance is unknown or incomplete",
+          "ELIG-001: qualification_status is missing or unknown",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/22",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/22/product"
+        ],
+        "sku_id": "SKU0008",
+        "offer_id": "O00065",
+        "store_id": "S003",
+        "ad_plan_id": "A00065",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00066",
+        "term_id": "T0001",
+        "relevance": "unknown",
+        "eligibility": "reject",
+        "reasons": [
+          "EVIDENCE-001: item model relevance is unknown or incomplete",
+          "ELIG-001: qualification_status is missing or unknown",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/23",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/23/product"
+        ],
+        "sku_id": "SKU0008",
+        "offer_id": "O00066",
+        "store_id": "S004",
+        "ad_plan_id": "A00066",
+        "model_relevance": "unknown"
+      },
+      {
+        "candidate_id": "A00999",
+        "term_id": "T0001",
+        "relevance": "pass",
+        "eligibility": "pass",
+        "reasons": [],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/24",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/24/product"
+        ],
+        "sku_id": "SKU0001",
+        "offer_id": "O00001",
+        "store_id": "S001",
+        "ad_plan_id": "A00999",
+        "model_relevance": "pass"
+      }
+    ],
+    "recommendation": "submit_for_human_review",
+    "risk": "L1",
+    "value_tier": "V2",
+    "review_queue": [
+      {
+        "candidate_id": "A00037",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/12",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/12/product"
+        ],
+        "reasons": [
+          "AUDIENCE-001: product adds a specific audience not expressed by query"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "AUDIENCE-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00038",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/13",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/13/product"
+        ],
+        "reasons": [
+          "AUDIENCE-001: product adds a specific audience not expressed by query",
+          "ELIG-001: merchant_qualification=expired",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "AUDIENCE-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00039",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/14",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/14/product"
+        ],
+        "reasons": [
+          "AUDIENCE-001: product adds a specific audience not expressed by query",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "AUDIENCE-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00055",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/18",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/18/product"
+        ],
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "PACK-001: title and structured pack_count conflict; no source is preferred"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00056",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/19",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/19/product"
+        ],
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "PACK-001: title and structured pack_count conflict; no source is preferred",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00057",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/20",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/20/product"
+        ],
+        "reasons": [
+          "PACK-001: product pack_count conflicts (query=60, candidate=100)",
+          "PACK-001: title and structured pack_count conflict; no source is preferred",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00064",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/21",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/21/product"
+        ],
+        "reasons": [
+          "EVIDENCE-001: item model relevance is unknown or incomplete",
+          "ELIG-001: qualification_status is missing or unknown"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00065",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/22",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/22/product"
+        ],
+        "reasons": [
+          "EVIDENCE-001: item model relevance is unknown or incomplete",
+          "ELIG-001: qualification_status is missing or unknown",
+          "ELIG-001: stock is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      },
+      {
+        "candidate_id": "A00066",
+        "evidence_refs": [
+          "evidence/candidates.json#/candidates/23",
+          "evidence/task.json#/raw_query",
+          "evidence/candidates.json#/terms/0",
+          "evidence/candidates.json#/candidates/23/product"
+        ],
+        "reasons": [
+          "EVIDENCE-001: item model relevance is unknown or incomplete",
+          "ELIG-001: qualification_status is missing or unknown",
+          "ELIG-001: remaining_budget_fen is not positive"
+        ],
+        "rule_refs": [
+          "REWRITE-001",
+          "EVIDENCE-001",
+          "BRAND-001",
+          "FORM-001",
+          "PACK-001",
+          "ELIG-001",
+          "TIME-001"
+        ],
+        "term_id": "T0001",
+        "type": "item_review"
+      }
+    ],
+    "history_status": "verified_linked",
+    "history_verified_gap_count": 6000,
+    "history_gap_is_potential_only": true,
+    "confirmed_current_offer_count": 1,
+    "confirmed_current_candidate_count": 2,
+    "distinct_store_count": 1,
+    "valid_request_count": 12000
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/history.json",
+    "evidence/catalog.json",
+    "evidence/candidates.json",
+    "evidence/terminology.json"
+  ],
+  "rule_refs": []
+}

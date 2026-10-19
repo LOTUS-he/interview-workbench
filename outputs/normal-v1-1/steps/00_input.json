@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.1",
+  "run_id": "10be6911a015450988e3bc06f61cd794",
+  "step_id": "00",
+  "status": "success",
+  "data": {
+    "task": {
+      "query_id": "Q0001",
+      "raw_query": "康安维C咀嚼篇60片",
+      "city_id": "330100",
+      "region_id": "330100-B",
+      "scene_id": "medical_search",
+      "history_start": "2026-09-13T00:00:00+08:00",
+      "history_end_exclusive": "2026-09-20T00:00:00+08:00"
+    },
+    "history_ref": {
+      "path": "evidence/history.json",
+      "sha256": "3d377926b47f33a351c1e20a80b3c5bf9d6fd2e2eabc47530885955e4cf03785"
+    }
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/history.json"
+  ],
+  "rule_refs": []
+}

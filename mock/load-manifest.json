@@ -1,0 +1,590 @@
+[
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-13",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-13",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-13",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-14",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-14",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-14",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-15",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-15",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-15",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-16",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-16",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-16",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-17",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-17",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-17",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-18",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-18",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-18",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-19",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-19",
+    "city_id": "320500",
+    "status": "missing",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "ad_events",
+    "biz_date": "2026-09-19",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-13",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-13",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-13",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-14",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-14",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-14",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-15",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-15",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-15",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-16",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-16",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-16",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-17",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-17",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-17",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-18",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-18",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-18",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-19",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-19",
+    "city_id": "320500",
+    "status": "missing",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "historical_candidate_replay",
+    "biz_date": "2026-09-19",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-13",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-13",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-13",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-14",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-14",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-14",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-15",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-15",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-15",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-16",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-16",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-16",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-17",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-17",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-17",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-18",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-18",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-18",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-19",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-19",
+    "city_id": "320500",
+    "status": "missing",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "recall_events",
+    "biz_date": "2026-09-19",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-13",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-13",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-13",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-14",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-14",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-14",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-15",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-15",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-15",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-16",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-16",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-16",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-17",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-17",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-17",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-18",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-18",
+    "city_id": "320500",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-18",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-19",
+    "city_id": "310100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-19",
+    "city_id": "320500",
+    "status": "missing",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  },
+  {
+    "dataset": "search_requests",
+    "biz_date": "2026-09-19",
+    "city_id": "330100",
+    "status": "complete",
+    "loaded_at": "2026-09-20T08:00:00+08:00"
+  }
+]

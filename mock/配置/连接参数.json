@@ -1,0 +1,38 @@
+{
+  "base_url": "http://127.0.0.1:8765",
+  "demo_token": "medical-readonly",
+  "warehouse": "数据库/medical_warehouse.sqlite",
+  "business_time": "2026-09-20T12:00:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "history_start": "2026-09-13T00:00:00+08:00",
+  "history_end_exclusive": "2026-09-20T00:00:00+08:00",
+  "max_page_size": 100,
+  "max_batch_ids": 50,
+  "scope": "read_only",
+  "cities": [
+    {
+      "city_id": "330100",
+      "city_name": "杭州市",
+      "region_ids": [
+        "330100-A",
+        "330100-B"
+      ]
+    },
+    {
+      "city_id": "310100",
+      "city_name": "上海市",
+      "region_ids": [
+        "310100-A",
+        "310100-B"
+      ]
+    },
+    {
+      "city_id": "320500",
+      "city_name": "苏州市",
+      "region_ids": [
+        "320500-A",
+        "320500-B"
+      ]
+    }
+  ]
+}

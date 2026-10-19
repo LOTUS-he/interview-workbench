@@ -1,0 +1,479 @@
+{
+  "terms": [
+    {
+      "term_id": "T0001",
+      "term": "康安维生素C咀嚼片60片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0002",
+      "term": "康安维生素C咀嚼片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0003",
+      "term": "泰和维生素C咀嚼片60片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0004",
+      "term": "康安维生素C片剂60片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0005",
+      "term": "泰和布洛芬混悬液100毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0006",
+      "term": "泰和布洛芬混悬液",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0007",
+      "term": "景康布洛芬混悬液100毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0008",
+      "term": "泰和布洛芬胶囊100毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0009",
+      "term": "景康氯雷他定片10片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0010",
+      "term": "景康氯雷他定片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0011",
+      "term": "沐安氯雷他定片10片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0012",
+      "term": "景康氯雷他定糖浆10片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0013",
+      "term": "沐安蒙脱石散10袋",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0014",
+      "term": "沐安蒙脱石散",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0015",
+      "term": "知康蒙脱石散10袋",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0016",
+      "term": "沐安蒙脱石混悬液10袋",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0017",
+      "term": "知康碳酸钙咀嚼片60片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0018",
+      "term": "知康碳酸钙咀嚼片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0019",
+      "term": "瑞康碳酸钙咀嚼片60片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0020",
+      "term": "知康碳酸钙片剂60片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0021",
+      "term": "瑞康维生素B2片100片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0022",
+      "term": "瑞康维生素B2片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0023",
+      "term": "恒康维生素B2片100片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0024",
+      "term": "瑞康维生素B2胶囊100片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0025",
+      "term": "恒康炉甘石洗剂100毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0026",
+      "term": "恒康炉甘石洗剂",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0027",
+      "term": "清和炉甘石洗剂100毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0028",
+      "term": "恒康炉甘石乳膏100毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0029",
+      "term": "清和生理性海水鼻腔喷雾60毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0030",
+      "term": "清和生理性海水鼻腔喷雾",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0031",
+      "term": "舒康生理性海水鼻腔喷雾60毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0032",
+      "term": "清和生理性海水滴鼻液60毫升",
+      "index_version": "idx-20260920-1",
+      "enabled": false
+    },
+    {
+      "term_id": "T0033",
+      "term": "舒康医用退热贴6贴",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0034",
+      "term": "舒康医用退热贴",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0035",
+      "term": "明康医用退热贴6贴",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0036",
+      "term": "舒康医用凝胶6支",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0037",
+      "term": "明康医用棉签100支",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0038",
+      "term": "明康医用棉签",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0039",
+      "term": "仁济医用棉签100支",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0040",
+      "term": "明康医用棉球100支",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0041",
+      "term": "仁济医用纱布块10片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0042",
+      "term": "仁济医用纱布块",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0043",
+      "term": "安宁医用纱布块10片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0044",
+      "term": "仁济医用绷带10片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0045",
+      "term": "安宁医用口罩10只",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0046",
+      "term": "安宁医用口罩",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0047",
+      "term": "康安医用口罩10只",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    },
+    {
+      "term_id": "T0048",
+      "term": "安宁医用防护面罩10只",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    }
+  ],
+  "lexicon": {
+    "version": "lex-1",
+    "source": "mock/数据/标准词与别名.json",
+    "aliases": [
+      {
+        "alias": "维C咀嚼片",
+        "canonical_name": "维生素C咀嚼片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-001",
+        "version": "lex-1"
+      },
+      {
+        "alias": "布洛芬混悬液",
+        "canonical_name": "布洛芬混悬液",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-002",
+        "version": "lex-1"
+      },
+      {
+        "alias": "氯雷他定片",
+        "canonical_name": "氯雷他定片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-003",
+        "version": "lex-1"
+      },
+      {
+        "alias": "蒙脱石散",
+        "canonical_name": "蒙脱石散",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-004",
+        "version": "lex-1"
+      },
+      {
+        "alias": "碳酸钙咀嚼片",
+        "canonical_name": "碳酸钙咀嚼片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-005",
+        "version": "lex-1"
+      },
+      {
+        "alias": "维B2片",
+        "canonical_name": "维生素B2片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-006",
+        "version": "lex-1"
+      },
+      {
+        "alias": "炉甘石洗剂",
+        "canonical_name": "炉甘石洗剂",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-007",
+        "version": "lex-1"
+      },
+      {
+        "alias": "海水鼻喷",
+        "canonical_name": "生理性海水鼻腔喷雾",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-008",
+        "version": "lex-1"
+      },
+      {
+        "alias": "退热贴",
+        "canonical_name": "医用退热贴",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-009",
+        "version": "lex-1"
+      },
+      {
+        "alias": "医用棉签",
+        "canonical_name": "医用棉签",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-010",
+        "version": "lex-1"
+      },
+      {
+        "alias": "纱布块",
+        "canonical_name": "医用纱布块",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-011",
+        "version": "lex-1"
+      },
+      {
+        "alias": "医用口罩",
+        "canonical_name": "医用口罩",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-012",
+        "version": "lex-1"
+      }
+    ],
+    "brands": [
+      {
+        "brand_id": "BR000",
+        "brand_name": "康安"
+      },
+      {
+        "brand_id": "BR001",
+        "brand_name": "泰和"
+      },
+      {
+        "brand_id": "BR002",
+        "brand_name": "景康"
+      },
+      {
+        "brand_id": "BR003",
+        "brand_name": "沐安"
+      },
+      {
+        "brand_id": "BR004",
+        "brand_name": "知康"
+      },
+      {
+        "brand_id": "BR005",
+        "brand_name": "瑞康"
+      },
+      {
+        "brand_id": "BR006",
+        "brand_name": "恒康"
+      },
+      {
+        "brand_id": "BR007",
+        "brand_name": "清和"
+      },
+      {
+        "brand_id": "BR008",
+        "brand_name": "舒康"
+      },
+      {
+        "brand_id": "BR009",
+        "brand_name": "明康"
+      },
+      {
+        "brand_id": "BR010",
+        "brand_name": "仁济"
+      },
+      {
+        "brand_id": "BR011",
+        "brand_name": "安宁"
+      }
+    ],
+    "notice": "只包含原始标准名、品牌和别名资料，不包含 Query 审核结论、商品选择或评测标签；不能由通用或缺失人群推断特殊人群适用。"
+  },
+  "meta": {
+    "source": "synthetic_company_api",
+    "dataset_version": "assignment-1.0",
+    "scenario": "normal",
+    "business_time": "2026-09-20T12:00:00+08:00",
+    "as_of": "2026-09-20T12:00:00+08:00",
+    "health_checked": true
+  },
+  "errors": [],
+  "calls": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "params": {},
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:22:50.282876+00:00",
+        "next_cursor": null,
+        "total": null
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/terms",
+      "params": {
+        "q": "",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:22:50.284144+00:00",
+        "next_cursor": null,
+        "total": 48
+      }
+    }
+  ]
+}

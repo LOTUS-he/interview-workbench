@@ -1,0 +1,12 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE queries(query_id TEXT PRIMARY KEY,raw_query TEXT NOT NULL,scene_id TEXT NOT NULL);
+CREATE TABLE search_requests(request_id TEXT PRIMARY KEY,query_id TEXT NOT NULL REFERENCES queries(query_id),event_time TEXT NOT NULL,city_id TEXT NOT NULL,region_id TEXT NOT NULL,scene_id TEXT NOT NULL,is_valid INTEGER NOT NULL);
+CREATE TABLE recall_events(delivery_id INTEGER PRIMARY KEY,event_id TEXT NOT NULL,request_id TEXT NOT NULL REFERENCES search_requests(request_id),event_time TEXT NOT NULL,ingested_at TEXT NOT NULL,stage TEXT NOT NULL,candidate_id TEXT,ad_plan_id TEXT,term_id TEXT,passed INTEGER,reason_code TEXT,index_version TEXT NOT NULL);
+CREATE TABLE historical_candidate_replay(replay_id TEXT PRIMARY KEY,request_id TEXT NOT NULL REFERENCES search_requests(request_id),term_id TEXT NOT NULL,ad_plan_id TEXT NOT NULL,offer_id TEXT NOT NULL,source TEXT NOT NULL,index_version TEXT NOT NULL,replayed_at TEXT NOT NULL);
+CREATE TABLE historical_eligibility(snapshot_id TEXT PRIMARY KEY,ad_plan_id TEXT NOT NULL,offer_id TEXT NOT NULL,sku_id TEXT NOT NULL,city_id TEXT NOT NULL,region_ids_json TEXT NOT NULL,valid_from TEXT NOT NULL,valid_to TEXT NOT NULL,stock INTEGER,on_shelf INTEGER,product_qualification TEXT,merchant_qualification TEXT,plan_status TEXT,remaining_budget_fen INTEGER,material_status TEXT);
+CREATE TABLE ad_events(event_id TEXT PRIMARY KEY,request_id TEXT NOT NULL REFERENCES search_requests(request_id),candidate_id TEXT NOT NULL,event_type TEXT NOT NULL,event_time TEXT NOT NULL,billable INTEGER NOT NULL,spend_fen INTEGER NOT NULL,recall_sources_json TEXT NOT NULL);
+CREATE TABLE load_manifest(dataset TEXT NOT NULL,biz_date TEXT NOT NULL,city_id TEXT NOT NULL,status TEXT NOT NULL,loaded_at TEXT,PRIMARY KEY(dataset,biz_date,city_id));
+CREATE INDEX idx_requests_scope ON search_requests(city_id,event_time,query_id);
+CREATE INDEX idx_recall_request ON recall_events(request_id);
+CREATE INDEX idx_replay_request ON historical_candidate_replay(request_id);
+CREATE INDEX idx_hist_plan ON historical_eligibility(ad_plan_id,valid_from,valid_to);

@@ -473,7 +473,7 @@ def _chinese_number(value: str) -> Optional[int]:
         return int(value)
     if not value or any(char not in _CHINESE_DIGITS for char in value):
         return None
-    # The teaching data uses simple counts (六十, 一百, 两盒). This parser is
+    # The business data uses simple counts (六十, 一百, 两盒). This parser is
     # deliberately narrow and is used only to detect an explicit title
     # conflict, never to establish semantic relevance.
     if len(value) == 1:

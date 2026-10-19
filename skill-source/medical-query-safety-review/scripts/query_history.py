@@ -55,7 +55,7 @@ _MUTATING_SQL = re.compile(
 
 
 class QueryHistoryError(ValueError):
-    """Raised when the task or teaching database violates the input contract."""
+    """Raised when the task or isolated business database violates the input contract."""
 
 
 def _read_sql() -> tuple[str, str]:

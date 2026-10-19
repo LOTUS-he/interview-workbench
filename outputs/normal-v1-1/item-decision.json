@@ -1,0 +1,460 @@
+{
+  "run_id": "10be6911a015450988e3bc06f61cd794",
+  "phase": "items",
+  "producer": {
+    "type": "agent",
+    "model": "Codex-main (model version not exposed)"
+  },
+  "reviews": [
+    {
+      "candidate_id": "A00001",
+      "term_id": "T0001",
+      "term_item": "pass",
+      "query_item": "pass",
+      "reason": "商品品牌、名称、咀嚼剂型及60片与term和原Query一致，标题与结构化属性一致；当前资格另行检查。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/0/product"
+      ]
+    },
+    {
+      "candidate_id": "A00002",
+      "term_id": "T0001",
+      "term_item": "pass",
+      "query_item": "pass",
+      "reason": "该候选同为SKU0001，品牌、名称、剂型、60片均吻合；库存不参与语义相关性判断。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/1/product"
+      ]
+    },
+    {
+      "candidate_id": "A00003",
+      "term_id": "T0001",
+      "term_item": "pass",
+      "query_item": "pass",
+      "reason": "该候选SKU0001与term及原Query的明确商品约束一致；计划和供给事实单独审核。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/2/product"
+      ]
+    },
+    {
+      "candidate_id": "A00010",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "商品为100片，与term及原Query明确的60片冲突。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/3/product"
+      ]
+    },
+    {
+      "candidate_id": "A00011",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "该计划关联的SKU0002为100片，不能满足原Query及term的60片包装约束。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/4/product"
+      ]
+    },
+    {
+      "candidate_id": "A00012",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "结构化与标题均为100片，不可将同SPU当作60片匹配依据。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/5/product"
+      ]
+    },
+    {
+      "candidate_id": "A00019",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "商品是片剂，不是term与原Query指向的咀嚼片；不能跨剂型放行。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/6/product"
+      ]
+    },
+    {
+      "candidate_id": "A00020",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "SKU0003的片剂与所需咀嚼片不同，同名或同SPU不消除剂型冲突。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/7/product"
+      ]
+    },
+    {
+      "candidate_id": "A00021",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "片剂与咀嚼片剂型冲突，term和原Query均不能匹配。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/8/product"
+      ]
+    },
+    {
+      "candidate_id": "A00028",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "商品品牌泰和与原Query和term的康安冲突。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/9/product"
+      ]
+    },
+    {
+      "candidate_id": "A00029",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "该计划商品是泰和，不能跨品牌替换康安。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/10/product"
+      ]
+    },
+    {
+      "candidate_id": "A00030",
+      "term_id": "T0001",
+      "term_item": "reject",
+      "query_item": "reject",
+      "reason": "品牌明确不一致，其他属性相似不能覆盖原始品牌要求。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/11/product"
+      ]
+    },
+    {
+      "candidate_id": "A00037",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "结构化人群为儿童，原Query和term未表达儿童意图；没有证据确认这一受限人群商品满足未限定人群的原意，留待复核。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/12/product"
+      ]
+    },
+    {
+      "candidate_id": "A00038",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "同名SKU0005为儿童人群商品，不能从标题推断为通用，也不能补造用户儿童意图。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/13/product"
+      ]
+    },
+    {
+      "candidate_id": "A00039",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "品牌、剂型和包装一致，但特定儿童人群与未限定人群的映射依据不足，暂不确认。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/14/product"
+      ]
+    },
+    {
+      "candidate_id": "A00046",
+      "term_id": "T0001",
+      "term_item": "pass",
+      "query_item": "pass",
+      "reason": "名称、品牌、咀嚼剂型及60片均吻合；RX类型和资质过期属于独立准投资格事实，不据此伪造语义不相关。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/15/product"
+      ]
+    },
+    {
+      "candidate_id": "A00047",
+      "term_id": "T0001",
+      "term_item": "pass",
+      "query_item": "pass",
+      "reason": "SKU0006与term及原Query的显式商品属性相符，处方类型及资质必须由资格门禁另行拒绝，不等同语义拒绝。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/16/product"
+      ]
+    },
+    {
+      "candidate_id": "A00048",
+      "term_id": "T0001",
+      "term_item": "pass",
+      "query_item": "pass",
+      "reason": "商品语义约束吻合；处方类型、资质状态不用于宣称当前可投，交由确定性资格检查。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/17/product"
+      ]
+    },
+    {
+      "candidate_id": "A00055",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "标题60片与结构化100片自相矛盾，不能任取对放行有利的一侧。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/18/product"
+      ]
+    },
+    {
+      "candidate_id": "A00056",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "SKU0007包装存在标题与结构化冲突，原Query和term都不能被确认满足。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/19/product"
+      ]
+    },
+    {
+      "candidate_id": "A00057",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "包装数量冲突需补证，不能因同SPU或标题相同而确认相关。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/20/product"
+      ]
+    },
+    {
+      "candidate_id": "A00064",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "商品人群字段缺失，不能补造通用人群；核心属性相符但证据不完整，保留未知，资质未知另行判断。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/21/product"
+      ]
+    },
+    {
+      "candidate_id": "A00065",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "SKU0008人群事实为null，不能把缺失等同通用或安全匹配；待补商品属性。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/22/product"
+      ]
+    },
+    {
+      "candidate_id": "A00066",
+      "term_id": "T0001",
+      "term_item": "unknown",
+      "query_item": "unknown",
+      "reason": "人群属性未知，依据规则保留未知，不用标题替代结构化缺失事实。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/23/product"
+      ]
+    },
+    {
+      "candidate_id": "A00999",
+      "term_id": "T0001",
+      "term_item": "pass",
+      "query_item": "pass",
+      "reason": "同一O00001的另一广告计划仍关联SKU0001，商品属性满足term及原Query；保留计划维度，不能重复计为第二份供给。",
+      "rule_refs": [
+        "REL-001",
+        "REL-002",
+        "REL-003",
+        "REL-005"
+      ],
+      "evidence_refs": [
+        "evidence/task.json#/raw_query",
+        "evidence/candidates.json#/terms/0",
+        "evidence/candidates.json#/candidates/24/product"
+      ]
+    }
+  ]
+}

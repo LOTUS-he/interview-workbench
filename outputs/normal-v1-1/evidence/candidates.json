@@ -1,0 +1,2341 @@
+{
+  "terms": [
+    {
+      "term_id": "T0001",
+      "term": "康安维生素C咀嚼片60片",
+      "index_version": "idx-20260920-1",
+      "enabled": true
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "A00001",
+      "term_id": "T0001",
+      "sku_id": "SKU0001",
+      "offer_id": "O00001",
+      "store_id": "S001",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00001",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00001",
+        "offer_id": "O00001",
+        "sku_id": "SKU0001",
+        "store_id": "S001",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0001",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00001",
+        "sku_id": "SKU0001",
+        "store_id": "S001",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1500,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00001",
+        "offer_id": "O00001",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S001",
+        "store_name": "杭州市业务药房1",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0001",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00002",
+      "term_id": "T0001",
+      "sku_id": "SKU0001",
+      "offer_id": "O00002",
+      "store_id": "S002",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00002",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00002",
+        "offer_id": "O00002",
+        "sku_id": "SKU0001",
+        "store_id": "S002",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0001",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00002",
+        "sku_id": "SKU0001",
+        "store_id": "S002",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1600,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00002",
+        "offer_id": "O00002",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S002",
+        "store_name": "杭州市业务药房2",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0001",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00003",
+      "term_id": "T0001",
+      "sku_id": "SKU0001",
+      "offer_id": "O00003",
+      "store_id": "S003",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00003",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00003",
+        "offer_id": "O00003",
+        "sku_id": "SKU0001",
+        "store_id": "S003",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0001",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00003",
+        "sku_id": "SKU0001",
+        "store_id": "S003",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1700,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00003",
+        "offer_id": "O00003",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S003",
+        "store_name": "杭州市业务药房3",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0001",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00010",
+      "term_id": "T0001",
+      "sku_id": "SKU0002",
+      "offer_id": "O00010",
+      "store_id": "S002",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00010",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00010",
+        "offer_id": "O00010",
+        "sku_id": "SKU0002",
+        "store_id": "S002",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0002",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 100,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片100片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00010",
+        "sku_id": "SKU0002",
+        "store_id": "S002",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1515,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00010",
+        "offer_id": "O00010",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S002",
+        "store_name": "杭州市业务药房2",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0002",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00011",
+      "term_id": "T0001",
+      "sku_id": "SKU0002",
+      "offer_id": "O00011",
+      "store_id": "S003",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00011",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00011",
+        "offer_id": "O00011",
+        "sku_id": "SKU0002",
+        "store_id": "S003",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0002",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 100,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片100片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00011",
+        "sku_id": "SKU0002",
+        "store_id": "S003",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1615,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00011",
+        "offer_id": "O00011",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S003",
+        "store_name": "杭州市业务药房3",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0002",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00012",
+      "term_id": "T0001",
+      "sku_id": "SKU0002",
+      "offer_id": "O00012",
+      "store_id": "S004",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00012",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00012",
+        "offer_id": "O00012",
+        "sku_id": "SKU0002",
+        "store_id": "S004",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0002",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 100,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片100片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00012",
+        "sku_id": "SKU0002",
+        "store_id": "S004",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1715,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00012",
+        "offer_id": "O00012",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S004",
+        "store_name": "杭州市业务药房4",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0002",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00019",
+      "term_id": "T0001",
+      "sku_id": "SKU0003",
+      "offer_id": "O00019",
+      "store_id": "S003",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00019",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00019",
+        "offer_id": "O00019",
+        "sku_id": "SKU0003",
+        "store_id": "S003",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0003",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "片剂",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C片剂60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00019",
+        "sku_id": "SKU0003",
+        "store_id": "S003",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1530,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00019",
+        "offer_id": "O00019",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S003",
+        "store_name": "杭州市业务药房3",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0003",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00020",
+      "term_id": "T0001",
+      "sku_id": "SKU0003",
+      "offer_id": "O00020",
+      "store_id": "S004",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00020",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00020",
+        "offer_id": "O00020",
+        "sku_id": "SKU0003",
+        "store_id": "S004",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0003",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "片剂",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C片剂60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00020",
+        "sku_id": "SKU0003",
+        "store_id": "S004",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1630,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00020",
+        "offer_id": "O00020",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S004",
+        "store_name": "杭州市业务药房4",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0003",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00021",
+      "term_id": "T0001",
+      "sku_id": "SKU0003",
+      "offer_id": "O00021",
+      "store_id": "S005",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00021",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00021",
+        "offer_id": "O00021",
+        "sku_id": "SKU0003",
+        "store_id": "S005",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0003",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "片剂",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C片剂60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00021",
+        "sku_id": "SKU0003",
+        "store_id": "S005",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1730,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00021",
+        "offer_id": "O00021",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S005",
+        "store_name": "杭州市业务药房5",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0003",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00028",
+      "term_id": "T0001",
+      "sku_id": "SKU0004",
+      "offer_id": "O00028",
+      "store_id": "S004",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00028",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00028",
+        "offer_id": "O00028",
+        "sku_id": "SKU0004",
+        "store_id": "S004",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0004",
+        "spu_id": "SPU000-1",
+        "brand_id": "BR001",
+        "brand_name": "泰和",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "泰和维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00028",
+        "sku_id": "SKU0004",
+        "store_id": "S004",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1545,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00028",
+        "offer_id": "O00028",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S004",
+        "store_name": "杭州市业务药房4",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0004",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00029",
+      "term_id": "T0001",
+      "sku_id": "SKU0004",
+      "offer_id": "O00029",
+      "store_id": "S005",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00029",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00029",
+        "offer_id": "O00029",
+        "sku_id": "SKU0004",
+        "store_id": "S005",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0004",
+        "spu_id": "SPU000-1",
+        "brand_id": "BR001",
+        "brand_name": "泰和",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "泰和维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00029",
+        "sku_id": "SKU0004",
+        "store_id": "S005",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1645,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00029",
+        "offer_id": "O00029",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S005",
+        "store_name": "杭州市业务药房5",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0004",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00030",
+      "term_id": "T0001",
+      "sku_id": "SKU0004",
+      "offer_id": "O00030",
+      "store_id": "S006",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00030",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00030",
+        "offer_id": "O00030",
+        "sku_id": "SKU0004",
+        "store_id": "S006",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0004",
+        "spu_id": "SPU000-1",
+        "brand_id": "BR001",
+        "brand_name": "泰和",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "泰和维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00030",
+        "sku_id": "SKU0004",
+        "store_id": "S006",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1745,
+        "merchant_qualification": "expired",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00030",
+        "offer_id": "O00030",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S006",
+        "store_name": "杭州市业务药房6",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "expired"
+      },
+      "qualification": {
+        "sku_id": "SKU0004",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00037",
+      "term_id": "T0001",
+      "sku_id": "SKU0005",
+      "offer_id": "O00037",
+      "store_id": "S005",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00037",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00037",
+        "offer_id": "O00037",
+        "sku_id": "SKU0005",
+        "store_id": "S005",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0005",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "儿童",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00037",
+        "sku_id": "SKU0005",
+        "store_id": "S005",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1560,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00037",
+        "offer_id": "O00037",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S005",
+        "store_name": "杭州市业务药房5",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0005",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00038",
+      "term_id": "T0001",
+      "sku_id": "SKU0005",
+      "offer_id": "O00038",
+      "store_id": "S006",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00038",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00038",
+        "offer_id": "O00038",
+        "sku_id": "SKU0005",
+        "store_id": "S006",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0005",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "儿童",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00038",
+        "sku_id": "SKU0005",
+        "store_id": "S006",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1660,
+        "merchant_qualification": "expired",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00038",
+        "offer_id": "O00038",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S006",
+        "store_name": "杭州市业务药房6",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "expired"
+      },
+      "qualification": {
+        "sku_id": "SKU0005",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00039",
+      "term_id": "T0001",
+      "sku_id": "SKU0005",
+      "offer_id": "O00039",
+      "store_id": "S001",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00039",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00039",
+        "offer_id": "O00039",
+        "sku_id": "SKU0005",
+        "store_id": "S001",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0005",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "儿童",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00039",
+        "sku_id": "SKU0005",
+        "store_id": "S001",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1760,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00039",
+        "offer_id": "O00039",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S001",
+        "store_name": "杭州市业务药房1",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0005",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00046",
+      "term_id": "T0001",
+      "sku_id": "SKU0006",
+      "offer_id": "O00046",
+      "store_id": "S006",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00046",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00046",
+        "offer_id": "O00046",
+        "sku_id": "SKU0006",
+        "store_id": "S006",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0006",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "RX",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "expired",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00046",
+        "sku_id": "SKU0006",
+        "store_id": "S006",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1575,
+        "merchant_qualification": "expired",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00046",
+        "offer_id": "O00046",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S006",
+        "store_name": "杭州市业务药房6",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "expired"
+      },
+      "qualification": {
+        "sku_id": "SKU0006",
+        "category": "DRUG",
+        "prescription_type": "RX",
+        "qualification_status": "expired",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00047",
+      "term_id": "T0001",
+      "sku_id": "SKU0006",
+      "offer_id": "O00047",
+      "store_id": "S001",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00047",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00047",
+        "offer_id": "O00047",
+        "sku_id": "SKU0006",
+        "store_id": "S001",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0006",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "RX",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "expired",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00047",
+        "sku_id": "SKU0006",
+        "store_id": "S001",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1675,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00047",
+        "offer_id": "O00047",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S001",
+        "store_name": "杭州市业务药房1",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0006",
+        "category": "DRUG",
+        "prescription_type": "RX",
+        "qualification_status": "expired",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00048",
+      "term_id": "T0001",
+      "sku_id": "SKU0006",
+      "offer_id": "O00048",
+      "store_id": "S002",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00048",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00048",
+        "offer_id": "O00048",
+        "sku_id": "SKU0006",
+        "store_id": "S002",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0006",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "RX",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "expired",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00048",
+        "sku_id": "SKU0006",
+        "store_id": "S002",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1775,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00048",
+        "offer_id": "O00048",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S002",
+        "store_name": "杭州市业务药房2",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0006",
+        "category": "DRUG",
+        "prescription_type": "RX",
+        "qualification_status": "expired",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00055",
+      "term_id": "T0001",
+      "sku_id": "SKU0007",
+      "offer_id": "O00055",
+      "store_id": "S001",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00055",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00055",
+        "offer_id": "O00055",
+        "sku_id": "SKU0007",
+        "store_id": "S001",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0007",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 100,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00055",
+        "sku_id": "SKU0007",
+        "store_id": "S001",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1590,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00055",
+        "offer_id": "O00055",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S001",
+        "store_name": "杭州市业务药房1",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0007",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00056",
+      "term_id": "T0001",
+      "sku_id": "SKU0007",
+      "offer_id": "O00056",
+      "store_id": "S002",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00056",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00056",
+        "offer_id": "O00056",
+        "sku_id": "SKU0007",
+        "store_id": "S002",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0007",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 100,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00056",
+        "sku_id": "SKU0007",
+        "store_id": "S002",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1690,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00056",
+        "offer_id": "O00056",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S002",
+        "store_name": "杭州市业务药房2",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0007",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00057",
+      "term_id": "T0001",
+      "sku_id": "SKU0007",
+      "offer_id": "O00057",
+      "store_id": "S003",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00057",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00057",
+        "offer_id": "O00057",
+        "sku_id": "SKU0007",
+        "store_id": "S003",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0007",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 100,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00057",
+        "sku_id": "SKU0007",
+        "store_id": "S003",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1790,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00057",
+        "offer_id": "O00057",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S003",
+        "store_name": "杭州市业务药房3",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0007",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00064",
+      "term_id": "T0001",
+      "sku_id": "SKU0008",
+      "offer_id": "O00064",
+      "store_id": "S002",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00064",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00064",
+        "offer_id": "O00064",
+        "sku_id": "SKU0008",
+        "store_id": "S002",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0008",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": null,
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "unknown",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00064",
+        "sku_id": "SKU0008",
+        "store_id": "S002",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1605,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00064",
+        "offer_id": "O00064",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S002",
+        "store_name": "杭州市业务药房2",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0008",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "unknown",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00065",
+      "term_id": "T0001",
+      "sku_id": "SKU0008",
+      "offer_id": "O00065",
+      "store_id": "S003",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00065",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00065",
+        "offer_id": "O00065",
+        "sku_id": "SKU0008",
+        "store_id": "S003",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0008",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": null,
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "unknown",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00065",
+        "sku_id": "SKU0008",
+        "store_id": "S003",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 0,
+        "price_fen": 1705,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00065",
+        "offer_id": "O00065",
+        "status": "active",
+        "remaining_budget_fen": 12000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S003",
+        "store_name": "杭州市业务药房3",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0008",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "unknown",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00066",
+      "term_id": "T0001",
+      "sku_id": "SKU0008",
+      "offer_id": "O00066",
+      "store_id": "S004",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00066",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00066",
+        "offer_id": "O00066",
+        "sku_id": "SKU0008",
+        "store_id": "S004",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0008",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": null,
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "unknown",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00066",
+        "sku_id": "SKU0008",
+        "store_id": "S004",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 8,
+        "price_fen": 1805,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00066",
+        "offer_id": "O00066",
+        "status": "active",
+        "remaining_budget_fen": 0,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S004",
+        "store_name": "杭州市业务药房4",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0008",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "unknown",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    },
+    {
+      "candidate_id": "A00999",
+      "term_id": "T0001",
+      "sku_id": "SKU0001",
+      "offer_id": "O00001",
+      "store_id": "S001",
+      "recall": {
+        "term_id": "T0001",
+        "ad_plan_id": "A00999",
+        "index_version": "idx-20260920-1",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "candidate_id": "A00999",
+        "offer_id": "O00001",
+        "sku_id": "SKU0001",
+        "store_id": "S001",
+        "city_id": "330100"
+      },
+      "product": {
+        "sku_id": "SKU0001",
+        "spu_id": "SPU000-0",
+        "brand_id": "BR000",
+        "brand_name": "康安",
+        "generic_name": "维生素C",
+        "dosage_form": "咀嚼片",
+        "pack_count": 60,
+        "pack_unit": "片",
+        "strength": "业务规格-X（非临床剂量）",
+        "audience": "通用",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "title": "康安维生素C咀嚼片60片",
+        "updated_at": "2026-09-20T12:00:00+08:00",
+        "product_version": "prod-20260920-1",
+        "qualification_status": "valid",
+        "source": "mock_catalog"
+      },
+      "offer": {
+        "offer_id": "O00001",
+        "sku_id": "SKU0001",
+        "store_id": "S001",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "on_shelf": true,
+        "stock": 20,
+        "price_fen": 1500,
+        "merchant_qualification": "valid",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "offer-20260920-1"
+      },
+      "plan": {
+        "ad_plan_id": "A00999",
+        "offer_id": "O00001",
+        "status": "active",
+        "remaining_budget_fen": 5000,
+        "bid_fen": 180,
+        "material_status": "approved",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "version": "ad-20260920-1"
+      },
+      "store": {
+        "store_id": "S001",
+        "store_name": "杭州市业务药房1",
+        "city_id": "330100",
+        "region_ids": [
+          "330100-A",
+          "330100-B"
+        ],
+        "merchant_qualification": "valid"
+      },
+      "qualification": {
+        "sku_id": "SKU0001",
+        "category": "DRUG",
+        "prescription_type": "OTC",
+        "qualification_status": "valid",
+        "product_version": "prod-20260920-1",
+        "as_of": "2026-09-20T12:00:00+08:00"
+      },
+      "errors": []
+    }
+  ],
+  "meta": {
+    "source": "synthetic_company_api",
+    "dataset_version": "assignment-1.0",
+    "scenario": "normal",
+    "business_time": "2026-09-20T12:00:00+08:00",
+    "as_of": "2026-09-20T12:00:00+08:00",
+    "health_checked": true
+  },
+  "errors": [],
+  "calls": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "params": {},
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.319170+00:00",
+        "next_cursor": null,
+        "total": null
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/terms",
+      "params": {
+        "q": "",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.320276+00:00",
+        "next_cursor": null,
+        "total": 48
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/recall",
+      "params": {
+        "term_id": "T0001",
+        "city_id": "330100",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.321534+00:00",
+        "next_cursor": null,
+        "total": 25
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/products",
+      "params": {
+        "sku_ids": "SKU0001,SKU0002,SKU0003,SKU0004,SKU0005,SKU0006,SKU0007,SKU0008",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.322481+00:00",
+        "next_cursor": null,
+        "total": 8
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/offers",
+      "params": {
+        "sku_ids": "SKU0001,SKU0002,SKU0003,SKU0004,SKU0005,SKU0006,SKU0007,SKU0008",
+        "city_id": "330100",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.323620+00:00",
+        "next_cursor": null,
+        "total": 24
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/ad-plans",
+      "params": {
+        "offer_ids": "O00001,O00002,O00003,O00010,O00011,O00012,O00019,O00020,O00021,O00028,O00029,O00030,O00037,O00038,O00039,O00046,O00047,O00048,O00055,O00056,O00057,O00064,O00065,O00066",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.324969+00:00",
+        "next_cursor": null,
+        "total": 25
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/stores",
+      "params": {
+        "store_ids": "S001,S002,S003,S004,S005,S006",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.325773+00:00",
+        "next_cursor": null,
+        "total": 6
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v1/qualifications",
+      "params": {
+        "sku_ids": "SKU0001,SKU0002,SKU0003,SKU0004,SKU0005,SKU0006,SKU0007,SKU0008",
+        "limit": 100
+      },
+      "attempts": 1,
+      "status": 200,
+      "response_meta": {
+        "source": "synthetic_company_api",
+        "dataset_version": "assignment-1.0",
+        "scenario": "normal",
+        "as_of": "2026-09-20T12:00:00+08:00",
+        "served_at": "2026-09-21T12:23:29.326445+00:00",
+        "next_cursor": null,
+        "total": 8
+      }
+    }
+  ],
+  "lexicon": {
+    "version": "lex-1",
+    "source": "mock/数据/标准词与别名.json",
+    "aliases": [
+      {
+        "alias": "维C咀嚼片",
+        "canonical_name": "维生素C咀嚼片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-001",
+        "version": "lex-1"
+      },
+      {
+        "alias": "布洛芬混悬液",
+        "canonical_name": "布洛芬混悬液",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-002",
+        "version": "lex-1"
+      },
+      {
+        "alias": "氯雷他定片",
+        "canonical_name": "氯雷他定片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-003",
+        "version": "lex-1"
+      },
+      {
+        "alias": "蒙脱石散",
+        "canonical_name": "蒙脱石散",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-004",
+        "version": "lex-1"
+      },
+      {
+        "alias": "碳酸钙咀嚼片",
+        "canonical_name": "碳酸钙咀嚼片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-005",
+        "version": "lex-1"
+      },
+      {
+        "alias": "维B2片",
+        "canonical_name": "维生素B2片",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-006",
+        "version": "lex-1"
+      },
+      {
+        "alias": "炉甘石洗剂",
+        "canonical_name": "炉甘石洗剂",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-007",
+        "version": "lex-1"
+      },
+      {
+        "alias": "海水鼻喷",
+        "canonical_name": "生理性海水鼻腔喷雾",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-008",
+        "version": "lex-1"
+      },
+      {
+        "alias": "退热贴",
+        "canonical_name": "医用退热贴",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-009",
+        "version": "lex-1"
+      },
+      {
+        "alias": "医用棉签",
+        "canonical_name": "医用棉签",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-010",
+        "version": "lex-1"
+      },
+      {
+        "alias": "纱布块",
+        "canonical_name": "医用纱布块",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-011",
+        "version": "lex-1"
+      },
+      {
+        "alias": "医用口罩",
+        "canonical_name": "医用口罩",
+        "scope": "名称归一，不改变剂型、数量或人群",
+        "source_id": "DICT-012",
+        "version": "lex-1"
+      }
+    ],
+    "brands": [
+      {
+        "brand_id": "BR000",
+        "brand_name": "康安"
+      },
+      {
+        "brand_id": "BR001",
+        "brand_name": "泰和"
+      },
+      {
+        "brand_id": "BR002",
+        "brand_name": "景康"
+      },
+      {
+        "brand_id": "BR003",
+        "brand_name": "沐安"
+      },
+      {
+        "brand_id": "BR004",
+        "brand_name": "知康"
+      },
+      {
+        "brand_id": "BR005",
+        "brand_name": "瑞康"
+      },
+      {
+        "brand_id": "BR006",
+        "brand_name": "恒康"
+      },
+      {
+        "brand_id": "BR007",
+        "brand_name": "清和"
+      },
+      {
+        "brand_id": "BR008",
+        "brand_name": "舒康"
+      },
+      {
+        "brand_id": "BR009",
+        "brand_name": "明康"
+      },
+      {
+        "brand_id": "BR010",
+        "brand_name": "仁济"
+      },
+      {
+        "brand_id": "BR011",
+        "brand_name": "安宁"
+      }
+    ],
+    "notice": "只包含原始标准名、品牌和别名资料，不包含 Query 审核结论、商品选择或评测标签；不能由通用或缺失人群推断特殊人群适用。"
+  }
+}

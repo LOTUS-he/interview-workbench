@@ -1,0 +1,141 @@
+{
+  "version": "lex-1",
+  "source": "mock/数据/标准词与别名.json",
+  "aliases": [
+    {
+      "alias": "维C咀嚼片",
+      "canonical_name": "维生素C咀嚼片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-001",
+      "version": "lex-1"
+    },
+    {
+      "alias": "布洛芬混悬液",
+      "canonical_name": "布洛芬混悬液",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-002",
+      "version": "lex-1"
+    },
+    {
+      "alias": "氯雷他定片",
+      "canonical_name": "氯雷他定片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-003",
+      "version": "lex-1"
+    },
+    {
+      "alias": "蒙脱石散",
+      "canonical_name": "蒙脱石散",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-004",
+      "version": "lex-1"
+    },
+    {
+      "alias": "碳酸钙咀嚼片",
+      "canonical_name": "碳酸钙咀嚼片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-005",
+      "version": "lex-1"
+    },
+    {
+      "alias": "维B2片",
+      "canonical_name": "维生素B2片",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-006",
+      "version": "lex-1"
+    },
+    {
+      "alias": "炉甘石洗剂",
+      "canonical_name": "炉甘石洗剂",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-007",
+      "version": "lex-1"
+    },
+    {
+      "alias": "海水鼻喷",
+      "canonical_name": "生理性海水鼻腔喷雾",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-008",
+      "version": "lex-1"
+    },
+    {
+      "alias": "退热贴",
+      "canonical_name": "医用退热贴",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-009",
+      "version": "lex-1"
+    },
+    {
+      "alias": "医用棉签",
+      "canonical_name": "医用棉签",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-010",
+      "version": "lex-1"
+    },
+    {
+      "alias": "纱布块",
+      "canonical_name": "医用纱布块",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-011",
+      "version": "lex-1"
+    },
+    {
+      "alias": "医用口罩",
+      "canonical_name": "医用口罩",
+      "scope": "名称归一，不改变剂型、数量或人群",
+      "source_id": "DICT-012",
+      "version": "lex-1"
+    }
+  ],
+  "brands": [
+    {
+      "brand_id": "BR000",
+      "brand_name": "康安"
+    },
+    {
+      "brand_id": "BR001",
+      "brand_name": "泰和"
+    },
+    {
+      "brand_id": "BR002",
+      "brand_name": "景康"
+    },
+    {
+      "brand_id": "BR003",
+      "brand_name": "沐安"
+    },
+    {
+      "brand_id": "BR004",
+      "brand_name": "知康"
+    },
+    {
+      "brand_id": "BR005",
+      "brand_name": "瑞康"
+    },
+    {
+      "brand_id": "BR006",
+      "brand_name": "恒康"
+    },
+    {
+      "brand_id": "BR007",
+      "brand_name": "清和"
+    },
+    {
+      "brand_id": "BR008",
+      "brand_name": "舒康"
+    },
+    {
+      "brand_id": "BR009",
+      "brand_name": "明康"
+    },
+    {
+      "brand_id": "BR010",
+      "brand_name": "仁济"
+    },
+    {
+      "brand_id": "BR011",
+      "brand_name": "安宁"
+    }
+  ],
+  "notice": "只包含原始标准名、品牌和别名资料，不包含 Query 审核结论、商品选择或评测标签；不能由通用或缺失人群推断特殊人群适用。"
+}

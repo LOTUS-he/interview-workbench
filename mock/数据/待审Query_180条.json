@@ -1,0 +1,2162 @@
+[
+  {
+    "query_id": "Q0001",
+    "raw_query": "康安维C咀嚼篇60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0002",
+    "raw_query": "康安维生素C咀嚼片60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0003",
+    "raw_query": "康安 维生素C 咀嚼片 60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0004",
+    "raw_query": "康安维C咀嚼片60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0005",
+    "raw_query": "维C咀嚼片 60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0006",
+    "raw_query": "康安维生素C咀嚼片100片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0007",
+    "raw_query": "康安维生素C咀嚼片两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0008",
+    "raw_query": "康安维生素C咀嚼片儿童60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0009",
+    "raw_query": "康安维生素C咀嚼片成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0010",
+    "raw_query": "康安维生素C咀嚼片有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0011",
+    "raw_query": "康安维生素C不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0012",
+    "raw_query": "康安维生素C咀嚼片孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0013",
+    "raw_query": "康安维生素C咀嚼片能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0014",
+    "raw_query": "康安维生素C咀嚼片怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0015",
+    "raw_query": "康安维C咀嚼篇60片当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0016",
+    "raw_query": "泰和布洛芬混悬夜100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0017",
+    "raw_query": "泰和布洛芬混悬液100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0018",
+    "raw_query": "泰和 布洛芬 混悬液 100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0019",
+    "raw_query": "泰和布洛芬混悬液100毫升装",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0020",
+    "raw_query": "布洛芬混悬液 100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0021",
+    "raw_query": "泰和布洛芬混悬液60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0022",
+    "raw_query": "泰和布洛芬混悬液两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0023",
+    "raw_query": "泰和布洛芬混悬液儿童100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0024",
+    "raw_query": "泰和布洛芬混悬液成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0025",
+    "raw_query": "泰和布洛芬混悬液有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0026",
+    "raw_query": "泰和布洛芬不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0027",
+    "raw_query": "泰和布洛芬混悬液孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0028",
+    "raw_query": "泰和布洛芬混悬液能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0029",
+    "raw_query": "泰和布洛芬混悬液怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0030",
+    "raw_query": "泰和布洛芬混悬夜100毫升当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0031",
+    "raw_query": "景康氯雷他订片10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0032",
+    "raw_query": "景康氯雷他定片10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0033",
+    "raw_query": "景康 氯雷他定 片 10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0034",
+    "raw_query": "景康氯雷他定片10片装",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0035",
+    "raw_query": "氯雷他定片 10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0036",
+    "raw_query": "景康氯雷他定片6片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0037",
+    "raw_query": "景康氯雷他定片两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0038",
+    "raw_query": "景康氯雷他定片儿童10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0039",
+    "raw_query": "景康氯雷他定片成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0040",
+    "raw_query": "景康氯雷他定片有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0041",
+    "raw_query": "景康氯雷他定不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0042",
+    "raw_query": "景康氯雷他定片孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0043",
+    "raw_query": "景康氯雷他定片能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0044",
+    "raw_query": "景康氯雷他定片怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0045",
+    "raw_query": "景康氯雷他订片10片当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0046",
+    "raw_query": "沐安蒙脱石撒10袋",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0047",
+    "raw_query": "沐安蒙脱石散10袋",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0048",
+    "raw_query": "沐安 蒙脱石 散 10袋",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0049",
+    "raw_query": "沐安蒙脱石散10袋装",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0050",
+    "raw_query": "蒙脱石散 10袋",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0051",
+    "raw_query": "沐安蒙脱石散6袋",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0052",
+    "raw_query": "沐安蒙脱石散两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0053",
+    "raw_query": "沐安蒙脱石散儿童10袋",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0054",
+    "raw_query": "沐安蒙脱石散成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0055",
+    "raw_query": "沐安蒙脱石散有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0056",
+    "raw_query": "沐安蒙脱石不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0057",
+    "raw_query": "沐安蒙脱石散孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0058",
+    "raw_query": "沐安蒙脱石散能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0059",
+    "raw_query": "沐安蒙脱石散怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0060",
+    "raw_query": "沐安蒙脱石撒10袋当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0061",
+    "raw_query": "知康碳酸钙咀嚼篇60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0062",
+    "raw_query": "知康碳酸钙咀嚼片60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0063",
+    "raw_query": "知康 碳酸钙 咀嚼片 60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0064",
+    "raw_query": "知康碳酸钙咀嚼片60片装",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0065",
+    "raw_query": "碳酸钙咀嚼片 60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0066",
+    "raw_query": "知康碳酸钙咀嚼片30片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0067",
+    "raw_query": "知康碳酸钙咀嚼片两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0068",
+    "raw_query": "知康碳酸钙咀嚼片儿童60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0069",
+    "raw_query": "知康碳酸钙咀嚼片成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0070",
+    "raw_query": "知康碳酸钙咀嚼片有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0071",
+    "raw_query": "知康碳酸钙不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0072",
+    "raw_query": "知康碳酸钙咀嚼片孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0073",
+    "raw_query": "知康碳酸钙咀嚼片能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0074",
+    "raw_query": "知康碳酸钙咀嚼片怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0075",
+    "raw_query": "知康碳酸钙咀嚼篇60片当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0076",
+    "raw_query": "瑞康维生素B二片100片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0077",
+    "raw_query": "瑞康维生素B2片100片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0078",
+    "raw_query": "瑞康 维生素B2 片 100片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0079",
+    "raw_query": "瑞康维B2片100片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0080",
+    "raw_query": "维B2片 100片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0081",
+    "raw_query": "瑞康维生素B2片60片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0082",
+    "raw_query": "瑞康维生素B2片两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0083",
+    "raw_query": "瑞康维生素B2片儿童100片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0084",
+    "raw_query": "瑞康维生素B2片成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0085",
+    "raw_query": "瑞康维生素B2片有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0086",
+    "raw_query": "瑞康维生素B2不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0087",
+    "raw_query": "瑞康维生素B2片孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0088",
+    "raw_query": "瑞康维生素B2片能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0089",
+    "raw_query": "瑞康维生素B2片怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0090",
+    "raw_query": "瑞康维生素B二片100片当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0091",
+    "raw_query": "恒康炉甘石洗济100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0092",
+    "raw_query": "恒康炉甘石洗剂100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0093",
+    "raw_query": "恒康 炉甘石 洗剂 100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0094",
+    "raw_query": "恒康炉甘石洗剂100毫升装",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0095",
+    "raw_query": "炉甘石洗剂 100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0096",
+    "raw_query": "恒康炉甘石洗剂60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0097",
+    "raw_query": "恒康炉甘石洗剂两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0098",
+    "raw_query": "恒康炉甘石洗剂儿童100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0099",
+    "raw_query": "恒康炉甘石洗剂成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0100",
+    "raw_query": "恒康炉甘石洗剂有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0101",
+    "raw_query": "恒康炉甘石不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0102",
+    "raw_query": "恒康炉甘石洗剂孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0103",
+    "raw_query": "恒康炉甘石洗剂能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0104",
+    "raw_query": "恒康炉甘石洗剂怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0105",
+    "raw_query": "恒康炉甘石洗济100毫升当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0106",
+    "raw_query": "清和生理性海水鼻腔喷勿60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0107",
+    "raw_query": "清和生理性海水鼻腔喷雾60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0108",
+    "raw_query": "清和 生理性海水 鼻腔喷雾 60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0109",
+    "raw_query": "清和海水鼻喷60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0110",
+    "raw_query": "海水鼻喷 60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0111",
+    "raw_query": "清和生理性海水鼻腔喷雾100毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0112",
+    "raw_query": "清和生理性海水鼻腔喷雾两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0113",
+    "raw_query": "清和生理性海水鼻腔喷雾儿童60毫升",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0114",
+    "raw_query": "清和生理性海水鼻腔喷雾成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0115",
+    "raw_query": "清和生理性海水鼻腔喷雾有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0116",
+    "raw_query": "清和生理性海水不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0117",
+    "raw_query": "清和生理性海水鼻腔喷雾孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0118",
+    "raw_query": "清和生理性海水鼻腔喷雾能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0119",
+    "raw_query": "清和生理性海水鼻腔喷雾怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0120",
+    "raw_query": "清和生理性海水鼻腔喷勿60毫升当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0121",
+    "raw_query": "舒康医用退热帖6贴",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0122",
+    "raw_query": "舒康医用退热贴6贴",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0123",
+    "raw_query": "舒康 医用 退热贴 6贴",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0124",
+    "raw_query": "舒康退热贴6贴",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0125",
+    "raw_query": "退热贴 6贴",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0126",
+    "raw_query": "舒康医用退热贴12贴",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0127",
+    "raw_query": "舒康医用退热贴两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0128",
+    "raw_query": "舒康医用退热贴儿童6贴",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0129",
+    "raw_query": "舒康医用退热贴成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0130",
+    "raw_query": "舒康医用退热贴有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0131",
+    "raw_query": "舒康医用不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0132",
+    "raw_query": "舒康医用退热贴孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0133",
+    "raw_query": "舒康医用退热贴能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0134",
+    "raw_query": "舒康医用退热贴怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0135",
+    "raw_query": "舒康医用退热帖6贴当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0136",
+    "raw_query": "明康医用棉笺100支",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0137",
+    "raw_query": "明康医用棉签100支",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0138",
+    "raw_query": "明康 医用 棉签 100支",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0139",
+    "raw_query": "明康医用棉签100支装",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0140",
+    "raw_query": "医用棉签 100支",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0141",
+    "raw_query": "明康医用棉签200支",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0142",
+    "raw_query": "明康医用棉签两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0143",
+    "raw_query": "明康医用棉签儿童100支",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0144",
+    "raw_query": "明康医用棉签成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0145",
+    "raw_query": "明康医用棉签有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0146",
+    "raw_query": "明康医用不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0147",
+    "raw_query": "明康医用棉签孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0148",
+    "raw_query": "明康医用棉签能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0149",
+    "raw_query": "明康医用棉签怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0150",
+    "raw_query": "明康医用棉笺100支当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0151",
+    "raw_query": "仁济医用纱布快10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0152",
+    "raw_query": "仁济医用纱布块10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0153",
+    "raw_query": "仁济 医用 纱布块 10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0154",
+    "raw_query": "仁济纱布块10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0155",
+    "raw_query": "纱布块 10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0156",
+    "raw_query": "仁济医用纱布块20片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0157",
+    "raw_query": "仁济医用纱布块两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0158",
+    "raw_query": "仁济医用纱布块儿童10片",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0159",
+    "raw_query": "仁济医用纱布块成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0160",
+    "raw_query": "仁济医用纱布块有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0161",
+    "raw_query": "仁济医用不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0162",
+    "raw_query": "仁济医用纱布块孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0163",
+    "raw_query": "仁济医用纱布块能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0164",
+    "raw_query": "仁济医用纱布块怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0165",
+    "raw_query": "仁济医用纱布快10片当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0166",
+    "raw_query": "安宁医用口照10只",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0167",
+    "raw_query": "安宁医用口罩10只",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0168",
+    "raw_query": "安宁 医用 口罩 10只",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0169",
+    "raw_query": "安宁医用口罩10只装",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0170",
+    "raw_query": "医用口罩 10只",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0171",
+    "raw_query": "安宁医用口罩50只",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0172",
+    "raw_query": "安宁医用口罩两盒",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0173",
+    "raw_query": "安宁医用口罩儿童10只",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0174",
+    "raw_query": "安宁医用口罩成人用",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0175",
+    "raw_query": "安宁医用口罩有没有便宜的",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0176",
+    "raw_query": "安宁医用不舒服买什么",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0177",
+    "raw_query": "安宁医用口罩孕妇可以用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0178",
+    "raw_query": "安宁医用口罩能和其他药一起用吗",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0179",
+    "raw_query": "安宁医用口罩怎么用一次多少",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  },
+  {
+    "query_id": "Q0180",
+    "raw_query": "安宁医用口照10只当天送到",
+    "submitted_city_ids": [
+      "330100",
+      "310100",
+      "320500"
+    ],
+    "scene_id": "medical_search",
+    "submitted_at": "2026-09-20T09:00:00+08:00",
+    "source_batch": "ops-20260920-01"
+  }
+]

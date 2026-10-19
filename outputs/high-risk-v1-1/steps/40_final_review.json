@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.1",
+  "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+  "step_id": "40",
+  "status": "success",
+  "data": {
+    "rewrites": [],
+    "items": [],
+    "recommendation": "reject",
+    "risk": "L0",
+    "value_tier": "unknown",
+    "review_queue": [],
+    "history_status": "not_evaluated",
+    "history_verified_gap_count": null,
+    "history_gap_is_potential_only": false,
+    "confirmed_current_offer_count": 0,
+    "confirmed_current_candidate_count": 0,
+    "distinct_store_count": null,
+    "valid_request_count": null
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/history.json",
+    "evidence/catalog.json",
+    "evidence/candidates.json",
+    "evidence/terminology.json"
+  ],
+  "rule_refs": []
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.1",
+  "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+  "step_id": "50",
+  "status": "success",
+  "data": {
+    "recommendation": "reject",
+    "published": false,
+    "review_queue": [],
+    "artifact_index": [
+      "steps/00_input.json",
+      "steps/10_query_profile.json",
+      "steps/20_rewrite_check.json",
+      "steps/30_term_item_check.json",
+      "steps/40_final_review.json"
+    ],
+    "mode": "mock",
+    "history_window": [
+      "2026-09-13T00:00:00+08:00",
+      "2026-09-20T00:00:00+08:00"
+    ],
+    "current_snapshot": {
+      "source": "not_called"
+    },
+    "semantic_mode": "agent_handoff"
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/history.json",
+    "evidence/catalog.json",
+    "evidence/candidates.json",
+    "evidence/terminology.json"
+  ],
+  "rule_refs": []
+}

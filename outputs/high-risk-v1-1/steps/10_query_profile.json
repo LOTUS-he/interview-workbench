@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.1",
+  "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+  "step_id": "10",
+  "status": "success",
+  "data": {
+    "risk": "L0",
+    "attributes": {
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": null,
+      "pack_unit": null,
+      "audience": null
+    },
+    "attribute_evidence": {
+      "brand_name": {
+        "raw_span": "康安",
+        "source_ref": "evidence/task.json#/raw_query"
+      },
+      "generic_name": {
+        "raw_span": "维生素C",
+        "source_ref": "evidence/task.json#/raw_query"
+      },
+      "dosage_form": {
+        "raw_span": "咀嚼片",
+        "source_ref": "evidence/task.json#/raw_query"
+      }
+    },
+    "reason": "本次Query原文仍为明确用法、单次用量咨询：‘怎么用一次多少’。依据ADM-002停止广告扩召回；商品名称仅作原文属性记录，不能覆盖咨询意图。未出现包装数量、单位或特定人群，保留null。无需为该已拒绝任务补查商业历史或商品供给。",
+    "rule_refs": [
+      "ADM-002",
+      "ADM-003",
+      "ADM-004",
+      "ADMIT-001"
+    ],
+    "evidence_refs": [
+      "evidence/task.json#/raw_query"
+    ]
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/terminology.json"
+  ],
+  "rule_refs": []
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>医药 Query 审核工作台</title><link rel="stylesheet" href="/app.css"><script src="/app.js" defer></script></head>
+<body>
+<aside class="sidebar">
+ <a class="brand" href="/" aria-label="审核工作台首页"><span class="brand-symbol">审</span><span>召回审核<span class="brand-sub">REVIEW STUDIO</span></span></a>
+ <div class="sidebar-label">审核空间 <span>01</span></div>
+ <button class="primary new-trigger"><span>＋</span> 新建审核任务</button>
+ <div class="sidebar-label records-label">运行记录 <span id="run-count">—</span></div>
+ <nav id="run-list" aria-label="运行记录"><p class="muted">正在读取真实记录…</p></nav>
+ <div class="sidebar-bottom"><span class="live-dot"></span> 本地 · 只读业务环境<p>规则可追溯，结论有依据。<br>不连接真实投放，不提供用药建议。</p><span class="mono">SKILL / medical-query-safety-review</span></div>
+</aside>
+<main>
+ <header class="topbar"><div>医药 Query 安全扩召回</div><button id="presentation" class="quiet" aria-pressed="false">展示模式 ↗</button></header>
+ <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+ <section class="hero"><div class="eyebrow">EVIDENCE BEFORE EXPANSION</div><div class="hero-heading"><div><h1 id="query-title">让每一次扩召回，都有依据。</h1><p id="query-subtitle" class="muted">读取真实运行记录，或从一条 Query 开始。</p></div><div id="hero-actions"></div></div><div id="task-meta" class="meta-row"></div></section>
+ <section class="trajectory" aria-label="Skill执行步骤"><div class="section-heading"><h2>执行轨迹 <span class="section-en">EXECUTION TRACE</span></h2><span id="step-counter" class="muted">八步审核流程</span></div><div id="timeline" class="timeline"></div></section>
+ <section id="handoff-banner" class="handoff-banner" hidden></section>
+ <section class="reasoning"><div class="chain-panel"><div class="section-heading"><h2>从搜索意图，到可核验供给</h2><span class="muted">三段关系 · 独立校验</span></div><div id="evidence-chain" class="evidence-chain"></div><div id="attribute-row" class="attribute-row"></div></div><aside class="decision-panel" id="decision-panel"></aside></section>
+ <section class="review-panel"><div class="tabbar" role="tablist" aria-label="审核明细"><button role="tab" aria-selected="true" data-tab="candidates">候选审核 <span id="candidate-count">—</span></button><button role="tab" aria-selected="false" data-tab="history">历史证据</button><button role="tab" aria-selected="false" data-tab="trace">执行记录</button><button role="tab" aria-selected="false" data-tab="files">交付文件</button></div><div id="tab-content" role="tabpanel"></div></section>
+ <footer class="page-footer"><span>所有展示来自本次运行产物；未知不等于通过。</span><span>只读业务环境 / 人工审批前置</span></footer>
+</main>
+<dialog id="new-dialog"><form id="new-form"><div class="dialog-heading"><div><div class="eyebrow">NEW REVIEW</div><h2>从一条 Query 开始</h2></div><button type="button" class="icon-button close-dialog" aria-label="关闭">×</button></div><p class="muted">执行真实 SQL 与只读业务接口；在语义审核处等待智能体交接。</p><label>查找 Query<input id="query-search" type="search" placeholder="搜索词或 Q0001…" autocomplete="off"></label><label>待审 Query<select id="query-select" required></select></label><div class="form-grid"><label>城市<select id="city-select"></select></label><label>区域<select id="region-select"></select></label></div><label>接口场景<select id="scenario-select"></select></label><div class="form-note">历史窗口固定为 2026.09.13—09.20（左闭右开）。A / B 区域可能有不同的历史证据完整性，不能跨区域补数。</div><div class="dialog-footer"><button type="button" class="quiet close-dialog">取消</button><button id="create-button" type="submit" class="primary">创建并开始取证 →</button></div></form></dialog>
+<dialog id="handoff-dialog"><div class="dialog-heading"><div><div class="eyebrow">AGENT HANDOFF</div><h2>智能体交接</h2></div><button class="icon-button close-dialog" aria-label="关闭">×</button></div><p class="muted">工作台没有连接模型 API。复制说明给当前智能体，导入它为本次运行生成的 JSON 后继续。</p><label>本次交接说明<textarea id="handoff-instruction" readonly rows="6"></textarea></label><div class="button-row"><button id="copy-handoff" class="secondary">复制交接说明</button><button id="download-handoff" class="quiet">下载 handoff.json ↓</button></div><label>智能体结果 JSON<textarea id="decision-input" rows="8" spellcheck="false" placeholder='粘贴完整 JSON，包含本次 run_id、phase 与 producer…'></textarea></label><div class="dialog-footer"><label class="file-upload">选择 JSON 文件<input id="decision-file" type="file" accept=".json,application/json"></label><button id="submit-decision" class="primary">校验并继续 →</button></div></dialog>
+<dialog id="detail-dialog" class="drawer"><div class="dialog-heading"><div><div class="eyebrow" id="drawer-eyebrow">EVIDENCE DETAIL</div><h2 id="drawer-title">证据详情</h2></div><button class="icon-button close-dialog" aria-label="关闭详情">×</button></div><div id="drawer-body"></div></dialog>
+</body></html>

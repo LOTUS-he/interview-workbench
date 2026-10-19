@@ -1,0 +1,21 @@
+{
+  "dataset_version": "assignment-1.0",
+  "all_synthetic": true,
+  "queries": 180,
+  "products": 96,
+  "terms": 48,
+  "stores": 18,
+  "offers": 864,
+  "ad_plans": 894,
+  "warehouse_counts": {
+    "queries": 180,
+    "search_requests": 29900,
+    "recall_events": 103470,
+    "historical_candidate_replay": 44310,
+    "historical_eligibility": 1788,
+    "ad_events": 13600,
+    "load_manifest": 84
+  },
+  "history_window": "2026-09-13 <= date < 2026-09-20",
+  "live_snapshot_time": "2026-09-20T12:00:00+08:00"
+}

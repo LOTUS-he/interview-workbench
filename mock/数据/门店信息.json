@@ -1,0 +1,173 @@
+[
+  {
+    "store_id": "S001",
+    "store_name": "杭州市业务药房1",
+    "city_id": "330100",
+    "region_ids": [
+      "330100-A",
+      "330100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S002",
+    "store_name": "杭州市业务药房2",
+    "city_id": "330100",
+    "region_ids": [
+      "330100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S003",
+    "store_name": "杭州市业务药房3",
+    "city_id": "330100",
+    "region_ids": [
+      "330100-A",
+      "330100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S004",
+    "store_name": "杭州市业务药房4",
+    "city_id": "330100",
+    "region_ids": [
+      "330100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S005",
+    "store_name": "杭州市业务药房5",
+    "city_id": "330100",
+    "region_ids": [
+      "330100-A",
+      "330100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S006",
+    "store_name": "杭州市业务药房6",
+    "city_id": "330100",
+    "region_ids": [
+      "330100-B"
+    ],
+    "merchant_qualification": "expired"
+  },
+  {
+    "store_id": "S007",
+    "store_name": "上海市业务药房1",
+    "city_id": "310100",
+    "region_ids": [
+      "310100-A",
+      "310100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S008",
+    "store_name": "上海市业务药房2",
+    "city_id": "310100",
+    "region_ids": [
+      "310100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S009",
+    "store_name": "上海市业务药房3",
+    "city_id": "310100",
+    "region_ids": [
+      "310100-A",
+      "310100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S010",
+    "store_name": "上海市业务药房4",
+    "city_id": "310100",
+    "region_ids": [
+      "310100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S011",
+    "store_name": "上海市业务药房5",
+    "city_id": "310100",
+    "region_ids": [
+      "310100-A",
+      "310100-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S012",
+    "store_name": "上海市业务药房6",
+    "city_id": "310100",
+    "region_ids": [
+      "310100-B"
+    ],
+    "merchant_qualification": "expired"
+  },
+  {
+    "store_id": "S013",
+    "store_name": "苏州市业务药房1",
+    "city_id": "320500",
+    "region_ids": [
+      "320500-A",
+      "320500-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S014",
+    "store_name": "苏州市业务药房2",
+    "city_id": "320500",
+    "region_ids": [
+      "320500-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S015",
+    "store_name": "苏州市业务药房3",
+    "city_id": "320500",
+    "region_ids": [
+      "320500-A",
+      "320500-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S016",
+    "store_name": "苏州市业务药房4",
+    "city_id": "320500",
+    "region_ids": [
+      "320500-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S017",
+    "store_name": "苏州市业务药房5",
+    "city_id": "320500",
+    "region_ids": [
+      "320500-A",
+      "320500-B"
+    ],
+    "merchant_qualification": "valid"
+  },
+  {
+    "store_id": "S018",
+    "store_name": "苏州市业务药房6",
+    "city_id": "320500",
+    "region_ids": [
+      "320500-B"
+    ],
+    "merchant_qualification": "expired"
+  }
+]

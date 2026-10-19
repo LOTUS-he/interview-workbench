@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.1",
+  "run_id": "e05733a0447c47eeb88c1edbb5a1fd6d",
+  "step_id": "30",
+  "status": "skipped",
+  "data": {
+    "items": [],
+    "execution_note": "未执行：准入早停或不存在可继续的候选；详见manifest八步状态。"
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/history.json",
+    "evidence/catalog.json",
+    "evidence/candidates.json",
+    "evidence/terminology.json"
+  ],
+  "rule_refs": []
+}

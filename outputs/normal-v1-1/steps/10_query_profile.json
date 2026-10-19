@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.1",
+  "run_id": "10be6911a015450988e3bc06f61cd794",
+  "step_id": "10",
+  "status": "success",
+  "data": {
+    "risk": "L1",
+    "attributes": {
+      "brand_name": "康安",
+      "generic_name": "维生素C",
+      "dosage_form": "咀嚼片",
+      "pack_count": 60,
+      "pack_unit": "片",
+      "audience": null
+    },
+    "attribute_evidence": {
+      "brand_name": {
+        "raw_span": "康安",
+        "source_ref": "evidence/task.json#/raw_query"
+      },
+      "generic_name": {
+        "raw_span": "维C",
+        "source_ref": "evidence/terminology.json#/aliases/0"
+      },
+      "dosage_form": {
+        "raw_span": "咀嚼篇",
+        "source_ref": "evidence/terminology.json#/aliases/0"
+      },
+      "pack_count": {
+        "raw_span": "60",
+        "source_ref": "evidence/task.json#/raw_query"
+      },
+      "pack_unit": {
+        "raw_span": "片",
+        "source_ref": "evidence/task.json#/raw_query"
+      }
+    },
+    "reason": "本次明确为康安维C咀嚼商品60片的商品搜索，没有咨询或敏感用药意图。独立词典明确维C咀嚼片对应维生素C咀嚼片，结合原文咀嚼篇及片数，可将单字误写篇纠为片；这只是文字纠错，不作临床替代。保留品牌、剂型、60片；原文未表达特定人群，不补造。",
+    "rule_refs": [
+      "ADM-002",
+      "ADM-003",
+      "ADM-004",
+      "RWR-001"
+    ],
+    "evidence_refs": [
+      "evidence/task.json#/raw_query",
+      "evidence/terminology.json#/aliases/0",
+      "evidence/catalog.json#/terms/0"
+    ]
+  },
+  "evidence_refs": [
+    "evidence/task.json",
+    "evidence/terminology.json"
+  ],
+  "rule_refs": []
+}
