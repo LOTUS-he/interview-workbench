@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "medical-query-safety-review/step-result.schema.json",
+  "title": "Six public step artifacts",
+  "oneOf": [
+    {"allOf": [{"$ref": "#/$defs/envelope"}, {"properties": {"step_id": {"const": "00"}, "data": {"$ref": "#/$defs/inputData"}}}]},
+    {"allOf": [{"$ref": "#/$defs/envelope"}, {"properties": {"step_id": {"const": "10"}, "data": {"$ref": "#/$defs/profileData"}}}]},
+    {"allOf": [{"$ref": "#/$defs/envelope"}, {"properties": {"step_id": {"const": "20"}, "data": {"$ref": "#/$defs/rewriteData"}}}]},
+    {"allOf": [{"$ref": "#/$defs/envelope"}, {"properties": {"step_id": {"const": "30"}, "data": {"$ref": "#/$defs/itemData"}}}]},
+    {"allOf": [{"$ref": "#/$defs/envelope"}, {"properties": {"step_id": {"const": "40"}, "data": {"$ref": "#/$defs/finalData"}}}]},
+    {"allOf": [{"$ref": "#/$defs/envelope"}, {"properties": {"step_id": {"const": "50"}, "data": {"$ref": "#/$defs/reportData"}}}]}
+  ],
+  "$defs": {
+    "evidenceRef": {"type": "string", "pattern": "^evidence/[^\\s]+$"},
+    "ruleRef": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*-[0-9]{3}$"},
+    "envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "run_id", "step_id", "status", "data", "rule_refs", "evidence_refs"],
+      "properties": {
+        "schema_version": {"const": "1.1"},
+        "run_id": {"type": "string", "minLength": 1},
+        "step_id": {"type": "string", "enum": ["00", "10", "20", "30", "40", "50"]},
+        "status": {"type": "string", "enum": ["success", "partial", "blocked", "skipped"]},
+        "data": {"type": "object"},
+        "rule_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/ruleRef"}},
+        "evidence_refs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/evidenceRef"}}
+      }
+    },
+    "inputData": {
+      "type": "object",
+      "required": ["task", "history_ref"],
+      "properties": {
+        "task": {"type": "object"},
+        "history_ref": {"type": "object", "required": ["path", "sha256"], "additionalProperties": false,
+          "properties": {"path": {"const": "evidence/history.json"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}
+      },
+      "additionalProperties": true
+    },
+    "profileData": {
+      "type": "object",
+      "required": ["risk", "attributes"],
+      "properties": {
+        "risk": {"type": "string", "enum": ["L0", "L1", "L2"]},
+        "attributes": {"type": "object"},
+        "attribute_evidence": {"type": "object"},
+        "reason": {"type": "string"},
+        "rule_refs": {"type": "array"},
+        "evidence_refs": {"type": "array"}
+      },
+      "additionalProperties": true
+    },
+    "rewriteData": {
+      "type": "object",
+      "required": ["rewrites", "model_rewrites"],
+      "properties": {"rewrites": {"type": "array"}, "model_rewrites": {"type": "array"}},
+      "additionalProperties": true
+    },
+    "itemData": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {"items": {"type": "array"}},
+      "additionalProperties": true
+    },
+    "finalData": {
+      "type": "object",
+      "required": ["recommendation", "review_queue"],
+      "properties": {
+        "recommendation": {"type": "string", "enum": ["submit_for_human_review", "hold", "reject", "no_rewrite"]},
+        "risk": {"type": ["string", "null"]},
+        "value_tier": {"type": ["string", "null"]},
+        "review_queue": {"type": "array"}
+      },
+      "additionalProperties": true
+    },
+    "reportData": {
+      "type": "object",
+      "required": ["recommendation", "published", "review_queue", "artifact_index", "mode", "history_window", "current_snapshot", "semantic_mode"],
+      "properties": {
+        "recommendation": {"type": "string", "enum": ["submit_for_human_review", "hold", "reject", "no_rewrite"]},
+        "published": {"const": false},
+        "review_queue": {"type": "array"},
+        "artifact_index": {"type": "array", "items": {"type": "string"}},
+        "mode": {"const": "mock"},
+        "history_window": {"type": "array", "minItems": 2, "maxItems": 2},
+        "current_snapshot": {"type": "object"},
+        "semantic_mode": {"const": "agent_handoff"}
+      },
+      "additionalProperties": true
+    }
+  }
+}

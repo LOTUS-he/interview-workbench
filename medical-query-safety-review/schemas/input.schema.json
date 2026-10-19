@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "medical-query-safety-review/input.schema.json",
+  "title": "Medical Query review task input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "query_id",
+    "raw_query",
+    "city_id",
+    "region_id",
+    "scene_id",
+    "history_start",
+    "history_end_exclusive"
+  ],
+  "properties": {
+    "query_id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,64}$"},
+    "raw_query": {"type": "string", "minLength": 1, "maxLength": 200},
+    "city_id": {"type": "string", "enum": ["330100", "310100", "320500"]},
+    "region_id": {"type": "string", "pattern": "^(330100|310100|320500)-[AB]$"},
+    "scene_id": {"type": "string", "const": "medical_search"},
+    "history_start": {"type": "string", "format": "date-time", "pattern": "\\+08:00$"},
+    "history_end_exclusive": {"type": "string", "format": "date-time", "pattern": "\\+08:00$"}
+  },
+  "description": "region_id/city_id membership and a complete natural-day window are checked by validate_input.py; JSON Schema covers structure only."
+}

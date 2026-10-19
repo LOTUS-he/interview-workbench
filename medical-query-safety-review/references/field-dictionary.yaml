@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "format": "json-compatible-yaml",
+  "source": "业务输入数据/内部资料/数仓字段字典.json",
+  "dataset_version": "assignment-1.0",
+  "notice": "字段定义是只读脱敏业务环境输入口径，不是审核答案；null 表示未知或缺失，不等于 0。",
+  "tables": [
+    {
+      "name": "queries",
+      "grain": "一条 Query 词条",
+      "primary_key": ["query_id"],
+      "fields": [
+        {"name": "query_id", "type": "TEXT", "nullable": false, "meaning": "Query 词条标识，不等于 request_id"},
+        {"name": "raw_query", "type": "TEXT", "nullable": false, "meaning": "原始搜索表达，未做临床语义归一"},
+        {"name": "scene_id", "type": "TEXT", "nullable": false, "enum": ["medical_search"], "meaning": "业务场域标识"}
+      ]
+    },
+    {
+      "name": "search_requests",
+      "grain": "一次搜索请求",
+      "primary_key": ["request_id"],
+      "foreign_keys": [{"field": "query_id", "references": "queries.query_id"}],
+      "fields": [
+        {"name": "request_id", "type": "TEXT", "nullable": false, "meaning": "全局唯一搜索请求 ID"},
+        {"name": "query_id", "type": "TEXT", "nullable": false, "meaning": "Query 词条标识，不等于请求 ID"},
+        {"name": "event_time", "type": "TEXT", "nullable": false, "format": "ISO8601 +08:00", "meaning": "请求发生时间"},
+        {"name": "city_id", "type": "TEXT", "nullable": false, "meaning": "城市编码，不等于精确配送范围"},
+        {"name": "region_id", "type": "TEXT", "nullable": false, "meaning": "配送区域 A/B"},
+        {"name": "scene_id", "type": "TEXT", "nullable": false, "enum": ["medical_search"], "meaning": "请求场域"},
+        {"name": "is_valid", "type": "INTEGER", "nullable": false, "enum": [0, 1], "meaning": "1 有效，0 测试或无效请求"}
+      ]
+    },
+    {
+      "name": "recall_events",
+      "grain": "一次阶段事件投递",
+      "primary_key": ["delivery_id"],
+      "fields": [
+        {"name": "delivery_id", "type": "INTEGER", "nullable": false, "meaning": "日志投递行 ID，不是业务事件 ID"},
+        {"name": "event_id", "type": "TEXT", "nullable": false, "meaning": "业务事件 ID，可能重复投递，统计前去重"},
+        {"name": "request_id", "type": "TEXT", "nullable": false, "meaning": "所属搜索请求 ID"},
+        {"name": "event_time", "type": "TEXT", "nullable": false, "format": "ISO8601 +08:00", "meaning": "事件发生时间"},
+        {"name": "ingested_at", "type": "TEXT", "nullable": false, "format": "ISO8601 +08:00", "meaning": "日志接收时间"},
+        {"name": "stage", "type": "TEXT", "nullable": false, "enum": ["keyword", "supply", "plan", "eligible"], "meaning": "候选流水阶段"},
+        {"name": "candidate_id", "type": "TEXT", "nullable": true, "meaning": "本以 ad_plan_id 标识候选"},
+        {"name": "ad_plan_id", "type": "TEXT", "nullable": true, "meaning": "广告计划标识"},
+        {"name": "term_id", "type": "TEXT", "nullable": true, "meaning": "索引 term 标识，不代表已审核映射"},
+        {"name": "passed", "type": "INTEGER", "nullable": true, "enum": [0, 1], "meaning": "1 阶段通过，0 明确失败，null 未知"},
+        {"name": "reason_code", "type": "TEXT", "nullable": true, "meaning": "系统阶段原因，非人工安全审核结论"},
+        {"name": "index_version", "type": "TEXT", "nullable": false, "meaning": "事件使用的索引版本"}
+      ]
+    },
+    {
+      "name": "historical_candidate_replay",
+      "grain": "一次历史词法候选回放",
+      "primary_key": ["replay_id"],
+      "fields": [
+        {"name": "replay_id", "type": "TEXT", "nullable": false, "meaning": "独立候选回放 ID"},
+        {"name": "request_id", "type": "TEXT", "nullable": false, "meaning": "原始搜索请求 ID"},
+        {"name": "term_id", "type": "TEXT", "nullable": false, "meaning": "回放中的索引 term 标识"},
+        {"name": "ad_plan_id", "type": "TEXT", "nullable": false, "meaning": "候选广告计划标识"},
+        {"name": "offer_id", "type": "TEXT", "nullable": false, "meaning": "门店商品供给标识"},
+        {"name": "source", "type": "TEXT", "nullable": false, "meaning": "数据产生来源，不是审核答案"},
+        {"name": "index_version", "type": "TEXT", "nullable": false, "meaning": "回放使用的索引版本"},
+        {"name": "replayed_at", "type": "TEXT", "nullable": false, "format": "ISO8601 +08:00", "meaning": "回放生成时间，不能替代原请求时点"}
+      ]
+    },
+    {
+      "name": "historical_eligibility",
+      "grain": "一个候选在一段有效区间内的历史资格快照",
+      "primary_key": ["snapshot_id"],
+      "fields": [
+        {"name": "snapshot_id", "type": "TEXT", "nullable": false, "meaning": "历史资格区间记录 ID"},
+        {"name": "ad_plan_id", "type": "TEXT", "nullable": false, "meaning": "广告计划标识"},
+        {"name": "offer_id", "type": "TEXT", "nullable": false, "meaning": "门店商品供给标识"},
+        {"name": "sku_id", "type": "TEXT", "nullable": false, "meaning": "商品规格标识"},
+        {"name": "city_id", "type": "TEXT", "nullable": false, "meaning": "城市编码"},
+        {"name": "region_ids_json", "type": "TEXT", "nullable": false, "format": "JSON array string", "meaning": "可配送区域数组"},
+        {"name": "valid_from", "type": "TEXT", "nullable": false, "format": "ISO8601 +08:00", "meaning": "有效区间起点，包含"},
+        {"name": "valid_to", "type": "TEXT", "nullable": false, "format": "ISO8601 +08:00", "meaning": "有效区间终点，不包含"},
+        {"name": "stock", "type": "INTEGER", "nullable": true, "meaning": "可售库存，null 未知，0 无货"},
+        {"name": "on_shelf", "type": "INTEGER", "nullable": true, "enum": [0, 1], "meaning": "1 上架，0 下架，null 未知"},
+        {"name": "product_qualification", "type": "TEXT", "nullable": true, "enum": ["valid", "expired", "unknown"], "meaning": "商品资格事实"},
+        {"name": "merchant_qualification", "type": "TEXT", "nullable": true, "enum": ["valid", "expired", "unknown"], "meaning": "商家资格事实"},
+        {"name": "plan_status", "type": "TEXT", "nullable": true, "enum": ["active", "paused"], "meaning": "计划状态"},
+        {"name": "remaining_budget_fen", "type": "INTEGER", "nullable": true, "unit": "fen", "meaning": "剩余预算，null 未知"},
+        {"name": "material_status", "type": "TEXT", "nullable": true, "enum": ["approved", "rejected"], "meaning": "素材审核状态"}
+      ]
+    },
+    {
+      "name": "ad_events",
+      "grain": "一次广告业务事件",
+      "primary_key": ["event_id"],
+      "fields": [
+        {"name": "event_id", "type": "TEXT", "nullable": false, "meaning": "广告业务事件 ID"},
+        {"name": "request_id", "type": "TEXT", "nullable": false, "meaning": "所属搜索请求 ID"},
+        {"name": "candidate_id", "type": "TEXT", "nullable": false, "meaning": "本以 ad_plan_id 标识候选"},
+        {"name": "event_type", "type": "TEXT", "nullable": false, "enum": ["impression", "click"], "meaning": "广告事件类型"},
+        {"name": "event_time", "type": "TEXT", "nullable": false, "format": "ISO8601 +08:00", "meaning": "事件发生时间"},
+        {"name": "billable", "type": "INTEGER", "nullable": false, "enum": [0, 1], "meaning": "1 有效计费点击，0 不计费"},
+        {"name": "spend_fen", "type": "INTEGER", "nullable": false, "unit": "fen", "meaning": "本条事件消耗，曝光为 0"},
+        {"name": "recall_sources_json", "type": "TEXT", "nullable": false, "format": "JSON array string", "meaning": "召回来源数组，不是因果净增量"}
+      ]
+    },
+    {
+      "name": "load_manifest",
+      "grain": "一个数据集、日期、城市的加载登记",
+      "primary_key": ["dataset", "biz_date", "city_id"],
+      "fields": [
+        {"name": "dataset", "type": "TEXT", "nullable": false, "meaning": "数据集名称"},
+        {"name": "biz_date", "type": "TEXT", "nullable": false, "format": "YYYY-MM-DD", "meaning": "业务日期"},
+        {"name": "city_id", "type": "TEXT", "nullable": false, "meaning": "城市编码"},
+        {"name": "status", "type": "TEXT", "nullable": false, "enum": ["complete", "missing"], "meaning": "加载是否完成；0 请求不等于 missing"},
+        {"name": "loaded_at", "type": "TEXT", "nullable": true, "format": "ISO8601 +08:00", "meaning": "加载登记时间"}
+      ]
+    }
+  ]
+}

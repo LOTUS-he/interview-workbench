@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "medical-query-safety-review/handoff.schema.json",
+  "title": "Two explicit agent handoff decisions",
+  "description": "This external schema accepts only real agent handoffs. An internal not_executed item archive with producer.type=not_executed, model=null and reviews=[] is intentionally outside this schema and must not be submitted as model input.",
+  "oneOf": [
+    {"$ref": "#/$defs/queryDecision"},
+    {"$ref": "#/$defs/itemDecision"}
+  ],
+  "$defs": {
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "model"],
+      "properties": {
+        "type": {"const": "agent"},
+        "model": {"type": "string", "minLength": 1}
+      }
+    },
+    "evidenceRef": {
+      "type": "string",
+      "pattern": "^evidence/[^\\s]+$",
+      "description": "Relative reference to this run's evidence, optionally followed by a JSON Pointer."
+    },
+    "ruleRef": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]*-[0-9]{3}$"
+    },
+    "refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/evidenceRef"}
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/ruleRef"}
+    },
+    "attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["brand_name", "generic_name", "dosage_form", "pack_count", "pack_unit", "audience"],
+      "properties": {
+        "brand_name": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "generic_name": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "dosage_form": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "pack_count": {"oneOf": [{"type": "integer", "minimum": 1}, {"type": "null"}]},
+        "pack_unit": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]},
+        "audience": {"oneOf": [{"type": "string", "minLength": 1}, {"type": "null"}]}
+      }
+    },
+    "attributeEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(brand_name|generic_name|dosage_form|pack_count|pack_unit|audience)$": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["raw_span", "source_ref"],
+          "properties": {
+            "raw_span": {"type": "string", "minLength": 1},
+            "source_ref": {"$ref": "#/$defs/evidenceRef"}
+          }
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["risk", "attributes", "attribute_evidence", "reason", "rule_refs", "evidence_refs"],
+      "properties": {
+        "risk": {"type": "string", "enum": ["L0", "L1", "L2"]},
+        "attributes": {"$ref": "#/$defs/attributes"},
+        "attribute_evidence": {"$ref": "#/$defs/attributeEvidence"},
+        "reason": {"type": "string", "minLength": 1},
+        "rule_refs": {"$ref": "#/$defs/rules"},
+        "evidence_refs": {"$ref": "#/$defs/refs"}
+      }
+    },
+    "rewrite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["term_id", "attributes", "decision", "reason", "rule_refs", "evidence_refs"],
+      "properties": {
+        "term_id": {"type": "string", "minLength": 1},
+        "attributes": {"$ref": "#/$defs/attributes"},
+        "decision": {"type": "string", "enum": ["pass", "reject", "unknown"]},
+        "reason": {"type": "string", "minLength": 1},
+        "rule_refs": {"$ref": "#/$defs/rules"},
+        "evidence_refs": {"$ref": "#/$defs/refs"}
+      }
+    },
+    "queryDecision": {
+      "title": "First handoff: Query semantic decision",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "phase", "producer", "profile", "rewrites"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "phase": {"const": "query"},
+        "producer": {"$ref": "#/$defs/producer"},
+        "profile": {"$ref": "#/$defs/profile"},
+        "rewrites": {"type": "array", "items": {"$ref": "#/$defs/rewrite"}}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "term_id", "term_item", "query_item", "reason", "rule_refs", "evidence_refs"],
+      "properties": {
+        "candidate_id": {"type": "string", "minLength": 1},
+        "term_id": {"type": "string", "minLength": 1},
+        "term_item": {"type": "string", "enum": ["pass", "reject", "unknown"]},
+        "query_item": {"type": "string", "enum": ["pass", "reject", "unknown"]},
+        "reason": {"type": "string", "minLength": 1},
+        "rule_refs": {"$ref": "#/$defs/rules"},
+        "evidence_refs": {"$ref": "#/$defs/refs"}
+      },
+      "description": "The pair (term_id, candidate_id) must be unique and must exactly cover the current candidate evidence; a deterministic run validator enforces that cross-object invariant."
+    },
+    "itemDecision": {
+      "title": "Second handoff: item semantic decision",
+      "description": "Use only when the current run has a non-empty candidate set. If admission stopped or no candidates exist, keep an internal not_executed archive and do not validate it against this schema.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "phase", "producer", "reviews"],
+      "properties": {
+        "run_id": {"type": "string", "minLength": 1},
+        "phase": {"const": "items"},
+        "producer": {"$ref": "#/$defs/producer"},
+        "reviews": {"type": "array", "items": {"$ref": "#/$defs/review"}}
+      }
+    }
+  }
+}

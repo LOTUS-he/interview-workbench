@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "medical-query-review",
+  "policy_version": "policy-1.0",
+  "effective_at": "2026-09-13T00:00:00+08:00",
+  "timezone": "Asia/Shanghai",
+  "source": "01_业务输入数据_内部资料与脱敏环境/内部资料/02_业务政策说明.md",
+  "rules": [
+    {"id": "SCOPE-001", "description": "审核场域、城市、区域和历史窗口必须在授权范围内。", "pointer": "#/scope"},
+    {"id": "ADMIT-001", "description": "准入风险由Query模型交接识别；L0拒绝、L1继续、L2保守hold。", "pointer": "#/admission"},
+    {"id": "REWRITE-001", "description": "改写必须保留原Query明确约束，并有启用term及索引版本证据。", "pointer": "#/rewrite"},
+    {"id": "BRAND-001", "description": "原Query明确品牌必须与term和候选商品品牌一致。", "pointer": "#/attributes/brand_name"},
+    {"id": "FORM-001", "description": "原Query明确剂型必须与term和候选商品剂型一致。", "pointer": "#/attributes/dosage_form"},
+    {"id": "PACK-001", "description": "包装数量和包装单位必须可比较且一致；标题与结构化属性冲突不得选有利字段。", "pointer": "#/attributes/pack"},
+    {"id": "AUDIENCE-001", "description": "不得跨人群扩展；未表达的特定人群不得被补造。", "pointer": "#/attributes/audience"},
+    {"id": "EVIDENCE-001", "description": "两次模型交接、对象证据、版本和来源必须完整且可追溯。", "pointer": "#/evidence"},
+    {"id": "ELIG-001", "description": "当前供给和广告计划必须同时满足政策列出的可承接条件。", "pointer": "#/eligibility"},
+    {"id": "TIME-001", "description": "按业务时钟检查目录、资格、供给、计划时效及供给-计划跨接口时间差。", "pointer": "#/time"},
+    {"id": "DECISION-001", "description": "只有语义相关、当前可投且历史完整并完成语义关联时才可提交人工审批。", "pointer": "#/decision"},
+    {"id": "VALUE-001", "description": "V1/V2按相关且可投的distinct store_id及完整窗口有效请求数分层，不按计划数。", "pointer": "#/value"}
+  ],
+  "scope": {
+    "scene_id": "medical_search",
+    "city_ids": ["330100", "310100", "320500"],
+    "region_suffixes": ["A", "B"],
+    "history_window": {"left_closed": true, "right_open": true, "timezone": "Asia/Shanghai"}
+  },
+  "admission": {
+    "risk_levels": ["L0", "L1", "L2"],
+    "l0_action": "reject",
+    "l1_action": "continue",
+    "l2_action": "hold",
+    "excluded_semantic_intents": [
+      "prescription_drug_expansion",
+      "consultation_or_diagnosis",
+      "dosage_consultation",
+      "combination_medication",
+      "side_effect_consultation",
+      "pregnancy_or_infant_sensitive_medication_consultation",
+      "symptom_to_drug_recommendation",
+      "clinical_substitution",
+      "medication_recommendation"
+    ]
+  },
+  "rewrite": {
+    "preserve_attributes": ["brand_name", "generic_name", "dosage_form", "pack_count", "pack_unit", "audience"],
+    "enabled_term_required": true,
+    "index_version_required": true,
+    "model_decision_required": "pass",
+    "missing_attribute_action": "unknown"
+  },
+  "attributes": {
+    "brand_name": {"rule_id": "BRAND-001", "missing": "unknown"},
+    "generic_name": {"rule_id": "REWRITE-001", "missing": "unknown"},
+    "dosage_form": {"rule_id": "FORM-001", "missing": "unknown"},
+    "pack": {
+      "rule_id": "PACK-001",
+      "missing": "unknown",
+      "count_without_unit": "unknown",
+      "unit_without_count": "unknown",
+      "title_structured_conflict": "unknown",
+      "conflict_action": "reject",
+      "not_allowed": ["treat_pack_count_as_strength", "replace_one_pack_with_multiple_packs"]
+    },
+    "audience": {"rule_id": "AUDIENCE-001", "missing": "unknown", "unspecified_to_specific": "unknown"}
+  },
+  "evidence": {
+    "dataset_version": "assignment-1.0",
+    "required_current_objects": ["term", "product", "offer", "plan", "qualification"],
+    "required_model_handoffs": ["query", "items"],
+    "history_gap_count_is": "potential_only",
+    "conflicting_versions_action": "unknown"
+  },
+  "eligibility": {
+    "qualification_status": "valid",
+    "disallowed_prescription_type": "RX",
+    "merchant_qualification": "valid",
+    "on_shelf": true,
+    "stock_positive": true,
+    "price_fen_positive": true,
+    "region_reachable": true,
+    "plan_status": "active",
+    "remaining_budget_fen_positive": true,
+    "material_status": "approved",
+    "unknown_action": "unknown"
+  },
+  "time": {
+    "catalog_max_age_seconds": 86400,
+    "qualification_max_age_seconds": 86400,
+    "offer_max_age_seconds": 300,
+    "plan_max_age_seconds": 300,
+    "offer_plan_max_skew_seconds": 300,
+    "future_timestamp_action": "unknown",
+    "expired_timestamp_action": "unknown"
+  },
+  "decision": {
+    "required_rewrite": "pass",
+    "required_relevance": "pass",
+    "required_eligibility": "pass",
+    "minimum_confirmed_current_offers": 1,
+    "history_complete_required": true,
+    "semantic_history_link_required": true,
+    "allowed_recommendations": ["submit_for_human_review", "hold", "reject", "no_rewrite"]
+  },
+  "value": {
+    "request_metric": "complete_7d_valid_distinct_request_count",
+    "store_metric": "relevant_and_currently_eligible_distinct_store_id",
+    "plan_count_is_not_store_count": true,
+    "history_window_days": 7,
+    "v1": {"min_valid_requests": 500, "min_distinct_stores": 2},
+    "v2": {"min_valid_requests": 100, "min_distinct_stores": 1},
+    "v3": "complete_data_and_determinable_qualification_below_v1_v2",
+    "incomplete_or_unknown": "unknown"
+  }
+}
